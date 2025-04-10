@@ -31,10 +31,11 @@
     <!-- Navigation Links -->
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto nav-items-wrapper">
-        <li class="nav-item"><a class="nav-link" href="#">Inscription</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Nos micro-crèches</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Notre équipe</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Rejoignez-nous</a></li>
+        <li class="nav-item"><a class="nav-link" href="PcrecheForm1.php">Inscription</a></li>
+
         <li class="nav-item"><a class="nav-link" href="pcrecheLOGIN.php">Connexion</a></li>
 
         <li class="nav-item">
@@ -44,14 +45,13 @@
     </div>
   </nav>
 </header>
-
 <style>
 /* Design niveau branding pro pour navbar */
 .ultra-navbar {
   background-color: #fcf8f4; /* beige élégant */
-  padding: 1rem 2.5rem;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.03);
-  border-radius: 0 0 30px 30px;
+  padding: 0.4rem 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.02);
+  border-radius: 0 0 16px 16px;
   font-family: "Playwrite GB S", cursive;
   position: sticky;
   top: 0;
@@ -61,7 +61,9 @@
 .logo-navbar {
   transition: transform 0.3s ease;
   border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  width: 40px;
+  height: 40px;
 }
 
 .logo-navbar:hover {
@@ -69,19 +71,19 @@
 }
 
 .brand-name {
-  font-size: 1.9rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: #2c7a4b;
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
   text-shadow: 0.5px 0.5px #ccc;
   text-transform: lowercase;
 }
 
 .navbar-nav .nav-link {
   color: #5c4a38;
-  margin: 0 0.8rem;
-  font-size: 1.15rem;
-  font-weight: 500;
+  margin: 0 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 400;
   position: relative;
   transition: all 0.3s ease;
 }
@@ -108,10 +110,11 @@
 .btn-contact {
   background-color: #d0f0e3;
   color: #1e5537 !important;
-  padding: 8px 22px;
-  border-radius: 50px;
+  padding: 5px 14px;
+  border-radius: 32px;
   font-weight: 600;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  font-size: 0.8rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
 }
 
@@ -123,17 +126,20 @@
 /* Responsive */
 @media (max-width: 768px) {
   .brand-name {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   .navbar-nav .nav-link {
-    margin: 0.6rem 0;
+    margin: 0.3rem 0;
     text-align: center;
+    font-size: 0.85rem;
   }
   .ultra-navbar {
-    padding: 1rem 1.5rem;
+    padding: 0.5rem 0.8rem;
   }
 }
 </style>
+
+
 <!------------------BOUTON SCROLL-------------->
 
 
