@@ -6,7 +6,16 @@
   <title>Crèche Paris - BabyFarm</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <script>
+  function toggleActivityDetails(id) {
+    const detail = document.getElementById(id);
+    if (detail) {
+      detail.classList.toggle('active');
+    }
+  }
+</script>
+
   <style>
     body {
       margin: 0;
@@ -23,6 +32,14 @@
       flex-direction: column;
       align-items: center;
       padding: 20px 0;
+      position: fixed;
+      height: 100vh;
+    }
+    .main-content {
+      margin-left: 150px;
+      flex: 1;
+      padding: 40px;
+      background: linear-gradient(to bottom right, #faf3ed, #f0e7de);
     }
     .sidebar .icon {
       width: 60px;
@@ -30,30 +47,27 @@
       margin: 20px 0;
       object-fit: contain;
       cursor: pointer;
-      transition: transform 0.3s, filter 0.3s;
+      transition: transform 0.3s ease, filter 0.3s;
+    }
+    .sidebar .icon:hover {
+      transform: scale(1.1);
+      filter: brightness(1.2);
     }
     .sidebar .icon.active {
-      transform: scale(1.1);
       filter: drop-shadow(0 0 5px #3b925f);
     }
-    .main-content {
-      flex: 1;
-      padding: 40px;
-      background-image: url('creche-fond.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
     .planning-week {
-      background: #fff;
+      background: #ffffff;
       padding: 25px 35px;
-      border-radius: 24px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      border-radius: 20px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
       margin-bottom: 35px;
+      animation: fadeIn 0.6s ease-in-out;
     }
     .planning-week h4 {
-      font-size: 22px;
+      font-size: 26px;
       margin-bottom: 20px;
-      font-weight: 700;
+      font-weight: 800;
       color: #2c7a4b;
     }
     .planning-week .day {
@@ -62,19 +76,37 @@
       align-items: center;
       padding: 12px 0;
       border-bottom: 1px dashed #ddd;
-      font-size: 16px;
+      font-size: 17px;
     }
-    .planning-week .day span:last-child {
-      text-align: right;
-      color: #555;
+    .planning-week .day button {
+      background-color: transparent;
+      border: none;
+      color: #3b925f;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .activity-detail {
+      display: none;
+      background: #f5fef9;
+      border-left: 4px solid #3b925f;
+      margin: 10px 0;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 14px;
+      color: #333;
+    }
+    .activity-detail.active {
+      display: block;
     }
     .creche-info {
-      background: linear-gradient(to right, #f5fef9, #e6f5ed);
-      border-radius: 24px;
-      padding: 30px 35px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      background: #f5fef9;
+      border-left: 5px solid #2c7a4b;
+      padding: 30px;
+      border-radius: 20px;
       margin-bottom: 35px;
       position: relative;
+      animation: slideIn 0.6s ease-in-out;
     }
     .creche-info::before {
       content: "\1F476";
@@ -83,121 +115,94 @@
       right: -15px;
       background: #fff;
       border-radius: 50%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       padding: 10px;
-      font-size: 20px;
-    }
-    .creche-info h2 {
-      font-size: 30px;
-      color: #2c7a4b;
-      margin-bottom: 12px;
-    }
-    .stats {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-    .stat-card {
-      background: #ffffff;
-      padding: 25px;
-      border-radius: 24px;
-      flex: 1;
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-      transition: 0.3s;
-    }
-    .stat-card:hover {
-      transform: translateY(-4px);
-      background: #f0fbf5;
-    }
-    .stat-card h2 {
-      font-size: 26px;
-      color: #2c7a4b;
-      font-weight: 700;
-      margin-bottom: 6px;
+      font-size: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     .pointage-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
       margin-bottom: 25px;
-      background: #fff;
-      padding: 20px 30px;
-      border-radius: 24px;
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
-    }
-    .pointage-header h3 {
-      font-size: 22px;
-      color: #444;
     }
     .badge {
       background: #3b925f;
-      color: white;
+      padding: 6px 16px;
+      border-radius: 30px;
       font-size: 14px;
-      padding: 5px 15px;
-      border-radius: 20px;
+      color: white;
     }
     .enfant-card {
-      background: #ffffff;
-      border-radius: 18px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.05);
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 18px 28px;
-      margin-bottom: 18px;
-      border-left: 8px solid #70c8a0;
+      align-items: center;
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.07);
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+    .enfant-card:hover {
+      transform: scale(1.01);
     }
     .enfant-info {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
     }
     .enfant-photo {
-      width: 64px;
-      height: 64px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid #70c8a0;
+      border: 3px solid #70c8a0;
     }
     .enfant-name {
-      font-weight: 800;
-      font-size: 20px;
-      margin-bottom: 4px;
       font-family: 'Playwrite GB S', cursive;
+      font-size: 26px;
+      font-weight: 900;
+      color: #333;
     }
     .enfant-age {
       font-size: 14px;
       color: #777;
     }
-    .btn-planning {
-      background-color: #3b925f;
-      color: white;
-      border: none;
-      padding: 10px 22px;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 14px;
-      transition: 0.3s ease;
-    }
-    .btn-planning:hover {
-      background-color: #317b50;
-    }
     .contrat-heure {
-      font-size: 13px;
-      color: #555;
-      margin-top: 5px;
+      font-size: 14px;
+      margin-top: 6px;
+      color: #444;
     }
     .alert-depassement {
-      color: red;
+      color: #e74c3c;
       font-weight: bold;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 5px;
     }
-    .alert-depassement i {
-      color: red;
-      font-size: 16px;
+    .btn-planning {
+      background-color: #2c7a4b;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 24px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    .btn-planning:hover {
+      background-color: #256b3b;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateX(-20px); }
+      100% { opacity: 1; transform: translateX(0); }
     }
   </style>
 </head>
@@ -210,19 +215,43 @@
     <img src="parametre.png" alt="parametre" class="icon">
   </div>
 
+  
   <div class="main-content">
     <div class="planning-week">
-      <h4>Planning de la semaine</h4>
-      <div class="day"><span>Lundi</span><span>08:30 - 18:00 · Déjeuner : Poulet-riz · Sortie : Parc</span></div>
-      <div class="day"><span>Mardi</span><span>08:30 - 18:00 · Déjeuner : Poisson-purée · Activité : Lecture</span></div>
-      <div class="day"><span>Mercredi</span><span>Fermé</span></div>
-      <div class="day"><span>Jeudi</span><span>08:30 - 18:00 · Déjeuner : Pâtes bolognaise · Sortie : Bibliothèque</span></div>
-      <div class="day"><span>Vendredi</span><span>08:30 - 17:30 · Déjeuner : Gratin de légumes · Activité : Chant</span></div>
+      <h4>🗓️ Planning de la semaine</h4>
+      <div class="day">
+        <span>Lundi</span>
+        <span>08:30 - 18:00 · Poulet-riz · Parc <button onclick="toggleActivityDetails('monday-details')">Détails</button></span>
+      </div>
+      <div id="monday-details" class="activity-detail">Activité prévue : Sortie au parc avec jeux collectifs, temps calme après le déjeuner, ateliers sensoriels.</div>
+
+      <div class="day">
+        <span>Mardi</span>
+        <span>08:30 - 18:00 · Poisson-purée · Lecture <button onclick="toggleActivityDetails('tuesday-details')">Détails</button></span>
+      </div>
+      <div id="tuesday-details" class="activity-detail">Lecture d’histoires, mime avec les enfants, initiation à la lecture sonore, séance calme en musique douce.</div>
+
+      <div class="day">
+        <span>Mercredi</span>
+        <span>Fermé</span>
+      </div>
+
+      <div class="day">
+        <span>Jeudi</span>
+        <span>08:30 - 18:00 · Pâtes bolo · Bibliothèque <button onclick="toggleActivityDetails('thursday-details')">Détails</button></span>
+      </div>
+      <div id="thursday-details" class="activity-detail">Sortie à la bibliothèque municipale, lecture en groupe, activité coloriage sur le thème du livre.</div>
+
+      <div class="day">
+        <span>Vendredi</span>
+        <span>08:30 - 17:30 · Gratin légumes · Chant <button onclick="toggleActivityDetails('friday-details')">Détails</button></span>
+      </div>
+      <div id="friday-details" class="activity-detail">Chants collectifs, instruments de musique, atelier musical créatif, retour au calme avec relaxation sonore.</div>
     </div>
 
     <div class="creche-info">
-      <h2>Crèche Paris</h2>
-      <p>Responsable : Marie Dupont &nbsp;·&nbsp; Capacité : 25 enfants &nbsp;·&nbsp; Adresse : 14 rue de Paris, 75001 Paris</p>
+      <h2>👶 Crèche Paris</h2>
+      <p><strong>Responsable :</strong> Marie Dupont · <strong>Capacité :</strong> 25 enfants · <strong>Adresse :</strong> 14 rue de Paris, 75001</p>
     </div>
 
     <div class="pointage-header">
@@ -237,10 +266,11 @@
           <div>
             <div class="enfant-name">Marie</div>
             <div class="enfant-age">3 ans</div>
-            <div class="contrat-heure">Heures prévues : 160h · Réalisées : 175h <span class="alert-depassement"><i class="bi bi-exclamation-triangle-fill"></i> Dépassement !🚨</span></div>
+            <div class="contrat-heure">160h · 175h <span class="alert-depassement"><i class="bi bi-exclamation-triangle-fill"></i> Dépassement !</span></div>
           </div>
         </div>
-        <button class="btn-planning">Page de l'enfant</button>
+        <a href="PcrechePageENFANT.php" class="btn-planning">Page de l'enfant</a>
+
       </div>
 
       <div class="enfant-card">
@@ -249,7 +279,7 @@
           <div>
             <div class="enfant-name">Axelle</div>
             <div class="enfant-age">2 ans</div>
-            <div class="contrat-heure">Heures prévues : 140h · Réalisées : 110h</div>
+            <div class="contrat-heure">140h · 110h</div>
           </div>
         </div>
         <button class="btn-planning">Page de l'enfant</button>
@@ -260,12 +290,67 @@
           <img src="moussa14.png" alt="photo enfant" class="enfant-photo">
           <div>
             <div class="enfant-name">Thomas</div>
-            <div class="enfant-age">3 ans</div>
-            <div class="contrat-heure">Heures prévues : 150h · Réalisées : 153h <span class="alert-depassement"><i class="bi bi-exclamation-triangle-fill"></i> +3h🚨</span></div>
+            <div class="enfant-age">1 an</div>
+            <div class="contrat-heure">50h · 53h <span class="alert-depassement"><i class="bi bi-exclamation-triangle-fill"></i> +3h</span></div>
           </div>
         </div>
         <button class="btn-planning">Page de l'enfant</button>
       </div>
+      <div class="enfant-card">
+        <div class="enfant-info">
+          <img src="Sohan4.jpg" alt="photo enfant" class="enfant-photo">
+          <div>
+            <div class="enfant-name">Mohamed</div>
+            <div class="enfant-age">2 ans</div>
+            <div class="contrat-heure">30h · 120h </div>
+          </div>
+        </div>
+        <button class="btn-planning">Page de l'enfant</button>
+      </div>     <div class="enfant-card">
+        <div class="enfant-info">
+          <img src="Sohan3.png" alt="photo enfant" class="enfant-photo">
+          <div>
+            <div class="enfant-name">Sohan</div>
+            <div class="enfant-age">1 an</div>
+            <div class="contrat-heure">50h · 153h </i> </span></div>
+          </div>
+        </div>
+        <button class="btn-planning">Page de l'enfant</button>
+      </div>     <div class="enfant-card">
+        <div class="enfant-info">
+          <img src="Sohan5.png" alt="photo enfant" class="enfant-photo">
+          <div>
+            <div class="enfant-name">Jonas</div>
+            <div class="enfant-age">2 ans</div>
+            <div class="contrat-heure">150h · 153h <span class="alert-depassement"><i class="bi bi-exclamation-triangle-fill"></i> +3h</span></div>
+          </div>
+        </div>
+        <button class="btn-planning">Page de l'enfant</button>
+      </div>     <div class="enfant-card">
+        <div class="enfant-info">
+          <img src="Sohan2.png" alt="photo enfant" class="enfant-photo">
+          <div>
+            <div class="enfant-name">Manel</div>
+            <div class="enfant-age">3 ans</div>
+            <div class="contrat-heure">150h · 153h </i></span></div>
+          </div>
+        </div>
+        <button class="btn-planning">Page de l'enfant</button>
+      </div>     <div class="enfant-card">
+        <div class="enfant-info">
+          <img src="Sohan6.png" alt="photo enfant" class="enfant-photo">
+          <div>
+            <div class="enfant-name">Yanis</div>
+            <div class="enfant-age">3 ans</div>
+            <div class="contrat-heure">150h · 153h <span class="alert-depassement"><i class="bi bi-exclamation-triangle-fill"></i></span></div>
+          </div>
+        </div>
+        <button class="btn-planning">Page de l'enfant</button>
+      </div>
+
+
+
+
     </div>
   </div>
 </body>
