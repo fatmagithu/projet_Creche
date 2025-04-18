@@ -16,45 +16,49 @@
   }
 </script>
 
-  <style>
+<style>
+    :root {
+      --beige: #fdf9f3;
+      --beige-light: #fffdf8;
+      --brown: #b38760;
+      --brown-dark: #9e6d4b;
+    }
     body {
       margin: 0;
-      background: linear-gradient(135deg, #fcf8f4, #f5e8da);
+      background: linear-gradient(135deg, var(--beige-light), var(--beige));
       font-family: 'Inter', sans-serif;
       min-height: 100vh;
       display: flex;
     }
     .sidebar {
-      width: 150px;
-      background-color: #ffffff;
-      box-shadow: 4px 0 12px rgba(0, 0, 0, 0.05);
+      width: 160px;
+      background: white;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.04);
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px 0;
-      position: fixed;
+      padding: 30px 0;
+      border-top-right-radius: 40px;
       height: 100vh;
-    }
-    .main-content {
-      margin-left: 150px;
-      flex: 1;
-      padding: 40px;
-      background: linear-gradient(to bottom right, #faf3ed, #f0e7de);
+      position: fixed;
     }
     .sidebar .icon {
-      width: 60px;
-      height: 64px;
-      margin: 20px 0;
+      width: 58px;
+      height: 60px;
+      margin: 22px 0;
       object-fit: contain;
       cursor: pointer;
-      transition: transform 0.3s ease, filter 0.3s;
-    }
-    .sidebar .icon:hover {
-      transform: scale(1.1);
-      filter: brightness(1.2);
+      transition: transform 0.3s ease, filter 0.3s ease;
     }
     .sidebar .icon.active {
-      filter: drop-shadow(0 0 5px #3b925f);
+      transform: scale(1.15);
+      filter: drop-shadow(0 0 8px var(--brown));
+    }
+    .main-content {
+      margin-left: 160px;
+      flex: 1;
+      padding: 40px;
+      background: linear-gradient(to bottom right, var(--beige-light), var(--beige));
     }
     .planning-week {
       background: #ffffff;
@@ -62,13 +66,12 @@
       border-radius: 20px;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
       margin-bottom: 35px;
-      animation: fadeIn 0.6s ease-in-out;
     }
     .planning-week h4 {
       font-size: 26px;
       margin-bottom: 20px;
       font-weight: 800;
-      color: #2c7a4b;
+      color: var(--brown);
     }
     .planning-week .day {
       display: flex;
@@ -81,15 +84,15 @@
     .planning-week .day button {
       background-color: transparent;
       border: none;
-      color: #3b925f;
+      color: var(--brown);
       font-weight: bold;
       cursor: pointer;
       font-size: 14px;
     }
     .activity-detail {
       display: none;
-      background: #f5fef9;
-      border-left: 4px solid #3b925f;
+      background: var(--beige);
+      border-left: 4px solid var(--brown);
       margin: 10px 0;
       padding: 10px 15px;
       border-radius: 10px;
@@ -100,13 +103,12 @@
       display: block;
     }
     .creche-info {
-      background: #f5fef9;
-      border-left: 5px solid #2c7a4b;
+      background: var(--beige);
+      border-left: 5px solid var(--brown);
       padding: 30px;
       border-radius: 20px;
       margin-bottom: 35px;
       position: relative;
-      animation: slideIn 0.6s ease-in-out;
     }
     .creche-info::before {
       content: "\1F476";
@@ -130,7 +132,7 @@
       margin-bottom: 25px;
     }
     .badge {
-      background: #3b925f;
+      background: var(--brown);
       padding: 6px 16px;
       border-radius: 30px;
       font-size: 14px;
@@ -160,7 +162,7 @@
       height: 70px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #70c8a0;
+      border: 3px solid var(--brown);
     }
     .enfant-name {
       font-family: 'Playwrite GB S', cursive;
@@ -185,7 +187,7 @@
       gap: 5px;
     }
     .btn-planning {
-      background-color: #2c7a4b;
+      background-color: var(--brown);
       border: none;
       color: white;
       padding: 10px 20px;
@@ -194,8 +196,9 @@
       transition: background-color 0.3s ease;
     }
     .btn-planning:hover {
-      background-color: #256b3b;
+      background-color: var(--brown-dark);
     }
+ 
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -208,9 +211,14 @@
 </head>
 <body>
   <div class="sidebar">
-    <img src="bebe.png" alt="bebe" class="icon active">
-    <img src="gens.png" alt="gens" class="icon">
-    <img src="dossier.png" alt="dossier" class="icon">
+  <a href="Ptest22.php">
+  <img src="bebe.png" alt="bebe" class="icon active">
+</a>
+
+<a href="PEquipe1.php">
+  <img src="gens.png" alt="bebe" class="icon">
+</a>
+<a href="PDossierAdmin.php"><img src="dossier.png" alt="dossier" class="icon"></a>
     <img src="message.png" alt="message" class="icon">
     <img src="parametre.png" alt="parametre" class="icon">
   </div>
@@ -250,8 +258,8 @@
     </div>
 
     <div class="creche-info">
-      <h2>👶 Crèche Paris</h2>
-      <p><strong>Responsable :</strong> Marie Dupont · <strong>Capacité :</strong> 25 enfants · <strong>Adresse :</strong> 14 rue de Paris, 75001</p>
+      <h2>👶 Crèche Mantes à l'Ô - Mantes-la-Jolie </h2>
+      <p><strong>Responsable :</strong> Marie Dupont · <strong>Capacité :</strong> 25 enfants · <strong>Adresse :</strong> 10 Rue Saint-Roch, 78200 Mantes-la-Jolie</p>
     </div>
 
     <div class="pointage-header">
@@ -269,8 +277,7 @@
             <div class="contrat-heure">160h · 175h <span class="alert-depassement"><i class="bi bi-exclamation-triangle-fill"></i> Dépassement !</span></div>
           </div>
         </div>
-        <a href="PcrechePageENFANT.php" class="btn-planning">Page de l'enfant</a>
-
+        <button class="btn-planning" onclick="window.location.href='PcrechePageENFANT.php'">Page de l'enfant</button>
       </div>
 
       <div class="enfant-card">

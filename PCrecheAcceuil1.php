@@ -18,8 +18,8 @@
   <nav class="navbar navbar-expand-lg navbar-light ultra-navbar">
     <!-- Logo & Brand Name -->
     <a class="navbar-brand d-flex align-items-center" href="PCrecheAcceuil1.php" target="_blank">
-      <img src="bulleslogo.png" width="58" height="58" alt="Logo" class="mr-2 logo-navbar" />
-      <span class="brand-name">Bulles d'Eveil </span>
+      <img src="NOUNOU (7).png" width="68" height="88" alt="Logo" class="mr-2 logo-navbar" />
+     
     </a>
 
     <!-- Burger Icon -->
@@ -60,10 +60,9 @@
 
 .logo-navbar {
   transition: transform 0.3s ease;
-  border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
   width: 40px;
-  height: 40px;
+  height: 60px;
 }
 
 .logo-navbar:hover {
@@ -186,7 +185,7 @@
           
             <div class="carousel-item">
                 <video controls autoplay loop muted class="myvid" id="player2">
-                    <source src="coloré flat plat illustratif annonce teasing vidéo.mp4" type="video/mp4">
+                    <source src="colorévidéoBB.mp4" type="video/mp4">
 
                 </video>
             </div>

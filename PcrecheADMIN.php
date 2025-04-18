@@ -38,7 +38,7 @@
       border-radius: 40px;
       box-shadow: 0 18px 60px rgba(0, 0, 0, 0.08);
       padding: 70px 50px;
-      max-width: 480px;
+      max-width: 580px;
       width: 90%;
       text-align: center;
       z-index: 1;
@@ -73,19 +73,20 @@
     }
 
     .btn-login {
-      background: #3b925f;
-      color: white;
-      font-weight: 600;
-      padding: 12px 28px;
-      border-radius: 30px;
-      border: none;
-      transition: all 0.3s ease;
-    }
+  background: #f8f0e3;
+  color: #2c2c2c;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: none;
+  transition: all 0.3s ease;
+}
 
-    .btn-login:hover {
-      background: #347e52;
-      transform: scale(1.03);
-    }
+.btn-login:hover {
+  background: #e8ded0;
+  transform: translateY(-2px);
+}
+
 
     .forgot-password {
       margin-top: 10px;
@@ -119,7 +120,7 @@
 <body>
   <div class="blur-circle"></div>
   <div class="admin-card">
-    <img src="bullesLogo.png" alt="Logo BabyFarm" class="admin-logo">
+    <img src="NOUNOU (6).png" alt="Logo BabyFarm" class="admin-logo">
     <h1>Bienvenue, Administrateur</h1>
     <p>Accédez à votre espace sécurisé</p>
 
@@ -130,8 +131,8 @@
       <a href="PcrecheDASHBOARD.php" class="btn btn-login">autre (test)</a>
 
     </form>
+    <a href="RécuperationMDP.php" class="forgot-password">Mot de passe oublié ?</a>
 
-    <a href="#" class="forgot-password">Mot de passe oublié ?</a>
 
     <div class="admin-footer">
       Bulles d'éveil — Une interface douce pour une gestion pro 🌿

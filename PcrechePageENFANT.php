@@ -7,80 +7,79 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --beige: #fdf9f3;
+      --beige-light: #fffdf8;
+      --brown: #b38760;
+      --brown-dark: #9e6d4b;
+    }
     body {
       margin: 0;
-      background: linear-gradient(135deg, #fdf9f5, #f0eae0);
+      background: linear-gradient(135deg, var(--beige-light), var(--beige));
       font-family: 'Inter', sans-serif;
-      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       padding: 40px;
     }
-
     .container-fiche {
-      max-width: 900px;
-      margin: auto;
+      width: 100%;
+      max-width: 1100px;
       background: #fff;
       border-radius: 24px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      padding: 40px;
+      padding: 50px;
       animation: fadeIn 0.7s ease-in-out;
     }
-
     .enfant-header {
       display: flex;
       align-items: center;
       gap: 30px;
       margin-bottom: 30px;
     }
-
     .enfant-photo {
       width: 120px;
       height: 120px;
       object-fit: cover;
       border-radius: 50%;
-      border: 4px solid #70c8a0;
+      border: 4px solid var(--brown);
     }
-
     .enfant-name {
       font-family: 'Playwrite GB S', cursive;
       font-size: 36px;
       font-weight: 800;
-      color: #2c7a4b;
+      color: var(--brown);
     }
-
     .section-title {
       font-weight: 700;
-      color: #2c7a4b;
+      color: var(--brown);
       font-size: 22px;
       margin-top: 30px;
-      border-bottom: 2px solid #d0e7dc;
+      border-bottom: 2px solid #e7dcd1;
       padding-bottom: 6px;
     }
-
     .info-block {
       margin-top: 15px;
       font-size: 16px;
     }
-
     .badge-info {
-      background-color: #e6f5ed;
-      color: #2c7a4b;
+      background-color: #f1e6de;
+      color: var(--brown-dark);
       font-weight: 600;
       border-radius: 20px;
       padding: 4px 14px;
       font-size: 14px;
     }
-
     .progress {
       height: 16px;
       background-color: #e9ecef;
       border-radius: 10px;
       overflow: hidden;
     }
-
     .progress-bar {
-      background-color: #3b925f;
+      background-color: var(--brown);
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -97,17 +96,14 @@
         <div>Type de contrat : <span class="badge-info">Temps plein - 160h/mois</span></div>
       </div>
     </div>
-
     <div class="section-title">👨‍👩‍👧 Informations parents</div>
     <div class="info-block">Nom du parent référent : <strong>Claire Bastien</strong></div>
     <div class="info-block">Téléphone : <strong>06 23 45 67 89</strong></div>
     <div class="info-block">Email : <strong>claire.bastien@email.com</strong></div>
-
     <div class="section-title">🍎 Santé & Allergies</div>
     <div class="info-block">Allergies : <strong>Gluten</strong></div>
     <div class="info-block">Maladies chroniques : <strong>Asthme</strong></div>
     <div class="info-block">Traitement régulier : <strong>Ventoline matin et soir</strong></div>
-
     <div class="section-title">📊 Contrat & Suivi des heures</div>
     <div class="info-block">Heures prévues ce mois : <strong>160h</strong></div>
     <div class="info-block">Heures effectuées : <strong>120h</strong></div>

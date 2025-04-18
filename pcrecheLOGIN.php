@@ -40,7 +40,7 @@
       border-radius: 40px;
       box-shadow: 0 18px 60px rgba(0, 0, 0, 0.08);
       padding: 70px 50px;
-      max-width: 480px;
+      max-width: 580px;
       width: 90%;
       text-align: center;
       z-index: 1;
@@ -48,11 +48,11 @@
     }
 
     .logo {
-      width: 240px;
-      margin-bottom: 30px;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-      margin-left: 17%
-    }
+  width: 280px;
+  margin-bottom: 30px;
+  margin-left: 20%;
+}
+
 
     h1 {
       font-weight: 700;
@@ -121,7 +121,7 @@
 <body>
   <div class="blur-circle"></div>
   <div class="card">
-    <img src="bullesLogo.png" alt="Logo Bébé" class="logo">
+    <img src="NOUNOU (6).png" alt="Logo Bébé" class="logo">
 
     <h1>Qui suis-je ?</h1>
     <p class="description">Sélectionnez votre rôle pour accéder à votre espace</p>
