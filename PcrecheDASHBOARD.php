@@ -96,18 +96,98 @@
     }
 
     .app-icon {
-      background: white;
-      width: 110px;
-      height: 110px;
-      border-radius: 28px;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      position: relative;
-    }
+  background: white;
+  width: 260px;
+  height: 110px;
+  border-radius: 28px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  border: 2px solid transparent;
+}
+
+.app-icon:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+  border-color: #e6e6e6;
+}
+
+.app-icon img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.app-icon:hover img {
+  transform: scale(1.1);
+}
+
+.icon-label {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #4a4a4a;
+  font-size: 15px;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.app-icon-wrapper:hover .icon-label {
+  color: #1da1f2;
+}
+
+.icon-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-top: 40px;
+}
+
+h1 {
+  font-family: 'Playwrite GB S', cursive;
+  color: #b38760;
+  font-size: 38px;
+  margin-top: 30px;
+  animation: fadeDown 1s ease-out;
+}
+
+.subtext {
+  font-size: 17px;
+  color: #777;
+  margin-top: 8px;
+  animation: fadeDown 1.3s ease-out;
+}
+
+
+
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splashPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 
     .app-icon:hover {
       background: #f0ebe3;
@@ -198,15 +278,15 @@
       <div class="app-icon"><img src="gens.png" alt="Équipe"></div>
       <div class="icon-label">Équipe</div>
     </a>
-    <a href="#" class="text-decoration-none app-icon-wrapper">
+    <a href="PDossierAdmin.php" class="text-decoration-none app-icon-wrapper">
       <div class="app-icon"><img src="dossier.png" alt="Dossiers"></div>
       <div class="icon-label">Dossiers</div>
     </a>
-    <a href="#" class="text-decoration-none app-icon-wrapper">
+    <a href="PmessageAdmin.php" class="text-decoration-none app-icon-wrapper">
       <div class="app-icon"><img src="message.png" alt="Messages"></div>
       <div class="icon-label">Messages</div>
     </a>
-    <a href="#" class="text-decoration-none app-icon-wrapper">
+    <a href="ParametreAdmin.php" class="text-decoration-none app-icon-wrapper">
       <div class="app-icon"><img src="parametre.png" alt="Paramètres"></div>
       <div class="icon-label">Paramètres</div>
     </a>

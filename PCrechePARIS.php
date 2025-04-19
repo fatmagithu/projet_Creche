@@ -22,6 +22,7 @@
       --beige-light: #fffdf8;
       --brown: #b38760;
       --brown-dark: #9e6d4b;
+      --highlight: #f4e2d8; /* c'est bien là */
     }
     body {
       margin: 0;
@@ -30,32 +31,97 @@
       min-height: 100vh;
       display: flex;
     }
+    /* SIDEBAR MODERNE */
     .sidebar {
-      width: 160px;
+      width: 80px;
       background: white;
-      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.04);
+      border-top-right-radius: 40px;
+      box-shadow: 4px 0 20px rgba(0,0,0,0.05);
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 30px 0;
-      border-top-right-radius: 40px;
-      height: 100vh;
-      position: fixed;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      position: relative;
+      z-index: 10;
     }
-    .sidebar .icon {
-      width: 58px;
+
+    .sidebar:hover {
+      width: 220px;
+    }
+
+    .user-bubble {
+      opacity: 0;
+      visibility: hidden;
+      height: 0;
+      transition: all 0.4s ease;
+      text-align: center;
+      margin-bottom: 20px;
+      padding: 20px 10px 0;
+    }
+
+    .sidebar:hover .user-bubble {
+      opacity: 1;
+      visibility: visible;
+      height: auto;
+    }
+
+    .user-bubble img {
+      width: 60px;
       height: 60px;
-      margin: 22px 0;
-      object-fit: contain;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 10px;
+    }
+
+    .user-bubble .name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .user-bubble .role {
+      font-size: 12px;
+      color: var(--brown);
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 12px 16px;
+      margin: 6px 0;
+      border-radius: 14px;
+      transition: background 0.2s ease;
       cursor: pointer;
-      transition: transform 0.3s ease, filter 0.3s ease;
+      text-decoration: none;
+      color: #333;
     }
-    .sidebar .icon.active {
-      transform: scale(1.15);
-      filter: drop-shadow(0 0 8px var(--brown));
+
+    .nav-link:hover {
+      background: var(--highlight);
     }
+    .nav-link img {
+  width: 48px;
+  height: 48px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+
+
+    .nav-text {
+      opacity: 0;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+
+    .sidebar:hover .nav-text {
+      opacity: 1;
+    }
+
     .main-content {
-      margin-left: 160px;
+     
       flex: 1;
       padding: 40px;
       background: linear-gradient(to bottom right, var(--beige-light), var(--beige));
@@ -210,17 +276,32 @@
   </style>
 </head>
 <body>
-  <div class="sidebar">
-  <a href="Ptest22.php">
-  <img src="bebe.png" alt="bebe" class="icon active">
-</a>
-
-<a href="PEquipe1.php">
-  <img src="gens.png" alt="bebe" class="icon">
-</a>
-<a href="PDossierAdmin.php"><img src="dossier.png" alt="dossier" class="icon"></a>
-    <img src="message.png" alt="message" class="icon">
-    <img src="parametre.png" alt="parametre" class="icon">
+<div class="sidebar">
+    <div class="user-bubble">
+      <img src="Sofiya.oulhaci.png" alt="Admin">
+      <div class="name">Sofiya M.</div>
+      <div class="role">Admin</div>
+    </div>
+    <a href="Ptest22.php" class="nav-link">
+      <img src="bebe.png" alt="Enfants">
+      <span class="nav-text">Enfants</span>
+    </a>
+    <a href="PEquipe1.php" class="nav-link">
+      <img src="gens.png" alt="Équipe">
+      <span class="nav-text">Équipe</span>
+    </a>
+    <a href="PDossierAdmin.php" class="nav-link">
+      <img src="dossier.png" alt="Dossiers">
+      <span class="nav-text">Dossiers</span>
+    </a>
+    <a href="PmessageAdmin.php" class="nav-link">
+      <img src="message.png" alt="Messages">
+      <span class="nav-text">Messages</span>
+    </a>
+    <a href="ParametreAdmin.php" class="nav-link">
+      <img src="parametre.png" alt="Paramètres">
+      <span class="nav-text">Paramètres</span>
+    </a>
   </div>
 
   
