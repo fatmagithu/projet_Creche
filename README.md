@@ -71,4 +71,62 @@ Envoyer le code à un e-mail valide.
 
 Configurer un compte administrateur.
 
+Validation du code de configuration
+L'administrateur doit saisir le code d'accès temporaire reçu par e-mail dans un formulaire de configuration.
+
+Le système vérifie si le code saisi est :
+
+Valide (présent dans le stockage temporaire des codes).
+
+Non expiré (vérifie la date d'expiration associée au code).
+
+Si le code est valide, le système autorise l'administrateur à passer à l'étape suivante.
+
+
+Base de données : Structure SQL
+Création des tables SQL
+
+CREATE DATABASE admin_db;
+
+USE admin_db;
+
+-- Table pour les administrateurs
+CREATE TABLE admins (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+Assure-toi que ta table temporary_codes a la bonne structure pour stocker les codes et leurs informations associées.
+
+CREATE TABLE temporary_codes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL,
+    code VARCHAR(50) NOT NULL UNIQUE,
+    expiration DATETIME NOT NULL
+);
+
+
+Résumé des étapes
+Formulaire HTML :
+
+L'utilisateur saisit son nom, son e-mail, ses mots de passe (avec confirmation), et le code reçu par e-mail.
+
+Validation PHP :
+
+Le script vérifie que le code et l'adresse e-mail correspondent au dernier enregistrement dans la table temporary_codes.
+
+Insertion dans la table admins :
+
+Si les informations sont valides, elles sont enregistrées dans la table admins.
+
+Le code utilisé est supprimé de la table temporary_codes.
+
+Redirection vers PcrecheADMIN.php :
+
+Une fois le compte créé, l'administrateur est redirigé vers la page d'administration.
+
+
+
 
