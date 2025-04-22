@@ -129,7 +129,7 @@
       <input type="text" name="nom" placeholder="Nom d'utilisateur" class="form-control" required />
       <input type="password" name="mot_de_passe" placeholder="Mot de passe" class="form-control" required />
       <button type="submit" class="btn btn-login">Connexion</button>
-      <button type="button" class="btn btn-login" onclick="window.location.href='Pcreche22AcceuiAux.php'">autre (test)</button>
+      <button type="button" class="btn btn-login" onclick="window.location.href='PAuxDashboard.php'">autre (test)</button>
 
     </form>
 
