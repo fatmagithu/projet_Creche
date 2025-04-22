@@ -263,10 +263,13 @@ h1 {
   </style>
 </head>
 <body>
+  <!--------EFFET DE CHARGEMENT AVEC LE LOGO DEBUT-->
+
   <div id="splash">
     <img src="NOUNOU (7).png" alt="Chargement">
   </div>
   <div class="background-circle"></div>
+    <!--------BOUTTON INTERFACE -->
   <h1>Bienvenue sur Nounou </h1>
   <p class="subtext">Accédez à votre espace de gestion en toute sérénité</p>
   <div class="icon-grid">
@@ -290,7 +293,7 @@ h1 {
       <div class="app-icon"><img src="parametre.png" alt="Paramètres"></div>
       <div class="icon-label">Paramètres</div>
     </a>
-  </div>
+  </div>  <!--------BOUTTON INTERFACE -->
 
   <!-- Sound & Splash JS -->
   <audio id="clickSound" src="click.mp3" preload="auto"></audio>
@@ -308,7 +311,9 @@ h1 {
         const sound = document.getElementById('clickSound');
         if (sound) sound.play();
       });
-    });
+    }); 
+
   </script>
+    <!--------EFFET DE CHARGEMENT AVEC LE LOGO DEBUT-->
 </body>
 </html>

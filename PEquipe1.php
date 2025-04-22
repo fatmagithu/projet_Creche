@@ -113,6 +113,7 @@ flex-shrink: 0;
   opacity: 1;
 }
 
+
     .main-content {
   
       flex: 1;
@@ -277,7 +278,7 @@ flex-shrink: 0;
       margin-top: 10px;
     }
   </style>
-  
+  <!-----PROGRAMME POUR CHOISIR LES MEMBRES EN FONCTION DES CRECHES LES CRECHE DEBUT-->
    <script>
     const membres = [
       { nom: "Sophie Martin", role: "Auxiliaire Petite Enfance", ville: "Paris", creche: "Les Calinous", statut: "présent" },
@@ -336,14 +337,14 @@ flex-shrink: 0;
       });
     });
   </script>
-
+  <!-----PROGRAMME POUR CHOISIR LES MEMBRES EN FONCTION DES CRECHES LES CRECHE FIN-->
 
 
 
 
 </head>
 
-<body>
+<body>  <!-----SIDEBAR DEBUT -->
 <div class="sidebar">
     <div class="user-bubble">
       <img src="Sofiya.oulhaci.png" alt="Admin">
@@ -371,7 +372,7 @@ flex-shrink: 0;
       <span class="nav-text">Paramètres</span>
     </a>
   </div>
-
+<!-----SIDEBAR FIN -->
 
 <!----------------PLANNING __________<<------>
 

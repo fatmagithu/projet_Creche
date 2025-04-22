@@ -137,7 +137,7 @@
     <a href="RécuperationMDP.php" class="forgot-password">Mot de passe oublié ?</a>
 
     <div class="admin-footer">
-      bulles d'éveil — Une interface douce pour une gestion pro 🌿
+      Nounou — Une interface douce pour une gestion pro 🌿
     </div>
   </div>
 </body>
