@@ -1,0 +1,1192 @@
+/* Ajuster la taille des vidéos si nécessaire */
+
+body {
+    background-color: #f6f6f6 !important;
+}
+
+.carousel-inner .carousel-item video {
+    height: 100%;
+    width: 100%;
+    margin-top: 0%;
+
+}
+
+
+/* Correction de la couleur de fond ___________________________________NAV____________________*/
+/* Style général de la navbar */
+/* Correction de la couleur de fond ___________________________________NAV____________________*/
+/* Correction de la couleur de fond ___________________________________NAV____________________*/
+/* Correction de la couleur de fond ___________________________________NAV____________________*/
+/* ----------------- NAVBAR STYLES ------------------ */
+/* ----------------- NAVBAR STYLES ------------------ */
+/* ----------------- NAVBAR STYLES ------------------ */
+.navbar {
+    background-color: rgb(235, 224, 209);
+    padding: 1rem 2rem;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    /* Subtle bottom border for elegance */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    /* Softer shadow for added depth */
+    transition: box-shadow 0.3s ease-in-out;
+    /* Smooth shadow transition */
+}
+
+
+
+.navbar:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    /* Larger shadow on hover for depth */
+}
+
+/* NAVBAR BRAND IMAGE */
+.navbar-brand img {
+    transition: transform 0.3s ease-in-out, filter 0.3s ease;
+    width: 170px;
+
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.1);
+    /* Slight zoom effect */
+    filter: brightness(1.2);
+    /* Subtle brightness increase */
+}
+
+/* NAVIGATION LINKS */
+.navbar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-left: auto;
+    font-family: "Playwrite GB S", cursive;
+}
+
+.navbar-nav .nav-link {
+    color: rgb(51, 51, 51) !important;
+    font-size: 0.9rem;
+    font-family: "Playwrite GB S", cursive;
+    /* font-weight: 200;*/
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    /* Rounded edges for a soft look */
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+/* Hover effect on nav links */
+.navbar-nav .nav-link:hover {
+    color: white;
+    background-color: #c9bda0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    /* Shadow for floating effect */
+    transform: translateY(-4px);
+    /* Subtle lift on hover */
+}
+
+/* Active state indicator */
+.navbar-nav .nav-link.active {
+    color: #b0a487;
+    font-weight: 600;
+}
+
+/* Hover underline effect (for active links) */
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #bfb59c;
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+    /* Underline on hover */
+}
+
+/* MEDIA QUERIES FOR RESPONSIVE DESIGN */
+@media (max-width: 991px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 1rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-toggler {
+        background-color: #cec09d;
+    }
+
+    .navbar-toggler-icon {
+        color: white;
+    }
+}
+
+
+/*______________________FIN NAV___________________________*/
+
+
+/*______________________FIN NAV___________________________*/
+
+
+
+/*____________________________________________EN SZAVOIR  PLUS __________________________*/
+
+
+
+
+
+
+
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permet de passer à la ligne si besoin */
+    justify-content: space-between;
+    gap: 40px;
+    /* Espace plus confortable entre les blocs */
+    padding: 40px 8%;
+    align-items: flex-start;
+    /* Aligne les éléments par le haut */
+    background-color: #f7f5f1;
+    /* Optionnel : fond doux pour séparer visuellement */
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+/********************************************************************/
+.clearfix {
+    flex: 1 1 30%;
+    text-align: center;
+    font-family: "Playwrite GB", cursive;
+    background-color: #e6e2da;
+    /* Fond blanc pour contraste et clarté */
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    /* Coins arrondis pour un effet moderne */
+    border: 1px solid #e0e0e0;
+    /* Bordure légère pour un look soigné */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Ombre douce pour ajouter de la profondeur */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+/* Effet de survol pour la section */
+.clearfix:hover {
+    transform: translateY(-10px);
+    /* Légère élévation au survol */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    /* Ombre accentuée au survol */
+}
+
+#babyfarm {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    /* Coins arrondis pour l'image */
+    transition: transform 0.5s ease;
+}
+
+/* Effet de zoom au survol de l'image */
+.clearfix:hover img {
+    transform: scale(1.05);
+    /* Légère augmentation de la taille de l'image au survol */
+}
+
+p {
+    font-size: 1.2rem;
+    color: #333333;
+    /* Texte sombre pour un meilleur contraste */
+    margin-top: 20px;
+    line-height: 1.6;
+    font-weight: 500;
+    font-family: "Playwrite GB", cursive;
+
+}
+
+/********************************************************************/
+
+
+.col-md-6 {
+    margin-top: 5%;
+}
+
+#boutton1 {
+    align-items: center;
+
+}
+
+/*__________________________________________________BOUTONNNN________________________________________*/
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.buttons1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+
+}
+
+.blob-btn {
+    position: relative;
+    margin-left: 0%;
+    padding: 20px 46px;
+    text-align: center;
+    color: #39393d;
+    /* couleur cyan pour le texte */
+    font-size: 16px;
+    font-weight: bold;
+    background-color: transparent;
+    border: 2px solid #d1c8ac;
+    /* bordure cyan */
+    cursor: pointer;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.blob-btn__text {
+    position: relative;
+    z-index: 2;
+    /* Assure que le texte reste visible */
+}
+
+.blob-btn__inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 30px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.blob-btn__blobs {
+    position: relative;
+    display: block;
+    height: 100%;
+    filter: url('#goo');
+}
+
+.blob-btn__blob {
+    position: absolute;
+    top: 10px;
+    width: 25%;
+    /* Divisé en 4 blobs */
+    height: 100%;
+    background: #dbd980;
+    /* couleur cyan pour les blobs */
+    border-radius: 50%;
+    transform: translate3d(0, 150%, 0) scale(1.5);
+    transition: transform 0.45s;
+}
+
+/* Positionnement des blobs */
+.blob-btn__blob:nth-child(1) {
+    left: 0;
+    transition-delay: 0s;
+}
+
+.blob-btn__blob:nth-child(2) {
+    left: 25%;
+    transition-delay: 0.1s;
+}
+
+.blob-btn__blob:nth-child(3) {
+    left: 50%;
+    transition-delay: 0.2s;
+}
+
+.blob-btn__blob:nth-child(4) {
+    left: 75%;
+    transition-delay: 0.3s;
+}
+
+/* Effets de survol */
+.blob-btn:hover .blob-btn__blob {
+    transform: translateZ(0) scale(1);
+}
+
+.blob-btn:hover {
+    color: #39393d;
+    /* couleur du texte en blanc au survol */
+}
+
+/*__________________________________________________BOUTONNNN________________________________________*/
+
+/*
+#nosvaleurs {
+    background-image: url(photo\ personel.jpg);
+    height: 600px;
+}
+
+
+.card-body {
+    border-radius: 30%;
+}*/
+
+/*_________________________________________________CARTES________________________________________*/
+
+.custom-card__heading {
+    font-family: 'Playwrite GB S', cursive;
+    /* Ajoute d'autres styles si nécessaire */
+    color: #e5e1d2;
+}
+
+.custom-card__category {
+    font-family: 'Playwrite GB S', cursive;
+    /* Ajoute d'autres styles si nécessaire */
+    color: #dcd8c4;
+}
+
+.blob-btn__text {
+    font-family: 'Playwrite GB S', cursive;
+    /* Ajoute d'autres styles si nécessaire */
+
+}
+
+/*
+<!--------------------------MENUUUUUU__________________________________________-->
+<!--------------------------MENUUUUU__________________________________________-->
+<!--------------------------MENNUUUUU__________________________________________-->*/
+
+
+/*
+<!--------------------------GOUT__________________________________________-->
+<!--------------------------GOUT_________________________________________-->
+<!-----------------------GOUT_________________________________________-->
+*/
+@font-face {
+    font-family: "Mona Sans";
+    src: url("https://assets.codepen.io/64/Mona-Sans.woff2") format("woff2 supports variations"),
+        url("https://assets.codepen.io/64/Mona-Sans.woff2") format("woff2-variations");
+    font-weight: 100 1000;
+}
+
+@layer properties {
+    @property --checkbox-color-hue {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+    }
+
+    @property --checkbox-color-saturation {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+    }
+
+    @property --checkbox-color-lightness {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+    }
+
+    @property --checkbox-color-light-lightness {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+    }
+
+    @property --icon-opacity {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+    }
+
+    @property --icon-invert {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+    }
+
+    @property --icon-size {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+    }
+
+    @property --negative-shadow-offset {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+    }
+
+    @property --text-opacity {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+    }
+}
+
+:root {
+    /* -- Colors: */
+    --body-bg-color: hsl(67, 12%, 85%);
+    --checkbox-color-hue: 216;
+    --checkbox-color-saturation: 17;
+    --checkbox-color-lightness: 15;
+    --checkbox-color: hsl(calc(var(--checkbox-color-hue) * 1deg)
+            /**/
+            calc(var(--checkbox-color-saturation) * 1%)
+            /**/
+            calc(var(--checkbox-color-lightness) * 1%)
+            /**/
+        );
+    --checkbox-color-light: rgb(235, 224, 209);
+    --checkbox-color-dark: rgb(235, 224, 209);
+
+    /* -- Box */
+    --checkbox-border-radius: 24%;
+    --checkbox-width: 36;
+    --checkbox-height: 36;
+
+    --text-opacity: 0.6;
+
+    --negative-shadow-offset: 500;
+    --active-shadow-opacity: 0;
+
+    /* -- icon */
+    --icon-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' class='feather feather-check'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --icon-opacity: 0;
+    --icon-size: 1;
+
+    /* -- easing */
+    --cubic-bezier: cubic-bezier(0.6, -1.2, 0.2, 2.2);
+
+    /* -- misc */
+    --debug: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    /* debug */
+    outline: calc(var(--debug) * 1px) dashed red;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#gout {
+    background: rgb(235, 224, 209);
+    display: grid;
+    place-items: center;
+    font-family: "Mona Sans", sans-serif;
+}
+
+.container1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    grid-gap: 0.8em;
+    transform: scale(1);
+}
+
+label[for*="checkbox"] {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 8px;
+
+    /* text settings */
+    color: rgba(255 255 255 / var(--text-opacity));
+    font-size: 1.6em;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+
+    transition: --text-opacity 0.2s ease;
+
+    &:hover {
+        --text-opacity: 1;
+
+        &:after {
+            --icon-opacity: 0.5;
+            --icon-invert: 100;
+            --icon-size: 0.8;
+        }
+
+
+    }
+
+
+    /* label:after */
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: calc(var(--checkbox-width) * 1px);
+        height: calc(var(--checkbox-height) * 1px);
+        top: 0;
+        left: 0;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 70%;
+        border-radius: var(--checkbox-border-radius);
+        pointer-events: none;
+        background-image: var(--icon-check);
+        filter: invert(100%);
+        opacity: var(--icon-opacity);
+        transform: scale(var(--icon-size));
+
+
+    }
+
+    &:has(input[type="checkbox"]:checked) {
+        &:after {
+            --icon-opacity: 1;
+            // For a reason, this wasn't possible using Scss
+            // If anyone wants to break their teeth on it
+            // type this in sassmeister.com
+            /* 
+        div {
+          filter: invert(calc(var(--icon-invert) * 1%));
+        }
+        */
+            filter: invert(0%);
+        }
+    }
+
+    /* label input[type="checkbox"] */
+    & input[type="checkbox"] {
+        appearance: none;
+        cursor: pointer;
+        margin: 0;
+        background: var(--checkbox-color);
+        width: calc(var(--checkbox-width) * 1px);
+        height: calc(var(--checkbox-height) * 1px);
+        border: calc(calc(var(--checkbox-width) / 15) * 1px) solid rgb(235, 224, 209);
+        border-radius: var(--checkbox-border-radius);
+
+        &:active,
+        &:checked {
+            --checkbox-color-hue: 264;
+            --checkbox-color-saturation: 56;
+            --checkbox-color-lightness: 49;
+            --checkbox-color: hsl(calc(var(--checkbox-color-hue) * 1deg)
+                    /**/
+                    calc(var(--checkbox-color-saturation) * 1%)
+                    /**/
+                    calc(var(--checkbox-color-lightness) * 1%)
+                    /**/
+                );
+        }
+
+
+    }
+}
+
+
+
+
+#compote {
+    font-family: "Playwrite GB S", cursive;
+    color: rgb(51, 51, 51);
+    font-size: 2.5em;
+    /* Police plus grande pour attirer l’attention */
+    text-align: center;
+    letter-spacing: 0.05em;
+    /* Espacement des lettres légèrement réduit */
+    padding: 20px;
+    background-color: rgb(235, 224, 209);
+    ;
+    /* Couleur de fond pastel rose pâle */
+    border: 4px dotted #f6f6f6;
+    /* Bordure pointillée douce en rose pastel */
+    border-radius: 25px;
+    /* Coins très arrondis */
+    box-shadow: 0px 6px 12px rgba(173, 175, 167, 0.4);
+    /* Ombre douce pour un effet de "flottement" */
+    transform: rotate(-1deg);
+    /* Légère inclinaison pour l’effet décontracté */
+    animation: wiggle 2s ease-in-out infinite;
+    /* Animation douce pour un effet de mouvement subtil */
+}
+
+/* Animation pour donner un effet de balancement doux */
+@keyframes wiggle {
+
+    0%,
+    100% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(2deg);
+    }
+}
+
+/*
+<!-----------------------menu__________________________________________-->
+<!--------------------------menu_________________________________________-->
+<!--------------------------menu________________________________________-->*/
+body {
+    font-family: "Oxygen", sans-serif;
+    color: #050505;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.main {
+    width: 80%;
+    margin-left: 11%;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cards_item {
+    display: flex;
+    padding: 1rem;
+}
+
+.card_image {
+    position: relative;
+    max-height: 250px;
+}
+
+.card_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card_price {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 0.25rem;
+    background-color: rgb(235, 224, 209);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.card_price span {
+    font-size: 12px;
+    margin-top: -2px;
+}
+
+.note {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    padding: 4px 8px;
+    border-radius: 0.25rem;
+    background-color: rgb(235, 224, 209);
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Playwrite GB S", cursive;
+}
+
+@media (min-width: 40rem) {
+    .cards_item {
+        width: 50%;
+    }
+}
+
+@media (min-width: 56rem) {
+    .cards_item {
+        width: 33.3333%;
+    }
+}
+
+.card {
+    background-color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.card_content {
+    position: relative;
+    padding: 16px 12px 32px 24px;
+    margin: 16px 8px 8px 0;
+    max-height: 290px;
+    overflow-y: scroll;
+}
+
+.card_content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.card_content::-webkit-scrollbar-track {
+    box-shadow: 0;
+    border-radius: 0;
+}
+
+.card_content::-webkit-scrollbar-thumb {
+    background: #cdc1aa;
+    border-radius: 15px;
+}
+
+.card_title {
+    position: relative;
+    margin: 0 0 24px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Playwrite GB S", cursive;
+}
+
+.card_title::after {
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #c89b3f;
+    content: "";
+}
+
+hr {
+    margin: 24px auto;
+    width: 50px;
+    border-top: 2px solid rgb(235, 224, 209);
+}
+
+.card_text p {
+    margin: 0 0 24px;
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: "Playwrite GB S", cursive;
+}
+
+.card_text p:last-child {
+    margin: 0;
+}
+
+#menuenfant {
+    font-family: cursive;
+
+    font-family: "Playwrite GB S", cursive;
+    color: rgb(51, 51, 51);
+    font-size: 2.5em;
+    /* Police plus grande pour attirer l’attention */
+    text-align: center;
+    letter-spacing: 0.05em;
+    /* Espacement des lettres légèrement réduit */
+    width: 60%;
+    background-color: rgb(235, 224, 209);
+    /* Couleur de fond pastel rose pâle */
+    border: 4px dotted #f6f6f6;
+    /* Bordure pointillée douce en rose pastel */
+    border-radius: 25px;
+    /* Coins très arrondis */
+    box-shadow: 0px 6px 12px rgba(173, 175, 167, 0.4);
+    /* Ombre douce pour un effet de "flottement" */
+    transform: rotate(-1deg);
+    /* Légère inclinaison pour l’effet décontracté */
+    animation: wiggle 2s ease-in-out infinite;
+    /* Animation douce pour un effet de mouvement subtil */
+}
+
+/* Animation pour donner un effet de balancement doux */
+@keyframes wiggle {
+
+    0%,
+    100% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(2deg);
+    }
+}
+
+/*
+<!--------------------------JOURNEE__________________________________________-->
+<!-----------------------JOURNEE________________________________________-->
+<!----------------------JOURNEE_________________________________________-->*/
+#textjournee {
+    margin-left: 4%;
+    margin-right: 4%;
+    padding: 15px 20px;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    /* Taille de police flexible avec une limite minimale et maximale */
+    line-height: 1.7;
+    /* Un peu plus aéré pour plus de lisibilité */
+    font-family: "Playwrite GB S", cursive;
+    word-wrap: break-word;
+    /* Éviter que les mots ne débordent */
+    max-width: 90%;
+    /* Limite de la largeur pour une meilleure lisibilité */
+    color: #444;
+    /* Couleur légèrement plus sombre pour améliorer la lisibilité */
+    text-align: justify;
+    /* Justifie le texte pour une lecture plus fluide */
+    font-size: 1.2em;
+    line-height: 2;
+    /* Augmenter l'espacement entre les lignes */
+    letter-spacing: 0.5px;
+    /* Espacement léger entre les lettres */
+    word-spacing: 2px;
+}
+
+#titrejournee {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    /* Ajustement dynamique pour le titre */
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-family: "Playwrite GB S", cursive;
+    /* Une couleur un peu plus marquée pour le titre */
+    font-weight: 300;
+    /* Un poids de police plus marqué pour le titre */
+    letter-spacing: 0.5px;
+    /* Un peu d'espacement entre les lettres pour une lecture plus fluide */
+}
+
+@media (max-width: 768px) {
+    #textjournee {
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+        /* Plus petit mais toujours flexible */
+        margin-left: 3%;
+        margin-right: 3%;
+        padding: 15px;
+        /* Un peu plus d'espacement pour une meilleure lecture */
+    }
+
+    #titrejournee {
+        font-size: clamp(2.5rem, 8vw, 3rem);
+        /* Ajustement du titre pour les écrans moyens */
+    }
+}
+
+@media (max-width: 480px) {
+    #textjournee {
+        font-size: clamp(0.8rem, 4vw, 1rem);
+        /* Plus petit pour les écrans très petits */
+        margin-left: 2%;
+        margin-right: 2%;
+        padding: 10px;
+        /* Réduction du padding pour maximiser l'espace */
+    }
+
+    #titrejournee {
+        font-size: clamp(2rem, 10vw, 2.5rem);
+        /* Réduction du titre sur mobile */
+    }
+}
+
+.footer {
+
+    color: #ffffff;
+    font-family: "Playwrite GB S", cursive;
+
+}
+
+.text-uppercase {
+    color: #333333;
+    font-family: "Playwrite GB S", cursive;
+
+}
+
+#contact {
+    font-family: "Playwrite GB S", cursive;
+}
+
+.text-center33 {
+    font-family: "Playwrite GB S", cursive;
+    background-color: rgb(235, 224, 209);
+
+}
+
+#aidess {
+    font-family: "Playwrite GB S", cursive;
+    font-size: clamp(1rem, 5vw, 1.1rem);
+    background-color: rgb(235, 224, 209);
+    margin-left: 2%;
+}
+
+
+#contactus {
+    font-family: "Playwrite GB S", cursive;
+    font-size: 150%;
+
+    background-color: #fefcf9;
+    color: #333;
+}
+
+/***************************************************************************************************/
+/****************************************PAGES  2 CHEF**********************************************/
+
+
+#photochef {
+    height: 40%;
+    width: 40%;
+
+    background-color: rgb(235, 224, 209);
+    /* Couleur de fond pastel rose pâle */
+    border: 4px dotted #f6f6f6;
+    /* Bordure pointillée douce en rose pastel */
+    border-radius: 25px;
+    /* Coins très arrondis */
+    box-shadow: 0px 6px 12px rgba(173, 175, 167, 0.4);
+    /* Ombre douce pour un effet de "flottement" */
+    transform: rotate(-1deg);
+    /* Légère inclinaison pour l’effet décontracté */
+    animation: wiggle 2s ease-in-out infinite;
+    /* Animation douce pour un effet de mouvement subtil */
+}
+
+#presentationtexte {
+    color: #333;
+    font-family: "Playwrite GB S", cursive;
+}
+
+#divpre {
+
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+/* Titre de la présentation */
+#presentationchef {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: "Playwrite GB S", cursive;
+}
+
+
+h2 {
+    font-family: "Playwrite GB S", cursive;
+}
+
+h4 {
+    font-family: "Playwrite GB S", cursive;
+}
+
+#grandepressection {
+    font-family: "Playwrite GB S", cursive;
+}
+
+/*<!----___________________________________________tab_________________________-->*/
+/* -------------------- tabbed content using CSS Grid
+
+-- allows for unlimited tabs/content blocks without additional configuration
+
+*/
+
+.products-wrapper {
+    margin: 20px;
+
+    .tabs-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(auto, 1fr));
+        grid-template-rows: minmax(max-content, min-content);
+        justify-items: center;
+        margin-bottom: 2rem;
+
+        .tab-item {
+            min-width: min-content;
+            width: auto;
+            height: auto;
+            align-self: center;
+            text-align: center;
+            cursor: pointer;
+            padding: 0 10px;
+
+            img {
+                height: auto;
+                max-height: 128px;
+                filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
+            }
+
+            &:hover img {
+                filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.2));
+            }
+        }
+
+        @media screen and (min-width: 600px) {
+            grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+        }
+
+        @media screen and (min-width: 1200px) {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+    }
+
+    .tabbed-content {
+        height: min-content;
+        // width: auto;
+        // margin: auto;
+        font-family: "Playwrite GB S", cursive;
+
+        .item-content {
+            width: 100%;
+            display: none;
+            grid-auto-rows: repeat(auto-fit, minmax(auto, max-content));
+            grid-gap: 2rem;
+            opacity: 0;
+            transition: all 0.5s ease-out;
+
+            &.active {
+                display: grid;
+                opacity: 1;
+                transition: all 0.5s ease-out;
+            }
+
+            .highlights {
+                padding: 1rem;
+
+                &:hover,
+                &:focus {
+                    background-color: rgba(blue, 0.2);
+                    border-radius: 2rem;
+                    transition: all 0.5s ease-out;
+                }
+
+                p {
+                    margin: auto;
+                }
+            }
+        }
+
+        @media screen and (min-width: 600px) {
+            .item-content {
+                grid-template-columns: repeat(2, 1fr);
+
+                .highlights {
+                    // padding: 5rem;
+                }
+            }
+        }
+    }
+
+    @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+        margin: 6rem;
+    }
+
+    @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+        margin: 5rem;
+    }
+
+    @media screen and (min-width: 1200px) {
+        margin: 7rem;
+    }
+
+    @media screen and (min-width: 1800px) {
+        margin: 10rem;
+    }
+}
+
+#tab {
+    font-family: "Playwrite GB S", cursive;
+    margin-left: 20%;
+    color: #333;
+    background-color: #ffffff;
+    padding: 3%;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.tabbed-content,
+.tabbed-content p,
+.tabbed-content .item-content {
+    font-family: "Playwrite GB S", cursive;
+}
+
+#p6 {
+    font-family: "Playwrite GB", cursive;
+
+}
+
+
+/******************INCREMENTATION ****/
+
+
+
+
+.stats {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: center;
+
+
+}
+
+.stat {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+
+
+
+
+#incre1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-family: "Playwrite GB S", cursive;
+}
