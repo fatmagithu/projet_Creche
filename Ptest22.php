@@ -2,8 +2,9 @@
 session_start();
 $host = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "groupe_bulles_deveil";
+
 $conn = new mysqli($host, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Échec de la connexion à la base de données : " . $conn->connect_error);
@@ -315,7 +316,7 @@ $conn->close();
       <p>Accédez à toutes les informations essentielles de votre crèche : enfants présents, planning, messages de l'équipe et plus encore. Cliquez sur les icônes pour naviguer.</p>
     </div>
     <div class="stats">
-      <button class="stat-card-btn" onclick="window.location.href='DossierEnfantsInscrits.php'">
+      <button class="stat-card-btn" onclick="window.location.href='ListeGlobaleDesInscrits.php'">
         <h2><?php echo $nbInscrits; ?></h2>
         <p>Enfants inscrits à ce jour</p>
       </button>
