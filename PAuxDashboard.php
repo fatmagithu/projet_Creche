@@ -178,7 +178,7 @@
 <p class="subtext">Gérez vos tâches quotidiennes en un clin d’œil</p>
 
 <div class="icon-grid">
-  <a href="Ppointage.php" class="text-decoration-none app-icon-wrapper">
+  <a href="pointageAUX.php" class="text-decoration-none app-icon-wrapper">
     <div class="app-icon"><img src="horloge-murale.png" alt="Pointage"></div>
     <div class="icon-label">Pointage</div>
   </a>
