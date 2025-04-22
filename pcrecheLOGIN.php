@@ -166,7 +166,7 @@
       <span class="arrow bi bi-chevron-right"></span>
     </div>
 
-    <div class="footer-note">BabyFarm — Pour une gestion fluide et douce de la crèche ✨</div>
+    <div class="footer-note">Nounou — Pour une gestion fluide et douce de la crèche ✨</div>
   </div>
 
   <script>

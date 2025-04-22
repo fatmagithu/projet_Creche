@@ -184,7 +184,7 @@
   </a>
 
   <a href="Pactivite.php" class="text-decoration-none app-icon-wrapper">
-    <div class="app-icon"><img src="palette-de-peinture.png" alt="Activité"></div>
+    <div class="app-icon"><img src="palette-de-peinture (1).png" alt="Activité"></div>
     <div class="icon-label">Activité</div>
   </a>
 

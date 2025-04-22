@@ -135,7 +135,7 @@
 
 
     <div class="admin-footer">
-      Bulles d'éveil — Une interface douce pour une gestion pro 🌿
+      Nounou — Une interface douce pour une gestion pro 🌿
     </div>
   </div>
 </body>
