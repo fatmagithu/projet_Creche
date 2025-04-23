@@ -2,7 +2,7 @@
 session_start();
 $host = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "groupe_bulles_deveil";
 
 $conn = new mysqli($host, $username, $password, $dbname);
