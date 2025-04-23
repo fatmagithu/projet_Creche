@@ -2,7 +2,7 @@
 // Connexion à la base de données
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "groupe_bulles_deveil";
 $conn = new mysqli($host, $username, $password, $dbname);
 if ($conn->connect_error) {
