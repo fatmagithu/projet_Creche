@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 $action = $_GET['action'] ?? '';
 
 // Définir le chemin de base correct pour les URL
-$baseUrl = "http://$_SERVER[HTTP_HOST]/2MDPOublier/GenererMdpAdmin";
+$baseUrl = "http://$_SERVER[HTTP_HOST]/GestionCreche2204";
 
 // Définir le chemin vers la page d'administration
 $adminLoginPage = "PcrecheADMIN.php";
