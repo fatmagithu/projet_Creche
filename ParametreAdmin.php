@@ -26,16 +26,28 @@ session_start();
     }
     .sidebar {
       width: 80px;
-      background: white;
-      border-top-right-radius: 40px;
-      box-shadow: 4px 0 20px rgba(0,0,0,0.05);
+      background: url('moussa12.png') center center/cover no-repeat;
+      position: fixed;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: all 0.3s ease;
+      padding: 20px 0;
+      transition: width 0.3s ease;
+      z-index: 1000;
       overflow: hidden;
+    }
+    .sidebar::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(253, 249, 243, 0.88);
+      z-index: 0;
+      backdrop-filter: blur(3px);
+    }
+    .sidebar > * {
       position: relative;
-      z-index: 10;
+      z-index: 1;
     }
     .sidebar:hover {
       width: 220px;
@@ -78,13 +90,13 @@ session_start();
       padding: 12px 16px;
       margin: 6px 0;
       border-radius: 14px;
-      transition: background 0.2s ease, color 0.2s ease;
+      transition: background 0.2s ease;
       cursor: pointer;
       text-decoration: none;
       color: #333;
     }
     .nav-link:hover {
-      background: var(--highlight, #f4e2d8) !important;
+      background: var(--highlight);
     }
     .nav-link img {
       width: 48px;
@@ -104,6 +116,11 @@ session_start();
     .main-content {
       flex: 1;
       padding: 40px;
+      margin-left: 80px;
+      transition: margin-left 0.3s ease;
+    }
+    .sidebar:hover ~ .main-content {
+      margin-left: 220px;
     }
     .section {
       background: white;
@@ -166,6 +183,7 @@ session_start();
       <span class="nav-text">Paramètres</span>
     </a>
   </div>
+
   <div class="main-content">
     <div class="section">
       <h3>👥 Gestion des utilisateurs</h3>

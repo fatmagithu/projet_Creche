@@ -15,7 +15,6 @@
       --highlight: #f4e2d8;
       --blue: #1da1f2;
       --blue-dark: #0d8ae2;
-      --highlight: #f4e2d8; /* c'est bien là */
     }
     * { box-sizing: border-box; }
     body {
@@ -26,103 +25,121 @@
       height: 100vh;
       overflow: hidden;
     }
+
     /* SIDEBAR MODERNE */
-.sidebar {
-  width: 80px;
-  background: white;
-  border-top-right-radius: 40px;
-  box-shadow: 4px 0 20px rgba(0,0,0,0.05);
+    .sidebar {
+  width: 85px;
+  background: url('moussa12.png') center center/cover no-repeat;
+  position: fixed;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: all 0.3s ease;
+  padding: 20px 0;
+  border-right: 1px solid #f0eae0;
+  transition: width 0.3s ease;
+  z-index: 1000;
   overflow: hidden;
-  position: relative;
-  z-index: 10;
-}
-
-.sidebar:hover {
-  width: 220px;
-}
-
-.user-bubble {
-  opacity: 0;
-  visibility: hidden;
-  height: 0;
-  transition: all 0.4s ease;
-  text-align: center;
-  margin-bottom: 20px;
-  padding: 20px 10px 0;
-}
-
-.sidebar:hover .user-bubble {
-  opacity: 1;
-  visibility: visible;
-  height: auto;
-}
-
-.user-bubble img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  margin-bottom: 10px;
-}
-
-.user-bubble .name {
-  font-weight: 600;
-  font-size: 14px;
-  color: #333;
-}
-
-.user-bubble .role {
-  font-size: 12px;
-  color: var(--brown);
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 12px 16px;
-  margin: 6px 0;
-  border-radius: 14px;
-  transition: background 0.2s ease;
-  cursor: pointer;
-  text-decoration: none;
-  color: #333;
-}
-
-.nav-link:hover {
-  background: var(--highlight);
-}
-.nav-link img {
-width: 48px;
-height: 48px;
-margin-right: 16px;
-flex-shrink: 0;
 }
 
 
-.nav-text {
-  opacity: 0;
-  transition: opacity 0.3s;
-  white-space: nowrap;
-}
+    .sidebar::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(253, 249, 243, 0.85);
+      z-index: 0;
+      backdrop-filter: blur(3px);
+    }
+    .sidebar > * {
+      position: relative;
+      z-index: 1;
+    }
 
-.sidebar:hover .nav-text {
-  opacity: 1;
-}
+    .sidebar:hover {
+      width: 220px;
+    }
+
+    .user-bubble {
+      opacity: 0;
+      visibility: hidden;
+      height: 0;
+      transition: all 0.4s ease;
+      text-align: center;
+      margin-bottom: 20px;
+      padding: 20px 10px 0;
+    }
+    .sidebar:hover .user-bubble {
+      opacity: 1;
+      visibility: visible;
+      height: auto;
+    }
+    .user-bubble img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 10px;
+    }
+    .user-bubble .name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #333;
+    }
+    .user-bubble .role {
+      font-size: 12px;
+      color: var(--brown);
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 12px 16px;
+      margin: 6px 0;
+      border-radius: 14px;
+      transition: background 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .nav-link:hover {
+      background: var(--highlight);
+    }
+
+    .nav-link img {
+      width: 48px;
+      height: 48px;
+      margin-right: 16px;
+      flex-shrink: 0;
+    }
+
+    .nav-text {
+      opacity: 0;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+
+    .sidebar:hover .nav-text {
+      opacity: 1;
+    }
 
     .chat-app {
+      margin-left: 80px;
       flex: 1;
       display: flex;
       flex-direction: column;
       padding: 30px;
       overflow: hidden;
-      width: calc(100% - 160px);
+      transition: margin-left 0.3s ease;
     }
+
+    .sidebar:hover ~ .chat-app {
+      margin-left: 220px;
+    }
+
     .chat-header {
       display: flex;
       justify-content: space-between;
@@ -261,31 +278,26 @@ flex-shrink: 0;
   </style>
 </head>
 <body>
-<div class="sidebar">
+  <div class="sidebar">
     <div class="user-bubble">
       <img src="Sofiya.oulhaci.png" alt="Admin">
       <div class="name">Sofiya M.</div>
       <div class="role">Admin</div>
     </div>
     <a href="Ptest22.php" class="nav-link">
-      <img src="bebe.png" alt="Enfants">
-      <span class="nav-text">Enfants</span>
+      <img src="bebe.png" alt="Enfants"><span class="nav-text">Enfants</span>
     </a>
     <a href="PEquipe1.php" class="nav-link">
-      <img src="gens.png" alt="Équipe">
-      <span class="nav-text">Équipe</span>
+      <img src="gens.png" alt="Équipe"><span class="nav-text">Équipe</span>
     </a>
     <a href="PDossierAdmin.php" class="nav-link">
-      <img src="dossier.png" alt="Dossiers">
-      <span class="nav-text">Dossiers</span>
+      <img src="dossier.png" alt="Dossiers"><span class="nav-text">Dossiers</span>
     </a>
     <a href="PmessageAdmin.php" class="nav-link">
-      <img src="message.png" alt="Messages">
-      <span class="nav-text">Messages</span>
+      <img src="message.png" alt="Messages"><span class="nav-text">Messages</span>
     </a>
     <a href="ParametreAdmin.php" class="nav-link">
-      <img src="parametre.png" alt="Paramètres">
-      <span class="nav-text">Paramètres</span>
+      <img src="parametre.png" alt="Paramètres"><span class="nav-text">Paramètres</span>
     </a>
   </div>
 
@@ -293,8 +305,8 @@ flex-shrink: 0;
     <div class="chat-header">
       <h1>✉️ Messagerie</h1>
       <div>
-      <button onclick="window.location.href='PmessageParentAdmin.php'">👨‍👩‍👧‍👦 Parents</button>
-      <button onclick="window.location.href='PmessageAdmin.php'">👩‍⚕️ Équipe</button>
+        <button onclick="window.location.href='PmessageParentAdmin.php'">👨‍👩‍👧‍👦 Parents</button>
+        <button onclick="window.location.href='PmessageAdmin.php'">👩‍⚕️ Équipe</button>
       </div>
     </div>
 

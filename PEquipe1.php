@@ -8,171 +8,153 @@
   <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <style>
-  :root {
-  --beige: #fdf9f3;
-  --beige-light: #fffdf8;
-  --brown: #b38760;
-  --brown-dark: #9e6d4b;
-  --highlight: #f4e2d8; /* c'est bien là */
-}
+      :root {
+      --beige: #fdf9f3;
+      --beige-light: #fffdf8;
+      --brown: #b38760;
+      --brown-dark: #9e6d4b;
+      --highlight: #f4e2d8;
+    }
 
     body {
       margin: 0;
-      background: linear-gradient(135deg, var(--beige-light), var(--beige));
       font-family: 'Inter', sans-serif;
-      min-height: 100vh;
+      background: linear-gradient(135deg, var(--beige-light), var(--beige));
       display: flex;
+      min-height: 100vh;
     }
 
-/* SIDEBAR MODERNE */
-.sidebar {
-  width: 80px;
-  background: white;
-  border-top-right-radius: 40px;
-  box-shadow: 4px 0 20px rgba(0,0,0,0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.3s ease;
-  overflow: hidden;
-  position: relative;
-  z-index: 10;
-}
+    .sidebar {
+      width: 80px;
+      background: url('moussa12.png') center center/cover no-repeat;
+      position: fixed;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+      transition: width 0.3s ease;
+      z-index: 1000;
+      overflow: hidden;
+    }
 
-.sidebar:hover {
-  width: 220px;
-}
+    .sidebar::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(253, 249, 243, 0.85);
+      z-index: 0;
+      backdrop-filter: blur(3px);
+    }
 
-.user-bubble {
-  opacity: 0;
-  visibility: hidden;
-  height: 0;
-  transition: all 0.4s ease;
-  text-align: center;
-  margin-bottom: 20px;
-  padding: 20px 10px 0;
-}
+    .sidebar > * {
+      position: relative;
+      z-index: 1;
+    }
 
-.sidebar:hover .user-bubble {
-  opacity: 1;
-  visibility: visible;
-  height: auto;
-}
+    .sidebar:hover {
+      width: 220px;
+    }
 
-.user-bubble img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  margin-bottom: 10px;
-}
+    .user-bubble {
+      text-align: center;
+      margin-bottom: 20px;
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      padding: 10px;
+    }
 
-.user-bubble .name {
-  font-weight: 600;
-  font-size: 14px;
-  color: #333;
-}
+    .sidebar:hover .user-bubble {
+      opacity: 1;
+      height: auto;
+    }
 
-.user-bubble .role {
-  font-size: 12px;
-  color: var(--brown);
-}
+    .user-bubble img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 8px;
+    }
 
-.nav-link {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 12px 16px;
-  margin: 6px 0;
-  border-radius: 14px;
-  transition: background 0.2s ease;
-  cursor: pointer;
-  text-decoration: none;
-  color: #333;
-}
+    .user-bubble .name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #333;
+    }
 
-.nav-link:hover {
-  background: var(--highlight);
-}
-.nav-link img {
-width: 48px;
-height: 48px;
-margin-right: 16px;
-flex-shrink: 0;
-}
+    .user-bubble .role {
+      font-size: 12px;
+      color: var(--brown);
+    }
 
+    .nav-link {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 12px 16px;
+      margin: 6px 0;
+      border-radius: 14px;
+      transition: background 0.2s ease;
+      color: #333;
+      text-decoration: none;
+    }
 
-.nav-text {
-  opacity: 0;
-  transition: opacity 0.3s;
-  white-space: nowrap;
-}
+    .nav-link img {
+      width: 42px;
+      height: 42px;
+      margin-right: 12px;
+    }
 
-.sidebar:hover .nav-text {
-  opacity: 1;
-}
+    .nav-text {
+      opacity: 0;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
 
+    .sidebar:hover .nav-text {
+      opacity: 1;
+    }
+
+    .nav-link:hover {
+      background: var(--highlight);
+    }
 
     .main-content {
-  
-      flex: 1;
+      margin-left: 85px;
       padding: 40px;
-      background: linear-gradient(to bottom right, var(--beige-light), var(--beige));
+      width: 100%;
+      transition: margin-left 0.3s ease;
     }
-    .page-title {
+
+    .sidebar:hover ~ .main-content {
+      margin-left: 220px;
+    }
+
+    .welcome {
+      background: white;
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      margin-bottom: 40px;
+    }
+
+    .welcome h1 {
       font-size: 36px;
-      font-weight: 900;
+      font-weight: 800;
       color: var(--brown);
-      margin-bottom: 30px;
+      font-family: 'Playwrite GB S', cursive;
     }
-    .top-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 30px;
+
+    .welcome p {
+      font-size: 16px;
+      color: #555;
+      margin-top: 10px;
     }
-    .search-bar {
-      flex: 1;
-      min-width: 250px;
-      padding: 12px 16px;
-      border-radius: 30px;
-      border: 1px solid #ccc;
-    }
-    .add-member {
-      background-color: var(--brown);
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 30px;
-      font-weight: bold;
-      font-size: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: background 0.3s;
-    }
-    .add-member:hover {
-      background-color: var(--brown-dark);
-    }
-    .filter-crèche {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
-    }
-    .filter-crèche button {
-      background-color: #ffffff;
-      border: 1px solid #ccc;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 14px;
-      cursor: pointer;
-    }
-    .filter-crèche button.active {
-      background-color: var(--brown);
-      color: white;
-      border-color: var(--brown);
-    }
+
     .stats-overview {
       display: flex;
       justify-content: space-between;
@@ -182,24 +164,74 @@ flex-shrink: 0;
       margin-bottom: 30px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
+
     .stats-overview div {
       text-align: center;
     }
+
     .stats-overview h4 {
       font-size: 22px;
       margin-bottom: 5px;
       color: var(--brown);
     }
+
     .stats-overview p {
-      margin: 0;
       font-size: 14px;
       color: #555;
     }
+
+    .top-bar {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .search-bar {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 30px;
+      border: 1px solid #ccc;
+    }
+
+    .add-member {
+      background-color: var(--brown);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 14px;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .filter-crèche {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .filter-crèche button {
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .filter-crèche button.active {
+      background-color: var(--brown);
+      color: white;
+    }
+
     .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
+
     .team-card {
       background: white;
       border-radius: 20px;
@@ -209,26 +241,11 @@ flex-shrink: 0;
       transition: transform 0.3s ease;
       position: relative;
     }
+
     .team-card:hover {
       transform: translateY(-5px);
     }
-    .team-photo {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 15px;
-      border: 3px solid var(--brown);
-    }
-    .team-name {
-      font-size: 22px;
-      font-weight: 700;
-      color: #333;
-    }
-    .team-role {
-      font-size: 15px;
-      color: #777;
-    }
+
     .presence-indicator {
       position: absolute;
       top: 15px;
@@ -237,14 +254,26 @@ flex-shrink: 0;
       height: 14px;
       border-radius: 50%;
       background-color: var(--brown);
-      box-shadow: 0 0 4px rgba(0,0,0,0.2);
     }
+
+    .team-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .team-role {
+      font-size: 15px;
+      color: #777;
+    }
+
     .actions {
+      margin-top: 10px;
       display: flex;
       justify-content: center;
       gap: 10px;
-      margin-top: 15px;
     }
+
     .actions button {
       background: var(--brown);
       color: white;
@@ -252,30 +281,31 @@ flex-shrink: 0;
       padding: 6px 12px;
       border-radius: 8px;
       font-size: 14px;
-      cursor: pointer;
-      transition: background 0.3s ease;
     }
+
     .actions button:hover {
       background: var(--brown-dark);
     }
-    .welcome {
-      background: white;
-      padding: 40px;
-      border-radius: 30px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
-      margin-bottom: 40px;
-    }
-    .welcome h1 {
-      font-size: 36px;
-      font-weight: 800;
-      color: var(--brown);
-      font-family: 'Playwrite GB S', cursive;
-      margin: 0;
-    }
-    .welcome p {
-      font-size: 16px;
-      color: #555;
-      margin-top: 10px;
+
+    @media (max-width: 768px) {
+      .sidebar {
+        flex-direction: row;
+        height: 60px;
+        width: 100%;
+      }
+
+      .sidebar:hover {
+        width: 100%;
+      }
+
+      .main-content {
+        margin-left: 0;
+        padding: 20px;
+      }
+
+      .sidebar:hover ~ .main-content {
+        margin-left: 0;
+      }
     }
   </style>
   <!-----PROGRAMME POUR CHOISIR LES MEMBRES EN FONCTION DES CRECHES LES CRECHE DEBUT-->
