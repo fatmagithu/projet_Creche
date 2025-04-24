@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # projet_Creche
 Résumé du projet : Génération et gestion des codes d'accès
 Étapes réalisées avec succès
@@ -133,4 +133,4 @@ Une fois le compte créé, l'administrateur est redirigé vers la page d'adminis
 
 =======
 # projet-creche
->>>>>>> 65e0405d772fefc86b0e70770c7ce771b55d0c7a
+
