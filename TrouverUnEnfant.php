@@ -236,27 +236,75 @@
 </div>
 
 <!-- CONTENU PRINCIPAL -->
+<!----- RECHERECHE D UN ENFNAT  ------>
 <div class="main-content">
-  <div class="search-controls">
-    <input type="text" id="searchInput" class="form-control" placeholder="Rechercher un prénom...">
-    <button class="btn btn-outline-secondary" onclick="sortByName()">Trier par prénom (A-Z)</button>
-    <button class="btn btn-outline-secondary" onclick="sortByAge()">Trier par âge croissant</button>
-  </div>
-  <div id="enfantList"></div>
-</div>
+    <div class="search-controls">
+      <input type="text" id="searchInput" class="form-control" placeholder="Rechercher un prénom...">
+      <button class="btn btn-outline-success" onclick="sortByName()">Trier par prénom (A-Z)</button>
+      <button class="btn btn-outline-success" onclick="sortByAge()">Trier par âge croissant</button>
+    </div>
 
-<!-- SCRIPT -->
+    <div id="enfantList"></div>
+  </div>
+<!----- RECHERECHE D UN ENFNAT FIN  ------>
+
+
+
+
+
+<!----- LISTE DES ENFANTS DEBUT  ------>
 <script>
-  const enfants = [
-    { nom: 'Marie', age: 3, heures: '160h · 175h', depassement: true, photo: 'moussa8.png' },
-    { nom: 'Axelle', age: 2, heures: '140h · 110h', depassement: false, photo: 'moussa13.png' },
-    { nom: 'Thomas', age: 1, heures: '50h · 53h', depassement: true, photo: 'moussa14.png' },
-    { nom: 'Mohamed', age: 2, heures: '30h · 120h', depassement: false, photo: 'Sohan4.jpg' },
-    { nom: 'Sohan', age: 1, heures: '50h · 153h', depassement: false, photo: 'Sohan3.png' },
-    { nom: 'Jonas', age: 2, heures: '150h · 153h', depassement: true, photo: 'Sohan5.png' },
-    { nom: 'Manel', age: 3, heures: '150h · 153h', depassement: false, photo: 'Sohan2.png' },
-    { nom: 'Yanis', age: 3, heures: '150h · 153h', depassement: true, photo: 'Sohan6.png' }
-  ];
+  const enfants = <?php
+    try {
+      $pdo = new PDO('mysql:host=localhost;dbname=groupe_bulles_deveil;charset=utf8', 'root', '');
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+      $stmt = $pdo->query("SELECT id, prenom_enfant, date_naissance_enfant FROM inscription_enfant WHERE statut = 'Inscrit'");
+
+      $enfants = [];
+
+      function calculer_age_precis($date_naissance) {
+        $date_naissance = new DateTime($date_naissance);
+        $aujourdhui = new DateTime();
+        $intervalle = $aujourdhui->diff($date_naissance);
+
+        $ans = $intervalle->y;
+        $mois = $intervalle->m;
+        $total_mois = ($ans * 12) + $mois;
+
+        if ($ans === 0 && $mois === 0) {
+          $affichage = "moins d'1 mois";
+        } elseif ($ans === 0) {
+          $affichage = "$mois mois";
+        } elseif ($mois === 0) {
+          $affichage = "$ans an" . ($ans > 1 ? "s" : "");
+        } else {
+          $affichage = "$ans an" . ($ans > 1 ? "s" : "") . " $mois mois";
+        }
+
+        return [$affichage, $total_mois];
+      }
+
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        list($age_texte, $age_mois) = calculer_age_precis($row['date_naissance_enfant']);
+
+        $enfants[] = [
+            'id' => $row['id'],
+            'nom' => $row['prenom_enfant'],
+            'age' => $age_texte,
+            'age_mois' => $age_mois,
+            'heures' => '-',
+            'depassement' => false,
+            'photo' => 'moussa8.png'
+          ];
+          
+      }
+
+      echo json_encode($enfants, JSON_UNESCAPED_UNICODE);
+    } catch (PDOException $e) {
+      echo "[]";
+    }
+  ?>;
 
   function renderEnfants(list) {
     const container = document.getElementById('enfantList');
@@ -268,12 +316,14 @@
             <img src="${e.photo}" alt="photo enfant" class="enfant-photo">
             <div>
               <div class="enfant-name">${e.nom}</div>
-              <div class="enfant-age">${e.age} an${e.age > 1 ? 's' : ''}</div>
+              <div class="enfant-age">${e.age}</div>
               <div class="contrat-heure">${e.heures} ${e.depassement ? '<span class="alert-depassement"><i class="bi bi-exclamation-triangle-fill"></i> Dépassement !</span>' : ''}</div>
             </div>
           </div>
-          <button class="btn-planning" onclick="window.location.href='PcrechePageENFANT.php?nom=${encodeURIComponent(e.nom)}'">Page de l'enfant</button>
-        </div>`;
+          <button class="btn-planning" onclick="window.location.href='PcrechePageENFANT.php?id=${e.id}'">Page de l'enfant</button>
+
+        </div>
+      `;
     });
   }
 
@@ -283,7 +333,7 @@
   }
 
   function sortByAge() {
-    const sorted = [...enfants].sort((a, b) => a.age - b.age);
+    const sorted = [...enfants].sort((a, b) => a.age_mois - b.age_mois);
     renderEnfants(sorted);
   }
 
@@ -293,8 +343,10 @@
     renderEnfants(filtered);
   });
 
-  // Affichage initial
   renderEnfants(enfants);
 </script>
+
+
+  <!----- LISTE DES ENFANTS DEBUT  ------>
 </body>
 </html>

@@ -194,7 +194,10 @@
     <div class="app-icon"><img src="horloge-murale.png" alt="Pointage"></div>
     <div class="icon-label">Pointage</div>
   </a>
-
+  <a href="chatAUX.php" class="text-decoration-none app-icon-wrapper">
+    <div class="app-icon"><img src="un-message.png" alt="Paramètres"></div>
+    <div class="icon-label">chat</div>
+  </a>
   <a href="Pactivite.php" class="text-decoration-none app-icon-wrapper">
     <div class="app-icon"><img src="palette-de-peinture (1).png" alt="Activité"></div>
     <div class="icon-label">Activité</div>
@@ -230,10 +233,6 @@
     <div class="icon-label">Change</div>
   </a>
 
-  <a href="Pparametre.php" class="text-decoration-none app-icon-wrapper">
-    <div class="app-icon"><img src="parametre.png" alt="Paramètres"></div>
-    <div class="icon-label">Paramètres</div>
-  </a>
 </div>
 
 <!-- Sons & animation JS -->
