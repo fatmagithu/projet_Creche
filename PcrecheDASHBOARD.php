@@ -4,12 +4,8 @@
   <meta charset="UTF-8">
   <title>Accueil Admin · BabyFarm</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-  <!-- Fonts, Bootstrap, Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
   <style>
     * {
       box-sizing: border-box;
@@ -18,15 +14,27 @@
     }
 
     body {
-      background: linear-gradient(120deg, #fcf8f4, #fcf8f4);
+      background: url('moussa12.png') no-repeat center center/cover;
       font-family: 'Inter', sans-serif;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      overflow-x: hidden;
+      overflow: hidden;
       position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(252, 248, 244, 0.65);
+      backdrop-filter: blur(5px);
+      z-index: 0;
     }
 
     #splash {
@@ -48,43 +56,32 @@
       animation: pulse 1.5s infinite;
     }
 
-    .background-circle {
-      position: absolute;
-      width: 800px;
-      height: 800px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(195,234,210,0.2) 0%, transparent 70%);
-      top: -200px;
-      right: -300px;
-      z-index: 0;
-      pointer-events: none;
-    }
-
     h1 {
       font-family: 'Playwrite GB S', sans-serif;
-      font-size: 42px;
+      font-size: 38px;
       font-weight: 700;
-      color: #2c2c2c;
-      margin-bottom: 12px;
-      animation: slideFadeIn 1s ease forwards;
+      color: #b38760;
+      margin-bottom: 10px;
+      z-index: 1;
+      animation: fadeDown 1s ease;
     }
 
-    p.subtext {
+    .subtext {
       font-size: 17px;
       color: #6c6c6c;
       margin-bottom: 40px;
-      animation: slideFadeIn 1.2s ease forwards;
+      z-index: 1;
+      animation: fadeDown 1.2s ease;
     }
 
     .icon-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 40px;
+      gap: 30px;
       max-width: 960px;
       width: 100%;
       padding: 0 30px;
       z-index: 1;
-      animation: fadeUp 1.4s ease forwards;
     }
 
     .app-icon-wrapper {
@@ -94,126 +91,36 @@
       gap: 10px;
       transition: transform 0.3s ease;
     }
-
     .app-icon {
   background: white;
-  width: 260px;
-  height: 110px;
-  border-radius: 28px;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+  width: 130px;
+  height: 130px;
+  border-radius: 60px;
+  box-shadow: 0 14px 20px rgba(0, 0, 0, 0.08);
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease;
   cursor: pointer;
-  position: relative;
   border: 2px solid transparent;
-}
-
-.app-icon:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
-  border-color: #e6e6e6;
+  padding: 15px;
+  margin: 12px; /* ✅ Ajoute un peu d’air autour de chaque bouton */
 }
 
 .app-icon img {
-  width: 55px;
-  height: 55px;
+  width: 85px;
+  height: 85px;
   object-fit: contain;
   transition: transform 0.3s ease;
-}
-
-.app-icon:hover img {
-  transform: scale(1.1);
-}
-
-.icon-label {
-  margin-top: 10px;
-  font-weight: 600;
-  color: #4a4a4a;
-  font-size: 15px;
-  text-align: center;
-  transition: color 0.3s ease;
-}
-
-.app-icon-wrapper:hover .icon-label {
-  color: #1da1f2;
-}
-
-.icon-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 28px;
-  margin-top: 40px;
-}
-
-h1 {
-  font-family: 'Playwrite GB S', cursive;
-  color: #b38760;
-  font-size: 38px;
-  margin-top: 30px;
-  animation: fadeDown 1s ease-out;
-}
-
-.subtext {
-  font-size: 17px;
-  color: #777;
-  margin-top: 8px;
-  animation: fadeDown 1.3s ease-out;
-}
-
-
-
-@keyframes fadeDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes splashPop {
-  0% {
-    opacity: 0;
-    transform: scale(0.7);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 
 
     .app-icon:hover {
       background: #f0ebe3;
       transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     }
 
-    .app-icon:active::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: rgba(60, 180, 120, 0.15);
-      animation: ripple 0.5s ease-out;
-      pointer-events: none;
-    }
-
-    .app-icon img {
-      width: 46px;
-      height: 46px;
-      object-fit: contain;
-    }
 
     .icon-label {
       font-size: 15px;
@@ -226,21 +133,9 @@ h1 {
       color: #b49065;
     }
 
-    @keyframes slideFadeIn {
-      0% { transform: translateY(-20px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes fadeUp {
-      0% { transform: translateY(20px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes ripple {
-      to {
-        transform: translate(-50%, -50%) scale(2);
-        opacity: 0;
-      }
+    @keyframes fadeDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes pulse {
@@ -253,7 +148,7 @@ h1 {
         font-size: 28px;
       }
       .app-icon {
-        width: 90px;
+        width: 160px;
         height: 90px;
       }
       .icon-label {
@@ -266,9 +161,10 @@ h1 {
   <div id="splash">
     <img src="NOUNOU (7).png" alt="Chargement">
   </div>
-  <div class="background-circle"></div>
-  <h1>Bienvenue sur Nounou </h1>
+
+  <h1>Bienvenue sur Nounou</h1>
   <p class="subtext">Accédez à votre espace de gestion en toute sérénité</p>
+
   <div class="icon-grid">
     <a href="Ptest22.php" class="text-decoration-none app-icon-wrapper">
       <div class="app-icon"><img src="bebe.png" alt="Enfants"></div>
@@ -292,7 +188,6 @@ h1 {
     </a>
   </div>
 
-  <!-- Sound & Splash JS -->
   <audio id="clickSound" src="click.mp3" preload="auto"></audio>
   <script>
     window.addEventListener('load', () => {

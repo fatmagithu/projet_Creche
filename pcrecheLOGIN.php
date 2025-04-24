@@ -13,27 +13,43 @@
   <style>
     body {
       margin: 0;
-      background: linear-gradient(135deg, #fcf8f4, #f5e8da);
       font-family: 'Inter', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       position: relative;
-      overflow: hidden;
+      background: #fcf8f4;
     }
 
-    .blur-circle {
+    /* === FOND MODERNE AVEC VAGUE === */
+    .background-container {
       position: absolute;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle at center, #c6e6cf 0%, transparent 70%);
-      filter: blur(150px);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
       z-index: 0;
-      top: -200px;
-      right: -150px;
     }
 
+    .background-image {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      display: block;
+    }
+
+    .wave-shape {
+      position: absolute;
+      top: 50vh;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      z-index: 1;
+    }
+
+    /* === CARTE AU PREMIER PLAN === */
     .card {
       background: #ffffff;
       border: none;
@@ -43,16 +59,15 @@
       max-width: 580px;
       width: 90%;
       text-align: center;
-      z-index: 1;
+      z-index: 2;
       position: relative;
     }
 
     .logo {
-  width: 280px;
-  margin-bottom: 30px;
-  margin-left: 20%;
-}
-
+      width: 280px;
+      margin-bottom: 30px;
+      margin-left: 20%;
+    }
 
     h1 {
       font-weight: 700;
@@ -119,7 +134,14 @@
   </style>
 </head>
 <body>
-  <div class="blur-circle"></div>
+
+  <!-- === FOND VISUEL TYPE APP MODERNE === -->
+  <div class="background-container">
+    <img src="moussa3.png" alt="Fond crèche" class="background-image">
+    <svg class="wave-shape" viewBox="0 0 1440 320"><path fill="#fcf8f4" fill-opacity="1" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,186.7C672,181,768,203,864,186.7C960,171,1056,117,1152,112C1248,107,1344,149,1392,170.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+  </div>
+
+  <!-- === CONTENU PRINCIPAL === -->
   <div class="card">
     <img src="NOUNOU (6).png" alt="Logo Bébé" class="logo">
 
@@ -127,11 +149,10 @@
     <p class="description">Sélectionnez votre rôle pour accéder à votre espace</p>
 
     <div class="role-option" onclick="goTo('PcrecheADMIN.php')">
-  <span class="role-icon bi bi-person-gear"></span>
-  <span class="role-text">Administrateur</span>
-  <span class="arrow bi bi-chevron-right"></span>
-</div>
-
+      <span class="role-icon bi bi-person-gear"></span>
+      <span class="role-text">Administrateur</span>
+      <span class="arrow bi bi-chevron-right"></span>
+    </div>
 
     <div class="role-option" onclick="goTo('PcrecheAUX.php')">
       <span class="role-icon bi bi-person-badge"></span>
@@ -145,7 +166,7 @@
       <span class="arrow bi bi-chevron-right"></span>
     </div>
 
-    <div class="footer-note">BabyFarm — Pour une gestion fluide et douce de la crèche ✨</div>
+    <div class="footer-note">Nounou — Pour une gestion fluide et douce de la crèche ✨</div>
   </div>
 
   <script>
@@ -153,5 +174,6 @@
       window.location.href = page;
     }
   </script>
+
 </body>
 </html>

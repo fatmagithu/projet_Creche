@@ -1,3 +1,25 @@
+<?php
+try {
+    $pdo = new PDO('mysql:host=localhost;dbname=groupe_bulles_deveil;charset=utf8', 'root', '');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+    $stmt = $pdo->prepare("SELECT * FROM inscription_enfant WHERE id = ?");
+    $stmt->execute([$id]);
+    $enfant = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$enfant) {
+        die("Aucun enfant trouvé.");
+    }
+
+    $stmt_med = $pdo->prepare("SELECT * FROM medical_enfant WHERE id_enfant = ?");
+    $stmt_med->execute([$id]);
+    $medical = $stmt_med->fetch(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -88,22 +110,66 @@
 </head>
 <body>
   <div class="container-fiche">
+
+    <!-- 🧒 SECTION ENFANT -->
+    <div class="section-title">🧒 Informations enfant</div>
     <div class="enfant-header">
       <img src="moussa8.png" alt="Photo enfant" class="enfant-photo">
       <div>
-        <div class="enfant-name">Marie Bastien</div>
-        <div>Âge : <strong>2 ans</strong></div>
-        <div>Type de contrat : <span class="badge-info">Temps plein - 160h/mois</span></div>
+        <div class="enfant-name"><?= htmlspecialchars(($enfant['prenom_enfant'] ?? '') . ' ' . ($enfant['nom_enfant'] ?? '')) ?></div>
+        <div class="info-block">Date de naissance : <strong><?= htmlspecialchars($enfant['date_naissance_enfant'] ?? 'Non renseignée') ?></strong></div>
+        <div class="info-block">Lieu de naissance : <strong><?= htmlspecialchars($enfant['lieu_naissance_enfant'] ?? 'Non renseigné') ?></strong></div>
+        <div class="info-block">Genre : <strong><?= htmlspecialchars($enfant['genre_enfant'] ?? 'Non renseigné') ?></strong></div>
+        <div class="info-block">Date d’enregistrement : <strong><?= htmlspecialchars($enfant['date_enregistrement'] ?? 'Non renseignée') ?></strong></div>
+        <div class="info-block">Structure(s) choisie(s) : <span class="badge-info"><?= htmlspecialchars($enfant['structure'] ?? 'Non renseignée') ?></span></div>
       </div>
     </div>
-    <div class="section-title">👨‍👩‍👧 Informations parents</div>
-    <div class="info-block">Nom du parent référent : <strong>Claire Bastien</strong></div>
-    <div class="info-block">Téléphone : <strong>06 23 45 67 89</strong></div>
-    <div class="info-block">Email : <strong>claire.bastien@email.com</strong></div>
+
+    <!-- 👨‍👩‍👧 SECTION PARENT 1 -->
+    <div class="section-title">👨‍👩‍👧 Parent 1</div>
+    <div class="info-block">Type : <strong><?= htmlspecialchars($enfant['type_parent1'] ?? '') ?></strong></div>
+    <div class="info-block">Nom : <strong><?= htmlspecialchars(($enfant['prenom_parent1'] ?? '') . ' ' . ($enfant['nom_parent1'] ?? '')) ?></strong></div>
+    <div class="info-block">Email : <strong><?= htmlspecialchars($enfant['email_parent1'] ?? '') ?></strong></div>
+    <div class="info-block">Téléphone fixe : <strong><?= htmlspecialchars($enfant['tel_fixe_parent1'] ?? '') ?></strong></div>
+    <div class="info-block">Téléphone portable : <strong><?= htmlspecialchars($enfant['tel_portable_parent1'] ?? '') ?></strong></div>
+    <div class="info-block">Adresse : <strong><?= htmlspecialchars($enfant['adresse_parent1'] ?? '') ?></strong></div>
+    <div class="info-block">Code postal / Ville / Pays : <strong><?= htmlspecialchars($enfant['code_postal_parent1'] ?? '') ?> <?= htmlspecialchars($enfant['ville_parent1'] ?? '') ?> (<?= htmlspecialchars($enfant['pays_parent1'] ?? '') ?>)</strong></div>
+    <div class="info-block">Revenu annuel : <strong><?= htmlspecialchars($enfant['revenu_annuel_parent1'] ?? '') ?> €</strong></div>
+    <div class="info-block">Profession : <strong><?= htmlspecialchars($enfant['profession_parent1'] ?? '') ?></strong></div>
+    <div class="info-block">Entreprise : <strong><?= htmlspecialchars($enfant['entreprise_parent1'] ?? '') ?></strong></div>
+    <div class="info-block">Contrat d'entreprise : <strong><?= htmlspecialchars($enfant['contrat_entreprise_parent1'] ?? '') ?></strong></div>
+    <div class="info-block">Allocataire CAF : <strong><?= htmlspecialchars($enfant['allocataire_parent1'] ?? '') ?></strong></div>
+    <div class="info-block">Enfants à charge : <strong><?= htmlspecialchars($enfant['enfants_charge_parent1'] ?? '0') ?></strong></div>
+    <div class="info-block">Enfants en situation de handicap : <strong><?= htmlspecialchars($enfant['enfants_handicap_parent1'] ?? '0') ?></strong></div>
+
+    <!-- 👨‍👩‍👧 SECTION PARENT 2 -->
+    <div class="section-title">👨‍👩‍👧 Parent 2</div>
+    <div class="info-block">Type : <strong><?= htmlspecialchars($enfant['type_parent2'] ?? '') ?></strong></div>
+    <div class="info-block">Nom : <strong><?= htmlspecialchars(($enfant['prenom_parent2'] ?? '') . ' ' . ($enfant['nom_parent2'] ?? '')) ?></strong></div>
+    <div class="info-block">Email : <strong><?= htmlspecialchars($enfant['email_parent2'] ?? '') ?></strong></div>
+    <div class="info-block">Téléphone fixe : <strong><?= htmlspecialchars($enfant['tel_fixe_parent2'] ?? '') ?></strong></div>
+    <div class="info-block">Téléphone portable : <strong><?= htmlspecialchars($enfant['tel_portable_parent2'] ?? '') ?></strong></div>
+    <div class="info-block">Adresse : <strong><?= htmlspecialchars($enfant['adresse_parent2'] ?? '') ?></strong></div>
+    <div class="info-block">Code postal / Ville / Pays : <strong><?= htmlspecialchars($enfant['code_postal_parent2'] ?? '') ?> <?= htmlspecialchars($enfant['ville_parent2'] ?? '') ?> (<?= htmlspecialchars($enfant['pays_parent2'] ?? '') ?>)</strong></div>
+    <div class="info-block">Revenu annuel : <strong><?= htmlspecialchars($enfant['revenu_annuel_parent2'] ?? '') ?> €</strong></div>
+    <div class="info-block">Profession : <strong><?= htmlspecialchars($enfant['profession_parent2'] ?? '') ?></strong></div>
+    <div class="info-block">Entreprise : <strong><?= htmlspecialchars($enfant['entreprise_parent2'] ?? '') ?></strong></div>
+    <div class="info-block">Contrat d'entreprise : <strong><?= htmlspecialchars($enfant['contrat_entreprise_parent2'] ?? '') ?></strong></div>
+    <div class="info-block">Allocataire CAF : <strong><?= htmlspecialchars($enfant['allocataire_parent2'] ?? '') ?></strong></div>
+    <div class="info-block">Enfants à charge : <strong><?= htmlspecialchars($enfant['enfants_charge_parent2'] ?? '0') ?></strong></div>
+    <div class="info-block">Enfants en situation de handicap : <strong><?= htmlspecialchars($enfant['enfants_handicap_parent2'] ?? '0') ?></strong></div>
+
+    <!-- 📝 AUTRES INFOS -->
+    <div class="section-title">📝 Informations complémentaires</div>
+    <div class="info-block"><?= nl2br(htmlspecialchars($enfant['infos_complementaires'] ?? 'Non renseignées')) ?></div>
+
+    <!-- 🍎 SANTÉ -->
     <div class="section-title">🍎 Santé & Allergies</div>
-    <div class="info-block">Allergies : <strong>Gluten</strong></div>
-    <div class="info-block">Maladies chroniques : <strong>Asthme</strong></div>
-    <div class="info-block">Traitement régulier : <strong>Ventoline matin et soir</strong></div>
+    <div class="info-block">Allergies : <strong><?= htmlspecialchars($medical['allergies'] ?? 'Non renseigné') ?></strong></div>
+    <div class="info-block">Maladies chroniques : <strong><?= htmlspecialchars($medical['maladies'] ?? 'Non renseigné') ?></strong></div>
+    <div class="info-block">Traitement régulier : <strong><?= htmlspecialchars($medical['traitements'] ?? 'Non renseigné') ?></strong></div>
+
+    <!-- 📊 CONTRAT (statiques pour le moment) -->
     <div class="section-title">📊 Contrat & Suivi des heures</div>
     <div class="info-block">Heures prévues ce mois : <strong>160h</strong></div>
     <div class="info-block">Heures effectuées : <strong>120h</strong></div>
@@ -111,6 +177,10 @@
       <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
     <div class="info-block text-muted">75% du contrat effectué</div>
+
   </div>
 </body>
+
+
+
 </html>

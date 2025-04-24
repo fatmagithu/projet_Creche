@@ -26,23 +26,41 @@
       display: flex;
     }
     /* SIDEBAR MODERNE */
-.sidebar {
-  width: 80px;
-  background: white;
-  border-top-right-radius: 40px;
-  box-shadow: 4px 0 20px rgba(0,0,0,0.05);
+  
+    .sidebar {
+  width: 85px;
+  background: url('moussa12.png') center center/cover no-repeat;
+  position: fixed;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: all 0.3s ease;
+  padding: 20px 0;
+  border-right: 1px solid #f0eae0;
+  transition: width 0.3s ease;
+  z-index: 1000;
   overflow: hidden;
+}
+
+
+.sidebar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(253, 249, 243, 0.85);
+  z-index: 0;
+  backdrop-filter: blur(3px);
+}
+
+.sidebar > * {
   position: relative;
-  z-index: 10;
+  z-index: 1;
 }
 
 .sidebar:hover {
   width: 220px;
 }
+
 
 .user-bubble {
   opacity: 0;
@@ -114,13 +132,17 @@ flex-shrink: 0;
   opacity: 1;
 }
 
-    .main-content {
-     
-        width: calc(100% - 160px);
-      padding: 50px;
-      overflow-x: hidden;
-      background: radial-gradient(circle at top left, #fffefc, var(--beige));
-    }
+.main-content {
+  margin-left: 85px;
+  transition: margin-left 0.3s ease;
+  padding: 50px;
+  width: calc(100% - 85px);
+}
+
+.sidebar:hover ~ .main-content {
+  margin-left: 220px;
+  width: calc(100% - 220px);
+}
     .welcome {
       background: white;
       padding: 40px;
