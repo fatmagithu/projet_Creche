@@ -33,21 +33,51 @@
     }
     /* SIDEBAR MODERNE */
     .sidebar {
-      width: 80px;
-      background: white;
-      border-top-right-radius: 40px;
-      box-shadow: 4px 0 20px rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: all 0.3s ease;
-      overflow: hidden;
-      position: relative;
-      z-index: 10;
-    }
+  width: 85px;
+  background: url('moussa12.png') center center/cover no-repeat;
+  position: fixed;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  border-right: 1px solid #f0eae0;
+  transition: width 0.3s ease;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.sidebar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(253, 249, 243, 0.85); /* beige doux */
+  z-index: 0;
+  backdrop-filter: blur(3px);
+}
+
+.sidebar > * {
+  position: relative;
+  z-index: 1;
+}
+
 
     .sidebar:hover {
       width: 220px;
+    }
+
+    .sidebar .user {
+      text-align: center;
+      margin-bottom: 30px;
+      transition: 0.3s ease;
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .sidebar:hover .user {
+      opacity: 1;
+      height: auto;
     }
 
     .user-bubble {
@@ -65,15 +95,15 @@
       visibility: visible;
       height: auto;
     }
-
-    .user-bubble img {
+    .user img {
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       margin-bottom: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
+
 
     .user-bubble .name {
       font-weight: 600;
@@ -121,10 +151,9 @@
     }
 
     .main-content {
-     
-      flex: 1;
+      margin-left: 85px;
       padding: 40px;
-      background: linear-gradient(to bottom right, var(--beige-light), var(--beige));
+      flex: 1;
     }
     .planning-week {
       background: #ffffff;
@@ -276,31 +305,26 @@
   </style>
 </head>
 <body>
-<div class="sidebar">
-    <div class="user-bubble">
+  <div class="sidebar">
+    <div class="user">
       <img src="Sofiya.oulhaci.png" alt="Admin">
       <div class="name">Sofiya M.</div>
       <div class="role">Admin</div>
     </div>
     <a href="Ptest22.php" class="nav-link">
-      <img src="bebe.png" alt="Enfants">
-      <span class="nav-text">Enfants</span>
+      <img src="bebe.png" alt="Enfants"><span class="nav-text">Enfants</span>
     </a>
     <a href="PEquipe1.php" class="nav-link">
-      <img src="gens.png" alt="Équipe">
-      <span class="nav-text">Équipe</span>
+      <img src="gens.png" alt="Équipe"><span class="nav-text">Équipe</span>
     </a>
     <a href="PDossierAdmin.php" class="nav-link">
-      <img src="dossier.png" alt="Dossiers">
-      <span class="nav-text">Dossiers</span>
+      <img src="dossier.png" alt="Dossiers"><span class="nav-text">Dossiers</span>
     </a>
     <a href="PmessageAdmin.php" class="nav-link">
-      <img src="message.png" alt="Messages">
-      <span class="nav-text">Messages</span>
+      <img src="message.png" alt="Messages"><span class="nav-text">Messages</span>
     </a>
     <a href="ParametreAdmin.php" class="nav-link">
-      <img src="parametre.png" alt="Paramètres">
-      <span class="nav-text">Paramètres</span>
+      <img src="parametre.png" alt="Paramètres"><span class="nav-text">Paramètres</span>
     </a>
   </div>
 
