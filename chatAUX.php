@@ -77,9 +77,11 @@
     }
 
     .chat-card img {
-      width: 100%;
+      width: 80%;
       border-radius: 12px;
       margin-top: 12px;
+      margin-left: 65px;
+     
     }
 
     .chat-card .sender {
