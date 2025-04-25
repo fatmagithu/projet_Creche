@@ -232,7 +232,10 @@
     <div class="app-icon"><img src="couche.png" alt="Change"></div>
     <div class="icon-label">Change</div>
   </a>
-
+  <a href="PcrecheAUX.php" class="text-decoration-none app-icon-wrapper">
+    <div class="app-icon"><img src="goback.png" alt="Change"></div>
+    <div class="icon-label">Retour</div>
+  </a>
 </div>
 
 <!-- Sons & animation JS -->

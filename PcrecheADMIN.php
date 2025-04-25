@@ -132,6 +132,8 @@
 
     </form>
     <a href="RécuperationMDP.php" class="forgot-password">Mot de passe oublié ?</a>
+    <br>
+    <a href="pcrecheLOGIN.php" class="forgot-password">retour</a>
 
 
     <div class="admin-footer">
