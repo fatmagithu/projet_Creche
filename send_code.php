@@ -34,7 +34,7 @@ $mail->addCustomHeader("X-Mailer", "PHP/PHPMailer");
 
 // ✅ Sujet et contenu de l'email
 $mail->Subject = "Votre code temporaire d'inscription";
-$mail->Body = "Bonjour,\n\nVoici votre code temporaire : $code\n\nCliquez sur ce lien pour vous inscrire : http://localhost/GenerationMDPform.php?code=$code";
+$mail->Body = "Bonjour,\n\nVoici votre code temporaire : $code\n\nCliquez sur ce lien pour vous inscrire : http://localhost/1GenererMdpAdmin/GenerationMDPform.php?code=$code";
 
 // ✅ Debug SMTP pour voir les erreurs détaillées
 $mail->SMTPDebug = 2;
