@@ -188,7 +188,9 @@
 </head>
 <body>
 
-  <button class="back-button" onclick="window.location.href='PAuxDashboard.php'"><i class="bi bi-arrow-left"></i> Retour</button>
+<button class="back-button" onclick="history.back()">
+  <i class="bi bi-arrow-left"></i> Retour
+</button>
 
   <div class="chat-tabs-top">
     <button onclick="window.location.href='chatAUX.php'">Chat Général</button>

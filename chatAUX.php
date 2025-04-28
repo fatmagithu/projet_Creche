@@ -167,6 +167,35 @@
       color: #666;
       margin-top: 6px;
     }
+    .back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: 2px solid var(--brown);
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+  color: var(--brown-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(6px);
+  background-color: rgba(253, 249, 243, 0.85);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.back-button:hover {
+  background-color: var(--brown);
+  color: white;
+  transform: translateY(-2px);
+}
+
   </style>
 </head>
 <!-- ... ENTÊTE ET <head> IDENTIQUES, PAS MODIFIÉS ... -->
@@ -175,9 +204,10 @@
 
   <!-- Bouton Dashboard -->
   <div class="p-4 d-flex justify-content-between align-items-center">
-    <button class="btn-retour" onclick="window.location.href='PAuxDashboard.php'">
-      <i class="bi bi-arrow-left"></i> Retour
-    </button>
+  <button class="back-button" onclick="history.back()">
+  <i class="bi bi-arrow-left"></i> Retour
+</button>
+
   </div>
 
   <!-- Boutons Chat Général / Mes Enfants -->
