@@ -16,7 +16,28 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 50px 20px;
+      padding: 50px 20px 20px 20px;
+      position: relative;
+    }
+
+    .btn-retour {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: white;
+      border: 2px solid #b38760;
+      color: #b38760;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+
+    .btn-retour:hover {
+      background: #b38760;
+      color: white;
     }
 
     h1 {
@@ -105,55 +126,68 @@
 </head>
 <body>
 
+  <!-- Bouton Retour -->
+  <button class="btn-retour" onclick="window.location.href='PAuxDashboard.php'">
+    <i class="bi bi-arrow-left"></i> Retour
+  </button>
+
   <h1>Pointage des Enfants</h1>
 
   <div class="grid">
-  <a href="HeuresArrivéSortie.php" class="child-card arrived text-decoration-none">
-  <span class="status-dot"></span>
-  <img src="moussa13.png" alt="Yanis" class="child-photo">
-  <div class="child-name">Alice</div>
-</a>
+    <a href="HeuresArrivéSortie.php" class="child-card arrived text-decoration-none">
+      <span class="status-dot"></span>
+      <img src="moussa13.png" alt="Yanis" class="child-photo">
+      <div class="child-name">Alice</div>
+    </a>
 
     <div class="child-card">
       <span class="status-dot"></span>
       <img src="moussa14.png" alt="Manel">
       <div class="child-name">Manel</div>
     </div>
+
     <div class="child-card left">
       <span class="status-dot"></span>
       <img src="moussa15.png" alt="Yacine">
       <div class="child-name">Yacine</div>
     </div>
+
     <div class="child-card">
       <span class="status-dot"></span>
       <img src="Sohan5.png" alt="Yoan">
       <div class="child-name">Yoan</div>
     </div>
+
     <div class="child-card arrived">
       <span class="status-dot"></span>
       <img src="Sohan6.png" alt="Yamanda">
       <div class="child-name">Yamanda</div>
     </div>
+
     <div class="child-card">
       <span class="status-dot"></span>
       <img src="Sohan3.png" alt="Ezekiel">
       <div class="child-name">Ezekiel</div>
     </div>
+
     <div class="child-card left">
       <span class="status-dot"></span>
       <img src="Sohan2.png" alt="Gabriel">
       <div class="child-name">Gabriel</div>
     </div>
+
     <div class="child-card">
       <span class="status-dot"></span>
       <img src="Sohan3.png" alt="Mohamed">
       <div class="child-name">Mohamed</div>
     </div>
+
     <div class="child-card">
       <span class="status-dot"></span>
       <img src="Sohan2.png" alt="Ibrahim">
       <div class="child-name">Ibrahim</div>
     </div>
+
     <div class="child-card">
       <span class="status-dot"></span>
       <img src="Sohan6.png" alt="Nela">

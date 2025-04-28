@@ -13,7 +13,6 @@
       --beige-light: #fffdf8;
       --brown: #b38760;
       --brown-dark: #9e6d4b;
-      --highlight: #f4e2d8;
     }
 
     body {
@@ -32,17 +31,7 @@
       z-index: -1;
     }
 
-    .container-chat {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      position: relative;
-    }
-
     .btn-retour {
-      position: absolute;
-      top: -10px;
-      left: 10px;
       background: white;
       border: 2px solid var(--brown-dark);
       color: var(--brown-dark);
@@ -51,6 +40,7 @@
       font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
+      margin-bottom: 20px;
     }
 
     .btn-retour:hover {
@@ -62,7 +52,7 @@
       display: flex;
       justify-content: center;
       margin-bottom: 30px;
-      margin-top: 30px;
+      margin-top: 20px;
     }
 
     .chat-tabs button {
@@ -83,7 +73,23 @@
       color: white;
     }
 
+    .container-chat {
+      display: flex;
+      gap: 30px;
+      padding: 30px 60px;
+    }
+
+    .create-post {
+      width: 300px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+
     .chat-feed {
+      flex: 1;
       display: flex;
       flex-direction: column;
       gap: 20px;
@@ -94,14 +100,13 @@
       padding: 20px;
       border-radius: 20px;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
-      position: relative;
     }
 
     .chat-card img {
-      width: 80%;
+      width: 50%;
       border-radius: 12px;
       margin-top: 12px;
-      margin-left: 65px;
+      margin-left: 150px;
     }
 
     .chat-card .sender {
@@ -147,10 +152,6 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
-    .comment-parent div {
-      font-size: 15px;
-    }
-
     .comment-parent .name {
       font-weight: 600;
       color: var(--brown-dark);
@@ -168,126 +169,107 @@
     }
   </style>
 </head>
+<!-- ... ENTÊTE ET <head> IDENTIQUES, PAS MODIFIÉS ... -->
+
 <body>
 
-<div class="container-chat">
-  <button class="btn-retour" onclick="window.location.href='PAuxDashboard.php'"><i class="bi bi-arrow-left"></i> Retour</button>
+  <!-- Bouton Dashboard -->
+  <div class="p-4 d-flex justify-content-between align-items-center">
+    <button class="btn-retour" onclick="window.location.href='PAuxDashboard.php'">
+      <i class="bi bi-arrow-left"></i> Retour
+    </button>
+  </div>
 
+  <!-- Boutons Chat Général / Mes Enfants -->
   <div class="chat-tabs">
     <button class="active" onclick="window.location.href='chatAUX.php'">Chat Général</button>
     <button onclick="window.location.href='chatAUXlesenfants.php'">Mes Enfants</button>
   </div>
 
-  <div class="chat-feed">
-    <div class="chat-card">
-      <div class="sender">Sonia, Auxiliaire</div>
-      <div class="timestamp">Aujourd’hui à 10h12</div>
-      <div class="message">Moment jeu en bois avec tous les enfants !!</div>
-      <img src="moussa12.png" alt="Photo activité gâteau">
-      <div class="reactions">
-        <button title="J’aime ❤️">❤️</button>
-        <button title="Bravo 👍">👍</button>
-        <button title="Trop mignon 😊">😊</button>
-      </div>
-    </div>
-
-    <div class="chat-card">
-      <div class="sender">Sonia, Auxiliaire</div>
-      <div class="timestamp">Aujourd’hui à 10h12</div>
-      <div class="message">Sortie au parc 🌳 les enfants ont fait un petit jeu de piste. Ils se sont éclatés !</div>
-      <img src="moussa13.png" alt="Photo sortie parc">
-      <div class="reactions">
-        <button title="J’aime ❤️">❤️</button>
-        <button title="Bravo 👍">👍</button>
-        <button title="Trop mignon 😊">😊</button>
-      </div>
-      <div class="comment-parent">
-        <div class="name">Claire (Parent)</div>
-        <div class="text">Ça a l'air trop chouette ! Merci pour le partage ❤️</div>
-        <div class="timestamp">Aujourd’hui à 11h03</div>
-      </div>
-    </div>
-
-    <div class="chat-card">
-      <div class="sender">Sarah, Auxiliaire</div>
-      <div class="timestamp">Aujourd’hui à 14h20</div>
-      <div class="message">Petit rappel pour les parents, n'oubliez pas les tabliers pour l'atelier peinture de demain 🎨</div>
-      <div class="reactions">
-        <button>❤️</button>
-        <button>👍</button>
-        <button>😊</button>
-      </div>
-    </div>
-
-    <div class="chat-card">
-      <div class="sender">Nora, Auxiliaire</div>
-      <div class="timestamp">Hier à 15h45</div>
-      <div class="message">Petit moment de lecture calme avec les plus petits 📚.</div>
-      <img src="moussa14.png" alt="Photo lecture">
-      <div class="reactions">
-        <button>❤️</button>
-        <button>👍</button>
-        <button>😊</button>
-      </div>
+  <!-- Création de post déplacée en haut et centrée -->
+  <div class="d-flex justify-content-center mt-4 mb-5">
+    <div class="create-post">
+      <h5 class="mb-3" style="color: var(--brown-dark); text-align: center;">Créer un post</h5>
+      <form id="postForm">
+        <input type="text" class="form-control mb-2" id="senderName" placeholder="Nom de l'auxiliaire" required>
+        <textarea class="form-control mb-2" id="postMessage" rows="3" placeholder="Message..." required></textarea>
+        <input type="file" class="form-control mb-3" id="postImage" accept="image/*">
+        <button type="submit" class="btn btn-sm w-100" style="background: var(--brown); color: white;">Publier</button>
+      </form>
     </div>
   </div>
 
-  <!-- FORMULAIRE POUR AJOUTER UN POST -->
-  <div class="chat-card" style="margin-top: 40px;">
-    <h5 class="mb-3" style="color: var(--brown-dark);">Créer un nouveau post</h5>
-    <form id="postForm">
-      <div class="mb-3">
-        <input type="text" class="form-control" id="senderName" placeholder="Nom de l'auxiliaire" required>
-      </div>
-      <div class="mb-3">
-        <textarea class="form-control" id="postMessage" rows="3" placeholder="Écrivez le message ici..." required></textarea>
-      </div>
-      <div class="mb-3">
-        <input type="file" class="form-control" id="postImage" accept="image/*">
-      </div>
-      <button type="submit" class="btn btn-primary" style="background: var(--brown); border: none;">Publier</button>
-    </form>
-  </div>
-</div>
-
-<script>
-  document.getElementById('postForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const sender = document.getElementById('senderName').value;
-    const message = document.getElementById('postMessage').value;
-    const imageFile = document.getElementById('postImage').files[0];
-    const now = new Date();
-    const time = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-    const date = now.toLocaleDateString('fr-FR', { weekday: 'long' });
-    const timestamp = `${date.charAt(0).toUpperCase() + date.slice(1)} à ${time}`;
-    const reader = new FileReader();
-
-    reader.onload = function () {
-      const imageTag = imageFile ? `<img src="${reader.result}" alt="Photo activité">` : "";
-      const postHTML = `
-        <div class="chat-card">
-          <div class="sender">${sender}</div>
-          <div class="timestamp">${timestamp}</div>
-          <div class="message">${message}</div>
-          ${imageTag}
-          <div class="reactions">
-            <button title="J’aime ❤️">❤️</button>
-            <button title="Bravo 👍">👍</button>
-            <button title="Trop mignon 😊">😊</button>
-          </div>
+  <!-- Contenu principal avec le fil -->
+  <div class="container-chat">
+    <!-- Zone des messages -->
+    <div class="chat-feed" id="chatFeed">
+      <div class="chat-card">
+        <div class="sender">Sonia, Auxiliaire</div>
+        <div class="timestamp">Aujourd’hui à 10h12</div>
+        <div class="message">Moment jeu en bois avec tous les enfants !!</div>
+        <img src="moussa12.png" alt="Photo activité">
+        <div class="reactions">
+          <button title="J’aime ❤️">❤️</button>
+          <button title="Bravo 👍">👍</button>
+          <button title="Trop mignon 😊">😊</button>
         </div>
-      `;
-      document.querySelector('.chat-feed').insertAdjacentHTML('afterbegin', postHTML);
-      document.getElementById('postForm').reset();
-    };
+      </div>
 
-    if (imageFile) {
-      reader.readAsDataURL(imageFile);
-    } else {
-      reader.onload();
-    }
-  });
-</script>
+      <div class="chat-card">
+        <div class="sender">Sonia, Auxiliaire</div>
+        <div class="timestamp">Aujourd’hui à 10h12</div>
+        <div class="message">Sortie au parc 🌳 les enfants ont fait un petit jeu de piste.</div>
+        <img src="moussa13.png" alt="Photo sortie parc">
+        <div class="reactions">
+          <button title="J’aime ❤️">❤️</button>
+          <button title="Bravo 👍">👍</button>
+          <button title="Trop mignon 😊">😊</button>
+        </div>
+        <div class="comment-parent">
+          <div class="name">Claire (Parent)</div>
+          <div class="text">Ça a l'air trop chouette ! Merci pour le partage ❤️</div>
+          <div class="timestamp">Aujourd’hui à 11h03</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Script pour ajouter un post -->
+  <script>
+    document.getElementById('postForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const sender = document.getElementById('senderName').value;
+      const message = document.getElementById('postMessage').value;
+      const imageFile = document.getElementById('postImage').files[0];
+      const now = new Date();
+      const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      const reader = new FileReader();
+      reader.onload = function () {
+        const imageTag = imageFile ? `<img src="${reader.result}" alt="Photo activité">` : "";
+        const postHTML = `
+          <div class="chat-card">
+            <div class="sender">${sender}</div>
+            <div class="timestamp">${time}</div>
+            <div class="message">${message}</div>
+            ${imageTag}
+            <div class="reactions">
+              <button title="J’aime ❤️">❤️</button>
+              <button title="Bravo 👍">👍</button>
+              <button title="Trop mignon 😊">😊</button>
+            </div>
+          </div>
+        `;
+        document.getElementById('chatFeed').insertAdjacentHTML('afterbegin', postHTML);
+        document.getElementById('postForm').reset();
+      };
+
+      if (imageFile) {
+        reader.readAsDataURL(imageFile);
+      } else {
+        reader.onload();
+      }
+    });
+  </script>
 </body>
 </html>

@@ -185,6 +185,12 @@
     <a href="ParametreAdmin.php" class="text-decoration-none app-icon-wrapper">
       <div class="app-icon"><img src="parametre.png" alt="Paramètres"></div>
       <div class="icon-label">Paramètres</div>
+      </a>
+    
+      <a href="PcrecheADMIN.php" class="text-decoration-none app-icon-wrapper">
+    <div class="app-icon"><img src="goback.png" alt="Change"></div>
+    <div class="icon-label">Retour</div>
+  
     </a>
   </div>
 
