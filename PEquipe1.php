@@ -308,7 +308,7 @@
       }
     }
   </style>
-  <!-----PROGRAMME POUR CHOISIR LES MEMBRES EN FONCTION DES CRECHES LES CRECHE DEBUT-->
+ 
    <script>
     const membres = [
       { nom: "Sophie Martin", role: "Auxiliaire Petite Enfance", ville: "Paris", creche: "Les Calinous", statut: "présent" },
@@ -354,17 +354,6 @@
         afficherMembres(activeCreche, e.target.value.toLowerCase());
       });
 
-      document.querySelector(".add-member").addEventListener("click", () => {
-        const nom = prompt("Nom :");
-        const role = prompt("Poste :");
-        const ville = prompt("Ville :");
-        const creche = prompt("Crèche :");
-        const statut = prompt("Statut (présent, congé, absent) :");
-        if (nom && role && ville && creche && statut) {
-          membres.push({ nom, role, ville, creche, statut });
-          afficherMembres(document.querySelector(".filter-crèche button.active").textContent.trim(), document.querySelector(".search-bar").value.toLowerCase());
-        }
-      });
     });
   </script>
   <!-----PROGRAMME POUR CHOISIR LES MEMBRES EN FONCTION DES CRECHES LES CRECHE FIN-->
@@ -436,7 +425,8 @@
 
     <div class="top-bar">
       <input type="text" class="form-control search-bar" placeholder="Recherche par nom, poste, ville, dispo...">
-      <button class="add-member">+ Ajouter un membre</button>
+      <button class="add-member" onclick="window.location.href='AjouterUnNouvEquipe.php'">+ Ajouter un membre</button>
+
     </div>
 
     <div class="filter-crèche">

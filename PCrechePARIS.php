@@ -372,98 +372,103 @@
       <h3>Total présent : <span class="badge">20 enfants</span></h3>
     </div>
 
-    <div>
+    <div id="enfantList" style="margin-top: 20px;"></div>
+
+<!-- Petit spinner de chargement -->
+<div id="spinner" style="text-align: center; margin-top: 40px;">
+  <div class="spinner-border text-warning" role="status" style="width: 3rem; height: 3rem;">
+    <span class="visually-hidden">Chargement...</span>
+  </div>
+</div>
+
+<script>
+const enfants = <?php
+  try {
+    $pdo = new PDO('mysql:host=localhost;dbname=groupe_bulles_deveil;charset=utf8', 'root', '');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // On filtre uniquement la structure "Mantes à l'Ô - Mantes-la-Jolie" + statut Inscrit
+    $stmt = $pdo->prepare("SELECT id, prenom_enfant, date_naissance_enfant FROM inscription_enfant WHERE statut = 'Inscrit' AND structure LIKE :structure");
+    $structure = "%Mantes à l'Ô - Mantes-la-Jolie%";
+    $stmt->bindParam(':structure', $structure, PDO::PARAM_STR);
+    $stmt->execute();
+
+    $enfants = [];
+
+    function calculer_age_precis($date_naissance) {
+      $date_naissance = new DateTime($date_naissance);
+      $aujourdhui = new DateTime();
+      $intervalle = $aujourdhui->diff($date_naissance);
+
+      $ans = $intervalle->y;
+      $mois = $intervalle->m;
+      $total_mois = ($ans * 12) + $mois;
+
+      if ($ans === 0 && $mois === 0) {
+        $affichage = "moins d'1 mois";
+      } elseif ($ans === 0) {
+        $affichage = "$mois mois";
+      } elseif ($mois === 0) {
+        $affichage = "$ans an" . ($ans > 1 ? "s" : "");
+      } else {
+        $affichage = "$ans an" . ($ans > 1 ? "s" : "") . " $mois mois";
+      }
+
+      return [$affichage, $total_mois];
+    }
+
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+      list($age_texte, $age_mois) = calculer_age_precis($row['date_naissance_enfant']);
+
+      // On prépare l'objet enfant
+      $enfants[] = [
+          'id' => $row['id'],
+          'nom' => $row['prenom_enfant'],
+          'age' => $age_texte,
+          'age_mois' => $age_mois
+      ];
+    }
+
+    echo json_encode($enfants, JSON_UNESCAPED_UNICODE);
+  } catch (PDOException $e) {
+    echo "[]"; // En cas d'erreur : vide
+  }
+?>;
+
+function renderEnfants(list) {
+  const container = document.getElementById('enfantList');
+  const spinner = document.getElementById('spinner');
+  container.innerHTML = '';
+  spinner.style.display = 'none'; // Cache le spinner
+
+  if (list.length === 0) {
+    container.innerHTML = "<p style='text-align:center; font-weight:bold; color:#9e6d4b;'>Aucun enfant trouvé pour cette crèche.</p>";
+    return;
+  }
+
+  list.forEach(e => {
+    container.innerHTML += `
       <div class="enfant-card">
         <div class="enfant-info">
           <img src="moussa8.png" alt="photo enfant" class="enfant-photo">
           <div>
-            <div class="enfant-name">Marie</div>
-            <div class="enfant-age">3 ans</div>
-            <div class="contrat-heure">160h · 175h <span class="alert-depassement"><i class="bi bi-exclamation-triangle-fill"></i> Dépassement !</span></div>
+            <div class="enfant-name">${e.nom}</div>
+            <div class="enfant-age">${e.age}</div>
+            <div class="contrat-heure">-</div>
           </div>
         </div>
-        <button class="btn-planning" onclick="window.location.href='PcrechePageENFANT.php'">Page de l'enfant</button>
+        <button class="btn-planning" onclick="window.location.href='PcrechePageENFANT.php?id=${e.id}'">Page de l'enfant</button>
       </div>
+    `;
+  });
+}
 
-      <div class="enfant-card">
-        <div class="enfant-info">
-          <img src="moussa13.png" alt="photo enfant" class="enfant-photo">
-          <div>
-            <div class="enfant-name">Axelle</div>
-            <div class="enfant-age">2 ans</div>
-            <div class="contrat-heure">140h · 110h</div>
-          </div>
-        </div>
-        <button class="btn-planning">Page de l'enfant</button>
-      </div>
+// On attend un petit peu pour simuler un vrai chargement
+setTimeout(() => {
+  renderEnfants(enfants);
+}, 800); // 0,8s
+</script>
 
-      <div class="enfant-card">
-        <div class="enfant-info">
-          <img src="moussa14.png" alt="photo enfant" class="enfant-photo">
-          <div>
-            <div class="enfant-name">Thomas</div>
-            <div class="enfant-age">1 an</div>
-            <div class="contrat-heure">50h · 53h <span class="alert-depassement"><i class="bi bi-exclamation-triangle-fill"></i> +3h</span></div>
-          </div>
-        </div>
-        <button class="btn-planning">Page de l'enfant</button>
-      </div>
-      <div class="enfant-card">
-        <div class="enfant-info">
-          <img src="Sohan4.jpg" alt="photo enfant" class="enfant-photo">
-          <div>
-            <div class="enfant-name">Mohamed</div>
-            <div class="enfant-age">2 ans</div>
-            <div class="contrat-heure">30h · 120h </div>
-          </div>
-        </div>
-        <button class="btn-planning">Page de l'enfant</button>
-      </div>     <div class="enfant-card">
-        <div class="enfant-info">
-          <img src="Sohan3.png" alt="photo enfant" class="enfant-photo">
-          <div>
-            <div class="enfant-name">Sohan</div>
-            <div class="enfant-age">1 an</div>
-            <div class="contrat-heure">50h · 153h </i> </span></div>
-          </div>
-        </div>
-        <button class="btn-planning">Page de l'enfant</button>
-      </div>     <div class="enfant-card">
-        <div class="enfant-info">
-          <img src="Sohan5.png" alt="photo enfant" class="enfant-photo">
-          <div>
-            <div class="enfant-name">Jonas</div>
-            <div class="enfant-age">2 ans</div>
-            <div class="contrat-heure">150h · 153h <span class="alert-depassement"><i class="bi bi-exclamation-triangle-fill"></i> +3h</span></div>
-          </div>
-        </div>
-        <button class="btn-planning">Page de l'enfant</button>
-      </div>     <div class="enfant-card">
-        <div class="enfant-info">
-          <img src="Sohan2.png" alt="photo enfant" class="enfant-photo">
-          <div>
-            <div class="enfant-name">Manel</div>
-            <div class="enfant-age">3 ans</div>
-            <div class="contrat-heure">150h · 153h </i></span></div>
-          </div>
-        </div>
-        <button class="btn-planning">Page de l'enfant</button>
-      </div>     <div class="enfant-card">
-        <div class="enfant-info">
-          <img src="Sohan6.png" alt="photo enfant" class="enfant-photo">
-          <div>
-            <div class="enfant-name">Yanis</div>
-            <div class="enfant-age">3 ans</div>
-            <div class="contrat-heure">150h · 153h <span class="alert-depassement"><i class="bi bi-exclamation-triangle-fill"></i></span></div>
-          </div>
-        </div>
-        <button class="btn-planning">Page de l'enfant</button>
-      </div>
-
-
-
-
-    </div>
   </div>
 </body>
 </html>

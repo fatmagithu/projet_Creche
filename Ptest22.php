@@ -315,7 +315,7 @@ $conn->close();
         <h2><?= $nbAttente; ?></h2>
         <p>Demandes en attente</p>
       </div>
-      <div class="stat-card-btn" onclick="window.location.href='creches-actives.php'">
+      <div class="stat-card-btn" onclick="window.location.href='AjouterNvlCreche.php'">
         <h2><?= $nbCreches; ?></h2>
         <p>Crèches actives</p>
       </div>
