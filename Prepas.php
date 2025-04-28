@@ -131,10 +131,10 @@
     <i class="bi bi-arrow-left"></i> Retour
   </button>
 
-  <h1>Pointage des Enfants</h1>
+  <h1>Repas des enfants</h1>
 
   <div class="grid">
-    <a href="HeuresArrivéSortie.php" class="child-card arrived text-decoration-none">
+    <a href="ficheRepasEnf.php" class="child-card arrived text-decoration-none">
       <span class="status-dot"></span>
       <img src="moussa13.png" alt="Yanis" class="child-photo">
       <div class="child-name">Alice</div>

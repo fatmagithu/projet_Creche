@@ -198,7 +198,7 @@
     <div class="app-icon"><img src="un-message.png" alt="Paramètres"></div>
     <div class="icon-label">chat</div>
   </a>
-  <a href="Pactivite.php" class="text-decoration-none app-icon-wrapper">
+  <a href="ActivitéAUX.php" class="text-decoration-none app-icon-wrapper">
     <div class="app-icon"><img src="palette-de-peinture (1).png" alt="Activité"></div>
     <div class="icon-label">Activité</div>
   </a>
@@ -208,7 +208,7 @@
     <div class="icon-label">Repas</div>
   </a>
 
-  <a href="Pphoto.php" class="text-decoration-none app-icon-wrapper">
+  <a href="PageACPhoto.php" class="text-decoration-none app-icon-wrapper">
     <div class="app-icon"><img src="image11.png" alt="Photos"></div>
     <div class="icon-label">Photos</div>
   </a>

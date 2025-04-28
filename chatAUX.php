@@ -176,7 +176,7 @@
   <!-- Bouton Dashboard -->
   <div class="p-4 d-flex justify-content-between align-items-center">
     <button class="btn-retour" onclick="window.location.href='PAuxDashboard.php'">
-      <i class="bi bi-arrow-left"></i> Dashboard
+      <i class="bi bi-arrow-left"></i> Retour
     </button>
   </div>
 
