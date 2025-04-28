@@ -121,7 +121,7 @@
 </head>
 <body>
 
-  <a href="PAuxDashboard.php" class="btn-retour"><i class="bi bi-arrow-left"></i> Retour</a>
+  <a href="Pbobo.php" class="btn-retour"><i class="bi bi-arrow-left"></i> Retour</a>
 
   <h1>Rapport Bobos</h1>
 

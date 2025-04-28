@@ -15,9 +15,29 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 30px 20px;
+      padding: 60px 20px 30px; /* espace pour le bouton retour */
+      position: relative;
     }
 
+    .btn-retour {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: white;
+      border: 2px solid #b38760;
+      color: #b38760;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+
+    .btn-retour:hover {
+      background: #b38760;
+      color: white;
+    }
     .container-pointage {
       background: #ffffff;
       border-radius: 32px;
@@ -100,7 +120,13 @@
     }
   </style>
 </head>
+
 <body>
+
+  <button class="btn-retour" onclick="window.location.href='pointageAUX.php'">
+    <i class="bi bi-arrow-left"></i> Retour
+  </button>
+
   <div class="container-pointage">
     <img src="moussa13.png" alt="Yanis" class="child-photo">
     <h1>Pointage</h1>
@@ -115,8 +141,7 @@
       <button class="btn btn-valider" onclick="validerCommentaire()">Valider</button>
     </div>
   </div>
-<!---- ENREGISTREMENT DE L HEURE QUAND ON CLIQUE DIRECT ETTT +++++++ 
-CHAT GPT A COMMENCER A CODER UN PROGRAMME DE COMMENTAIRE BASE SQL A POURSUIVRE____  -->
+
   <script>
     function enregistrer(type) {
       const heure = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -133,5 +158,6 @@ CHAT GPT A COMMENCER A CODER UN PROGRAMME DE COMMENTAIRE BASE SQL A POURSUIVRE__
       }
     }
   </script>
+
 </body>
 </html>

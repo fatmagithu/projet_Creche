@@ -122,7 +122,7 @@
 </head>
 <body>
 
-  <a href="PAuxDashboard.php" class="btn-retour"><i class="bi bi-arrow-left"></i> Retour</a>
+  <a href="PageACPhoto.php" class="btn-retour"><i class="bi bi-arrow-left"></i> Retour</a>
 
   <h1>Galerie Photos d'ALICE</h1>
 
