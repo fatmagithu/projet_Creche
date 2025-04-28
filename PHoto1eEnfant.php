@@ -5,10 +5,10 @@
   <title>Galerie Photos · BabyFarm</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <style>
-    body {
-      margin: 0;
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<style>
+  body {
+    margin: 0;
       padding: 0;
       font-family: 'Inter', sans-serif;
       background: linear-gradient(145deg, #f9f4ef, #f1e5d6);
