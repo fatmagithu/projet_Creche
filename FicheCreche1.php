@@ -159,10 +159,67 @@
   </div>
 
   <div class="info-section">
-    <h4>📁 Documents de la Crèche</h4>
-    <input type="file" id="fileInput" multiple class="form-control mb-3">
-    <div id="uploadedFiles" class="uploaded-files"></div>
-  </div>
+  <h4>📁 Documents à importer</h4>
+
+  <form id="uploadForm" method="POST" action="uploadDocument.php" enctype="multipart/form-data">
+
+    <!-- Type cible -->
+    <div class="mb-3">
+      <label for="type_cible" class="form-label">Type de document lié à :</label>
+      <select name="type_cible" id="type_cible" class="form-select" required onchange="updateCibleList()">
+        <option value="">-- Sélectionner --</option>
+        <option value="creche">Crèche</option>
+        <option value="enfant">Enfant</option>
+        <option value="equipe">Équipe</option>
+      </select>
+    </div>
+
+    <!-- Liste dynamique de la cible -->
+    <div class="mb-3" id="select-cible-container">
+      <!-- Rempli automatiquement par JS -->
+    </div>
+
+    <!-- Type de document -->
+    <div class="mb-3">
+      <label for="type_document" class="form-label">Type de document :</label>
+      <select name="type_document" id="type_document" class="form-select" required>
+        <option value="">-- Sélectionner --</option>
+        <option value="contrat">Contrat</option>
+        <option value="diplome">Diplôme</option>
+        <option value="certificat_medical">Certificat médical</option>
+        <option value="assurance">Assurance</option>
+        <option value="identite">Pièce d'identité</option>
+        <option value="vaccins">Vaccins</option>
+        <option value="autre">Autre</option>
+      </select>
+    </div>
+
+    <!-- Date d'expiration -->
+    <div class="mb-3">
+      <label for="date_expiration" class="form-label">Date d'expiration (si applicable) :</label>
+      <input type="date" id="date_expiration" name="date_expiration" class="form-control">
+    </div>
+
+    <!-- Commentaire -->
+    <div class="mb-3">
+      <label for="commentaires" class="form-label">Commentaires :</label>
+      <textarea id="commentaires" name="commentaires" class="form-control" rows="3" placeholder="Ajoutez un commentaire si nécessaire..."></textarea>
+    </div>
+
+    <!-- Sélection fichiers -->
+    <div class="mb-3">
+      <label for="fileInput" class="form-label">Sélectionner les fichiers :</label>
+      <input type="file" id="fileInput" name="document[]" multiple class="form-control" required>
+    </div>
+
+    <!-- Bouton envoyer -->
+    <button type="submit" class="btn btn-primary">Envoyer les fichiers</button>
+
+  </form>
+
+  <div id="uploadedFiles" class="uploaded-files"></div>
+</div>
+
 
   <div class="info-section">
     <h4>⚠️ Alertes Importantes</h4>
@@ -231,6 +288,70 @@ closeModal.onclick = () => {
 window.onclick = (event) => {
   if (event.target == modal) {
     modal.style.display = 'none';
+  }
+}
+</script>
+<script>
+// Simulation des données récupérées en base
+const creches = [
+  { id: 1, nom: "Les P'tits Soleils" },
+  { id: 2, nom: "Arc-en-Ciel" },
+  { id: 3, nom: "Petits Pas" }
+];
+
+const enfants = [
+  { id: 101, nom: "Paul Martin" },
+  { id: 102, nom: "Emma Durand" },
+  { id: 103, nom: "Lucas Lefevre" }
+];
+
+const equipe = [
+  { id: 201, nom: "Sophie Bernard" },
+  { id: 202, nom: "Karim Messaoud" },
+  { id: 203, nom: "Julie Petit" }
+];
+
+// Fonction qui actualise la liste cible
+function updateCibleList() {
+  const typeCible = document.getElementById('type_cible').value;
+  const container = document.getElementById('select-cible-container');
+
+  let options = '';
+  if (typeCible === 'creche') {
+    creches.forEach(item => {
+      options += `<option value="${item.id}">${item.nom}</option>`;
+    });
+    container.innerHTML = `
+      <label for="id_cible" class="form-label">Sélectionner la crèche :</label>
+      <select name="id_cible" id="id_cible" class="form-select" required>
+        <option value="">-- Sélectionner --</option>
+        ${options}
+      </select>
+    `;
+  } else if (typeCible === 'enfant') {
+    enfants.forEach(item => {
+      options += `<option value="${item.id}">${item.nom}</option>`;
+    });
+    container.innerHTML = `
+      <label for="id_cible" class="form-label">Sélectionner l'enfant :</label>
+      <select name="id_cible" id="id_cible" class="form-select" required>
+        <option value="">-- Sélectionner --</option>
+        ${options}
+      </select>
+    `;
+  } else if (typeCible === 'equipe') {
+    equipe.forEach(item => {
+      options += `<option value="${item.id}">${item.nom}</option>`;
+    });
+    container.innerHTML = `
+      <label for="id_cible" class="form-label">Sélectionner un membre de l'équipe :</label>
+      <select name="id_cible" id="id_cible" class="form-select" required>
+        <option value="">-- Sélectionner --</option>
+        ${options}
+      </select>
+    `;
+  } else {
+    container.innerHTML = ''; // Si aucun type sélectionné
   }
 }
 </script>
