@@ -93,6 +93,7 @@
       color: #4a4a4a;
       text-align: center;
       font-family: 'Playwrite GB S', sans-serif;
+      margin-bottom: 10px;
     }
 
     .status-dot {
@@ -116,26 +117,46 @@
 
     .counter {
       margin-top: 10px;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .counter img {
+      width: 50px;
+      height: 50px;
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    }
+
+    .counter.burst img {
+      animation: burstIcon 0.6s forwards;
+    }
+
+    .counter-number {
+      position: absolute;
+      top: -8px;
+      right: -8px;
       background: #b38760;
       color: white;
       font-weight: bold;
-      padding: 8px 20px;
-      border-radius: 30px;
-      font-size: 18px;
-      transition: transform 0.2s ease;
-      display: inline-block;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
-    .counter.burst {
-      animation: burst 0.6s forwards;
-    }
-
-    @keyframes burst {
-      0% { transform: scale(1); background: #b38760; }
-      30% { transform: scale(1.5); background: #ffcc80; }
-      60% { transform: scale(0.8); background: #b38760; }
-      100% { transform: scale(1); background: #b38760; }
+    @keyframes burstIcon {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.5); }
+      60% { transform: scale(0.8); }
+      100% { transform: scale(1); }
     }
 
     @media (max-width: 600px) {
@@ -146,9 +167,14 @@
         width: 64px;
         height: 64px;
       }
-      .counter {
-        font-size: 16px;
-        padding: 6px 18px;
+      .counter img {
+        width: 40px;
+        height: 40px;
+      }
+      .counter-number {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
       }
     }
   </style>
@@ -164,83 +190,113 @@
   <h1>Rapport des changes</h1>
 
   <div class="grid">
-    <div class="child-card" onclick="increment(this)">
+    <div class="child-card">
       <span class="status-dot"></span>
       <img src="moussa13.png" alt="Alice">
       <div class="child-name">Alice</div>
-      <div class="counter">0</div>
+      <div class="counter" onclick="increment(this)">
+        <img src="couche.png" alt="Couche">
+        <div class="counter-number">0</div>
+      </div>
     </div>
 
-    <div class="child-card" onclick="increment(this)">
+    <div class="child-card">
       <span class="status-dot"></span>
       <img src="moussa14.png" alt="Manel">
       <div class="child-name">Manel</div>
-      <div class="counter">0</div>
+      <div class="counter" onclick="increment(this)">
+        <img src="couche.png" alt="Couche">
+        <div class="counter-number">0</div>
+      </div>
     </div>
 
-    <div class="child-card" onclick="increment(this)">
+    <div class="child-card">
       <span class="status-dot"></span>
       <img src="moussa15.png" alt="Yacine">
       <div class="child-name">Yacine</div>
-      <div class="counter">0</div>
+      <div class="counter" onclick="increment(this)">
+        <img src="couche.png" alt="Couche">
+        <div class="counter-number">0</div>
+      </div>
     </div>
 
-    <div class="child-card" onclick="increment(this)">
+    <div class="child-card">
       <span class="status-dot"></span>
       <img src="Sohan5.png" alt="Yoan">
       <div class="child-name">Yoan</div>
-      <div class="counter">0</div>
+      <div class="counter" onclick="increment(this)">
+        <img src="couche.png" alt="Couche">
+        <div class="counter-number">0</div>
+      </div>
     </div>
 
-    <div class="child-card" onclick="increment(this)">
+    <div class="child-card">
       <span class="status-dot"></span>
       <img src="Sohan6.png" alt="Yamanda">
       <div class="child-name">Yamanda</div>
-      <div class="counter">0</div>
+      <div class="counter" onclick="increment(this)">
+        <img src="couche.png" alt="Couche">
+        <div class="counter-number">0</div>
+      </div>
     </div>
 
-    <div class="child-card" onclick="increment(this)">
+    <div class="child-card">
       <span class="status-dot"></span>
       <img src="Sohan3.png" alt="Ezekiel">
       <div class="child-name">Ezekiel</div>
-      <div class="counter">0</div>
+      <div class="counter" onclick="increment(this)">
+        <img src="couche.png" alt="Couche">
+        <div class="counter-number">0</div>
+      </div>
     </div>
 
-    <div class="child-card" onclick="increment(this)">
+    <div class="child-card">
       <span class="status-dot"></span>
       <img src="Sohan2.png" alt="Gabriel">
       <div class="child-name">Gabriel</div>
-      <div class="counter">0</div>
+      <div class="counter" onclick="increment(this)">
+        <img src="couche.png" alt="Couche">
+        <div class="counter-number">0</div>
+      </div>
     </div>
 
-    <div class="child-card" onclick="increment(this)">
+    <div class="child-card">
       <span class="status-dot"></span>
       <img src="Sohan3.png" alt="Mohamed">
       <div class="child-name">Mohamed</div>
-      <div class="counter">0</div>
+      <div class="counter" onclick="increment(this)">
+        <img src="couche.png" alt="Couche">
+        <div class="counter-number">0</div>
+      </div>
     </div>
 
-    <div class="child-card" onclick="increment(this)">
+    <div class="child-card">
       <span class="status-dot"></span>
       <img src="Sohan2.png" alt="Ibrahim">
       <div class="child-name">Ibrahim</div>
-      <div class="counter">0</div>
+      <div class="counter" onclick="increment(this)">
+        <img src="couche.png" alt="Couche">
+        <div class="counter-number">0</div>
+      </div>
     </div>
 
-    <div class="child-card" onclick="increment(this)">
+    <div class="child-card">
       <span class="status-dot"></span>
       <img src="Sohan6.png" alt="Nela">
       <div class="child-name">Nela</div>
-      <div class="counter">0</div>
+      <div class="counter" onclick="increment(this)">
+        <img src="couche.png" alt="Couche">
+        <div class="counter-number">0</div>
+      </div>
     </div>
   </div>
 
   <script>
-    function increment(card) {
-      const counter = card.querySelector('.counter');
-      counter.textContent = parseInt(counter.textContent) + 1;
-      counter.classList.add('burst');
-      setTimeout(() => counter.classList.remove('burst'), 600);
+    function increment(counterElement) {
+      const number = counterElement.querySelector('.counter-number');
+      number.textContent = parseInt(number.textContent) + 1;
+      counterElement.classList.add('burst');
+      setTimeout(() => counterElement.classList.remove('burst'), 600);
     }
   </script>
 
