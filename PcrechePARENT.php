@@ -127,7 +127,7 @@
     <p>Accédez à votre espace sécurisé</p>
 
     <form action="" method="POST">
-      <input type="text" name="nom" placeholder="Nom d'utilisateur" class="form-control" required />
+      <input type="text" name="nom" placeholder="Mail" class="form-control" required />
       <input type="password" name="mot_de_passe" placeholder="Mot de passe" class="form-control" required />
       <button type="submit" class="btn btn-login">Connexion</button>
       <button type="button" class="btn btn-login" onclick="window.location.href='Pcreche22AcceuilParent.php'">autre (test)</button>
@@ -135,6 +135,7 @@
     </form>
 
     <a href="RécuperationMDP.php" class="forgot-password">Mot de passe oublié ?</a>
+    <br><a href="pcrecheLOGIN.php" class="forgot-password">retour</a>
 
     <div class="admin-footer">
       Nounou — Une interface douce pour une gestion pro 🌿
