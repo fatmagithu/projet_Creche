@@ -13,7 +13,7 @@ return [
     'db' => [
         'servername' => "localhost",
         'username' => "root",
-        'password' => "", // 🔥 Assurez-vous que le mot de passe MySQL est correct !
+        'password' => "root", // 🔥 Assurez-vous que le mot de passe MySQL est correct !
         'dbname' => "admin_db",
         'charset' => "utf8mb4"
     ],

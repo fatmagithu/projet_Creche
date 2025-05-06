@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -42,13 +41,14 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.06);
       position: sticky;
       top: 0;
-      z-index: 999;
+      z-index: 1000;
     }
 
-    .navbar h4 {
+    .navbar a {
       font-family: 'Playwrite GB S', sans-serif;
-      color: var(--brown-dark);
-      margin: 0;
+      color: var(--brown-dark) !important;
+      font-size: 20px;
+      text-decoration: none;
     }
 
     .tab-bar {
@@ -87,6 +87,7 @@
       position: relative;
       margin-bottom: 40px;
     }
+
 
     @keyframes slideUp {
       from { transform: translateY(20px); opacity: 0; }
@@ -131,19 +132,19 @@
     }
 
     .reaction-btn {
-  background: none;
-  border: none;
-  font-size: 16px; /* réduit depuis 20px */
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
 
-.reaction-btn:hover {
-  transform: scale(1.1); /* réduit depuis 1.2 */
-}
+    .reaction-btn:hover {
+      transform: scale(1.1);
+    }
 
     .btn-comment {
       position: absolute;
@@ -185,116 +186,168 @@
       border-radius: 10px;
       font-size: 14px;
     }
+
+    #splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(135deg, #fcf8f4, #fcf8f4);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s ease;
+    }
+
+    #splash img {
+      width: 180px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.9; }
+    }
   </style>
 </head>
 <body>
-  <div class="navbar">
-    <button class="btn btn-outline-secondary" onclick="history.back()"><i class="bi bi-arrow-left"></i></button>
-    <h4>Fil Général</h4>
-    <i class="bi bi-bell"></i>
-  </div>
 
-  <div class="chat-feed" id="chatFeed">
-    <div class="chat-card">
-      <div class="sender">L'équipe Nounou</div>
-      <div class="timestamp">Aujourd'hui à 9h00</div>
-      <div class="message">Bienvenue sur l'application Nounou 🌼 ! Ici, vous retrouverez toutes les infos, activités et moments clés de la journée de votre enfant. ❤️</div>
-      <div class="reactions">
-        <button class="reaction-btn" onclick="incrementLike(this)">❤️ <span>0</span></button>
-        <button class="reaction-btn" onclick="incrementLike(this)">👍 <span>0</span></button>
-        <button class="reaction-btn" onclick="incrementLike(this)">😊 <span>0</span></button>
-      </div>
-      <div class="views">👁️ Vu par 4 parents</div>
-      <button class="btn-comment" onclick="openPopup(this)">+</button>
-      <div class="comment-section"></div>
-    </div>
+<!-- Splash -->
+<div id="splash">
+  <img src="NOUNOU (7).png" alt="Chargement">
+</div>
 
-    <div class="chat-card">
-      <div class="sender">Sonia, Auxiliaire</div>
-      <div class="timestamp">Aujourd'hui à 10h15</div>
-      <div class="message">Petite séance lecture ce matin 📚, les enfants ont adoré les histoires de Tchoupi et Loup !</div>
-      <img src="Bannière YouTube de Nomade Numérique Rouge Foncé Blanc et Noir.png" alt="Photo activité lecture">
-      <div class="reactions">
-        <button class="reaction-btn" onclick="incrementLike(this)">❤️ <span>0</span></button>
-        <button class="reaction-btn" onclick="incrementLike(this)">👍 <span>0</span></button>
-        <button class="reaction-btn" onclick="incrementLike(this)">😊 <span>0</span></button>
-      </div>
-      <div class="views">👁️ Vu par 7 parents</div>
-      <button class="btn-comment" onclick="openPopup(this)">+</button>
-      <div class="comment-section"></div>
-    </div>
+<!-- Barre de navigation -->
+<div class="navbar">
+  <a href="PcrechePARENT.php" class="btn btn-outline-secondary"><i class="bi bi-arrow-left"></i></a>
+  <div>
+    <a href="Pcreche22AcceuilParent.php" class="fw-bold text-decoration-none text-dark me-3">Fil Général</a>
+    <a href="FilActuParent.php" class="fw-bold text-decoration-none text-dark">Fil Personnel</a>
   </div>
+  <i class="bi bi-bell"></i>
+</div>
 
-  <div class="popup" id="popup">
-    <input type="text" id="commentInput" class="form-control mb-2" placeholder="Votre commentaire">
-    <button class="btn btn-primary w-100" onclick="submitComment()">Envoyer</button>
-  </div>
-
-  <div class="tab-bar">
-    <i class="bi bi-house-door"></i>
-    <i class="bi bi-search"></i>
-    <i class="bi bi-plus-circle" onclick="scrollToTop()"></i>
-    <i class="bi bi-chat"></i>
-    <i class="bi bi-person"></i>
-  </div>
-  <div class="chat-feed" id="chatFeed">
-    <div class="chat-card">
-      <div class="sender">L'équipe Nounou</div>
-      <div class="timestamp">Aujourd'hui à 9h00</div>
-      <div class="message">Bienvenue sur l'application Nounou 🌼 ! Ici, vous retrouverez toutes les infos, activités et moments clés de la journée de votre enfant. ❤️</div>
-      <div class="reactions">
+<!-- Fil d'actualité -->
+<div class="chat-feed" id="chatFeed">
+  <!-- Poste 1 -->
+  <div class="chat-card">
+    <div class="sender">L'équipe Nounou</div>
+    <div class="timestamp">Aujourd'hui à 9h00</div>
+    <div class="message">Bienvenue sur l'application Nounou 🌼 ! Ici, vous retrouverez toutes les infos, activités et moments clés de la journée de votre enfant. ❤️</div>
+    <div class="reactions">
       <button class="reaction-btn" onclick="incrementLike(this)">❤️ <span>0</span></button>
-        <button class="reaction-btn" onclick="incrementLike(this)">👍 <span>0</span></button>
-        <button class="reaction-btn" onclick="incrementLike(this)">😊 <span>0</span></button>
-      </div>
-      <button class="btn-comment" onclick="openPopup(this)">+</button>
-      <div class="comment-section"></div>
+      <button class="reaction-btn" onclick="incrementLike(this)">👍 <span>0</span></button>
+      <button class="reaction-btn" onclick="incrementLike(this)">😊 <span>0</span></button>
     </div>
-    <div class="chat-card">
-      <div class="sender">Sonia, Auxiliaire</div>
-      <div class="timestamp">Aujourd'hui à 10h15</div>
-      <div class="message">Les enfants jouent en interieur pendant le temps calme</div>
-      <img src="moussa6.png" alt="Photo activité lecture">
-      <div class="reactions">
-      <button class="reaction-btn" onclick="incrementLike(this)">❤️ <span>0</span></button>
-        <button class="reaction-btn" onclick="incrementLike(this)">👍 <span>0</span></button>
-        <button class="reaction-btn" onclick="incrementLike(this)">😊 <span>0</span></button>
-      </div>
-      <button class="btn-comment" onclick="openPopup(this)">+</button>
-      <div class="comment-section"></div>
-    </div>
+    <div class="views">👁️ Vu par 4 parents</div>
+    <button class="btn-comment" onclick="openPopup(this)">+</button>
+    <div class="comment-section"></div>
   </div>
 
-  <script>
-    let currentCard = null;
+  <!-- Poste 2 -->
+  <div class="chat-card">
+    <div class="sender">Sonia, Auxiliaire</div>
+    <div class="timestamp">Aujourd'hui à 10h15</div>
+    <div class="message">Petite séance lecture ce matin 📚, les enfants ont adoré les histoires de Tchoupi et Loup !</div>
+    <img src="Bannière YouTube de Nomade Numérique Rouge Foncé Blanc et Noir.png" alt="Lecture Tchoupi" />
+    <div class="reactions">
+      <button class="reaction-btn" onclick="incrementLike(this)">❤️ <span>0</span></button>
+      <button class="reaction-btn" onclick="incrementLike(this)">👍 <span>0</span></button>
+      <button class="reaction-btn" onclick="incrementLike(this)">😊 <span>0</span></button>
+    </div>
+    <div class="views">👁️ Vu par 7 parents</div>
+    <button class="btn-comment" onclick="openPopup(this)">+</button>
+    <div class="comment-section"></div>
+  </div>
 
-    function openPopup(button) {
-      currentCard = button.closest('.chat-card').querySelector('.comment-section');
-      document.getElementById('popup').style.display = 'block';
-      document.getElementById('commentInput').focus();
-    }
+  <!-- Poste 3 -->
+  <div class="chat-card">
+    <div class="sender">L'équipe Nounou</div>
+    <div class="timestamp">Aujourd'hui à 9h00</div>
+    <div class="message">Alice a fait un très beau dessin aujourd’hui 🎨. Elle a utilisé plein de couleurs !</div>
+    <div class="reactions">
+      <button class="reaction-btn" onclick="incrementLike(this)">❤️ <span>0</span></button>
+      <button class="reaction-btn" onclick="incrementLike(this)">👍 <span>0</span></button>
+      <button class="reaction-btn" onclick="incrementLike(this)">😊 <span>0</span></button>
+    </div>
+    <button class="btn-comment" onclick="openPopup(this)">+</button>
+    <div class="comment-section"></div>
+  </div>
 
-    function submitComment() {
-      const input = document.getElementById('commentInput');
-      const text = input.value.trim();
-      if (text && currentCard) {
-        const comment = document.createElement('div');
-        comment.className = 'comment';
-        comment.textContent = 'Vous : ' + text;
-        currentCard.appendChild(comment);
-        input.value = '';
-        document.getElementById('popup').style.display = 'none';
-      }
-    }
+  <!-- Poste 4 -->
+  <div class="chat-card">
+    <div class="sender">Sonia, Auxiliaire</div>
+    <div class="timestamp">Aujourd'hui à 10h15</div>
+    <div class="message">Les enfants jouent en intérieur pendant le temps calme 🧸</div>
+    <img src="moussa6.png" alt="Jeu calme">
+    <div class="reactions">
+      <button class="reaction-btn" onclick="incrementLike(this)">❤️ <span>0</span></button>
+      <button class="reaction-btn" onclick="incrementLike(this)">👍 <span>0</span></button>
+      <button class="reaction-btn" onclick="incrementLike(this)">😊 <span>0</span></button>
+    </div>
+    <button class="btn-comment" onclick="openPopup(this)">+</button>
+    <div class="comment-section"></div>
+  </div>
+</div>
 
-    function incrementLike(btn) {
-      const span = btn.querySelector('span');
-      span.textContent = parseInt(span.textContent) + 1;
-    }
+<!-- Popup commentaire -->
+<div class="popup" id="popup">
+  <input type="text" id="commentInput" class="form-control mb-2" placeholder="Votre commentaire">
+  <button class="btn btn-primary w-100" onclick="submitComment()">Envoyer</button>
+</div>
 
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+<!-- Barre de navigation basse -->
+<div class="tab-bar">
+  <a href="Pcreche22AcceuilParent.php"><i class="bi bi-house-door"></i></a>
+  <i class="bi bi-plus-circle" onclick="scrollToTop()"></i>
+  <a href="ParentMessageApp.php"><i class="bi bi-chat"></i></a>
+  <a href="EspacePersoParent.php"><i class="bi bi-person"></i></a>
+  <a href="galleriePhotoParents.php"><i class="bi bi-camera-fill"></i></a>
+</div>
+
+<script>
+  // Splash screen
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const splash = document.getElementById('splash');
+      splash.style.opacity = '0';
+      setTimeout(() => splash.remove(), 600);
+    }, 1000); // 3 secondes
+  });
+
+  // Commentaire
+  let currentCard = null;
+
+  function openPopup(button) {
+    currentCard = button.closest('.chat-card').querySelector('.comment-section');
+    document.getElementById('popup').style.display = 'block';
+    document.getElementById('commentInput').focus();
+  }
+
+  function submitComment() {
+    const input = document.getElementById('commentInput');
+    const text = input.value.trim();
+    if (text && currentCard) {
+      const comment = document.createElement('div');
+      comment.className = 'comment';
+      comment.textContent = 'Vous : ' + text;
+      currentCard.appendChild(comment);
+      input.value = '';
+      document.getElementById('popup').style.display = 'none';
     }
-  </script>
+  }
+
+  function incrementLike(btn) {
+    const span = btn.querySelector('span');
+    span.textContent = parseInt(span.textContent) + 1;
+  }
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
 </body>
 </html>
