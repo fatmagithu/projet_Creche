@@ -124,7 +124,7 @@
 <a href="EspacePersoParent.php" class="btn-retour"><i class="bi bi-arrow-left"></i> Retour</a>
 
 <div class="container">
-  <h1>Tableau de bord · ALICE · Avril 2025</h1>
+  <h1>Tableau de bord · ALICE · Mai 2025</h1>
 
   <!-- Présence -->
   <div class="section">

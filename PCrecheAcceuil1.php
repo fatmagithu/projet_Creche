@@ -31,15 +31,16 @@
     <!-- Navigation Links -->
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto nav-items-wrapper">
-        <li class="nav-item"><a class="nav-link" href="#">Nos micro-crèches</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Notre équipe</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Rejoignez-nous</a></li>
+        <li class="nav-item"><a class="nav-link" href="siteNosicroCreche.php">Nos micro-crèches</a></li>
+        <li class="nav-item"><a class="nav-link" href="SiteNotreEquipe.php">Notre équipe</a></li>
+        <li class="nav-item"><a class="nav-link" href="RejoignezNous.php">Rejoignez-nous</a></li>
         <li class="nav-item"><a class="nav-link" href="PcrecheForm1.php">Inscription</a></li>
 
         <li class="nav-item"><a class="nav-link" href="pcrecheLOGIN.php">Connexion</a></li>
 
         <li class="nav-item">
-          <a class="nav-link btn-contact" href="#">Nous contacter</a>
+        <a class="nav-link btn-contact" href="mailto:nounou-creche@gmail.com?subject=Candidature%20ou%20question">Nous contacter</a>
+
         </li>
       </ul>
     </div>
@@ -701,21 +702,21 @@ _______________________-->
       </div>
     </a>
     <a class="custom-card" href="#">
-      <div class="custom-card__background" style="background-image: url(Grise.png)"></div>
+      <div class="custom-card__background" style="background-image: url(girl-5775940_1280.jpg)"></div>
       <div class="custom-card__content">
         <p class="custom-card__category">Puericultrice</p>
         <h3 class="custom-card__heading">MURIEL</h3>
       </div>
     </a>
     <a class="custom-card" href="#">
-      <div class="custom-card__background" style="background-image: url(Grise.png)"></div>
+      <div class="custom-card__background" style="background-image: url(woman-7175038_1280.jpg)"></div>
       <div class="custom-card__content">
         <p class="custom-card__category">Atsem</p>
         <h3 class="custom-card__heading">CHARLOTTE</h3>
       </div>
     </a>
     <a class="custom-card" href="#">
-      <div class="custom-card__background" style="background-image: url(Grise.png)"></div>
+      <div class="custom-card__background" style="background-image: url(woman-657753_1280.jpg)"></div>
       <div class="custom-card__content">
         <p class="custom-card__category">Animatrice</p>
         <h3 class="custom-card__heading">JAQUELINE</h3>
@@ -922,7 +923,7 @@ html, body {
         </div>
         <div class="notification-card-content">
             <p class="notification-card-text">
-                <strong>SOFIYA</strong>, <strong>Bienvenu</strong> sur notre site babyfarm!
+                <strong>SOFIYA</strong>, <strong>Bienvenu</strong> sur notre nouveau site NOUNOU!
             </p>
             <span class="notification-card-timer">Il y a 1j</span>
         </div>

@@ -21,12 +21,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S&display=swap" rel="stylesheet">
    
 
-<header id="nav">
+    <header id="nav">
   <nav class="navbar navbar-expand-lg navbar-light ultra-navbar">
     <!-- Logo & Brand Name -->
     <a class="navbar-brand d-flex align-items-center" href="PCrecheAcceuil1.php" target="_blank">
-      <img src="bulleslogo.png" width="58" height="58" alt="Logo" class="mr-2 logo-navbar" />
-      <span class="brand-name">Bulles d'Eveil </span>
+      <img src="NOUNOU (7).png" width="68" height="88" alt="Logo" class="mr-2 logo-navbar" />
+     
     </a>
 
     <!-- Burger Icon -->
@@ -38,15 +38,16 @@
     <!-- Navigation Links -->
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto nav-items-wrapper">
-        <li class="nav-item"><a class="nav-link" href="#">Nos micro-crèches</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Notre équipe</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Rejoignez-nous</a></li>
+        <li class="nav-item"><a class="nav-link" href="siteNosicroCreche.php">Nos micro-crèches</a></li>
+        <li class="nav-item"><a class="nav-link" href="SiteNotreEquipe.php">Notre équipe</a></li>
+        <li class="nav-item"><a class="nav-link" href="RejoignezNous.php">Rejoignez-nous</a></li>
         <li class="nav-item"><a class="nav-link" href="PcrecheForm1.php">Inscription</a></li>
 
         <li class="nav-item"><a class="nav-link" href="pcrecheLOGIN.php">Connexion</a></li>
 
         <li class="nav-item">
-          <a class="nav-link btn-contact" href="#">Nous contacter</a>
+        <a class="nav-link btn-contact" href="mailto:nounou-creche@gmail.com?subject=Candidature%20ou%20question">Nous contacter</a>
+
         </li>
       </ul>
     </div>
@@ -67,10 +68,9 @@
 
 .logo-navbar {
   transition: transform 0.3s ease;
-  border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
   width: 40px;
-  height: 40px;
+  height: 60px;
 }
 
 .logo-navbar:hover {
@@ -115,8 +115,8 @@
 }
 
 .btn-contact {
-  background-color: #d0f0e3;
-  color: #1e5537 !important;
+  background-color: #d6c3b4;
+  color: #d6c3b4 !important;
   padding: 5px 14px;
   border-radius: 32px;
   font-weight: 600;
@@ -144,6 +144,7 @@
     padding: 0.5rem 0.8rem;
   }
 }
+
 </style>
 
 <br><br><br>
@@ -195,10 +196,10 @@
 }
 
 .step.active {
-  color: #2a7755;
+  color: #d6c3b4;
   border-color: #70c8a0;
   font-weight: 700;
-  background-color: #eafaf1;
+  background-color: #d6c3b4;
   border-radius: 10px 10px 0 0;
 }
 
@@ -254,13 +255,14 @@ textarea.form-control {
 }
 
 .btn-success {
-  background-color: #70c8a0;
-  border-color: #70c8a0;
+  background-color: #d6c3b4;
+  border-color: #d6c3b4;
 }
 .btn-success:hover {
-  background-color: #61b88e;
-  border-color: #61b88e;
+  background-color: #d6c3b4;
+  border-color: #d6c3b4;
 }
+
 .btn-secondary {
   background-color: #ddd;
   color: #333;
@@ -284,7 +286,7 @@ small, .text-muted {
 .error-message {
   background: linear-gradient(to right, #fef9f6, #f9ecec);
   border: 1px solid #e5a9a9;
-  color: #b03d3d;
+  color: #d6c3b4;
   padding: 12px 16px;
   margin: 12px auto;
   border-radius: 10px;
@@ -310,9 +312,9 @@ small, .text-muted {
 }
 
 .step.active {
-  background-color: #d5f3e5;
-  color: #216c4e;
-  border-color: #70c8a0;
+  background-color: #d6c3b4;
+  color: #fff;
+  border-color: #d6c3b4;
 }
 
 .form-step:nth-child(even) {
@@ -392,16 +394,18 @@ input[type="tel"] {
   left: 50%;
   width: 0;
   height: 2px;
-  background-color: #70c8a0;
+  background-color: #d6c3b4;
+
   transition: 0.3s ease;
   transform: translateX(-50%);
   border-radius: 2px;
 }
 
 .step:hover {
-  background-color: #f0faf5;
-  box-shadow: 0 2px 6px rgba(112, 200, 160, 0.2);
+  background-color: #f5ebe2;
+  box-shadow: 0 2px 6px rgba(214, 195, 180, 0.2);
 }
+
 
 .step:hover::after {
   width: 40%;
