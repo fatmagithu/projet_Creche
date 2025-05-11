@@ -124,7 +124,7 @@
 </head>
 <body>
 
-  <button class="btn-retour" onclick="window.location.href='PAuxDashboard.php'">
+  <button class="btn-retour" onclick="window.location.href='Prepas.php'">
     <i class="bi bi-arrow-left"></i> Retour
   </button>
 

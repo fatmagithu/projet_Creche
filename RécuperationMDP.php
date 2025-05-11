@@ -1,3 +1,14 @@
+
+<?php
+session_start();
+
+// Rediriger si déjà connecté
+if (isset($_SESSION['admin_id'])) {
+    header("Location: PcrecheDASHBOARD.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

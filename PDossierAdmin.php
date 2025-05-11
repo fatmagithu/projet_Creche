@@ -312,11 +312,14 @@ flex-shrink: 0;
         <div class="creche-header" style="background-image: url('Creche1.png');">
           <div class="creche-ribbon ribbon-success">✅ OK</div>
         </div>
+        <a href="FicheCreche1.php" style="text-decoration: none; color: inherit;">
+  
         <div class="creche-body">
           <h6>Crèche Paris</h6>
           <p>Responsable : Marie Dupont</p>
           <p>🔔 3 documents à vérifier</p>
         </div>
+        </a>
       </div>
       <div class="creche-card">
         <div class="creche-header" style="background-image: url('Creche2.png');">

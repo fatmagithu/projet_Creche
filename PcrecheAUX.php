@@ -126,7 +126,7 @@
     <p>Accédez à votre espace sécurisé</p>
 
     <form action="o.php" method="POST">
-      <input type="text" name="nom" placeholder="Nom d'utilisateur" class="form-control" required />
+      <input type="text" name="nom" placeholder="Mail" class="form-control" required />
       <input type="password" name="mot_de_passe" placeholder="Mot de passe" class="form-control" required />
       <button type="submit" class="btn btn-login">Connexion</button>
       <button type="button" class="btn btn-login" onclick="window.location.href='PAuxDashboard.php'">autre (test)</button>

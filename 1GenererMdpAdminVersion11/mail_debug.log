@@ -1,0 +1,339 @@
+Connection: opening to ssl://smtp.laposte.net:465, timeout=60, options=array (
+  'ssl' => 
+  array (
+    'verify_peer' => false,
+    'verify_peer_name' => false,
+    'allow_self_signed' => true,
+  ),
+)
+Connection: opened
+SERVER -> CLIENT: 220 mlpnf0106.laposte.net ESMTP **************************
+
+CLIENT -> SERVER: EHLO localhost
+
+SERVER -> CLIENT: 250-mlpnf0106.laposte.net
+250-PIPELINING
+250-SIZE 30000000
+250-AUTH LOGIN PLAIN
+250-ENHANCEDSTATUSCODES
+250 8BITMIME
+
+CLIENT -> SERVER: AUTH LOGIN
+
+SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+CLIENT -> SERVER: [credentials hidden]
+SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+CLIENT -> SERVER: [credentials hidden]
+SERVER -> CLIENT: 235 2.7.0 Authentication successful
+
+CLIENT -> SERVER: MAIL FROM:<coursmaths2015@laposte.net>
+
+SERVER -> CLIENT: 250 2.1.0 Ok
+
+CLIENT -> SERVER: RCPT TO:<fatma.asserrar@laposte.net>
+
+SERVER -> CLIENT: 250 2.1.5 Ok
+
+CLIENT -> SERVER: DATA
+
+SERVER -> CLIENT: 354 End data with <CR><LF>.<CR><LF>
+
+CLIENT -> SERVER: Date: Tue, 29 Apr 2025 14:54:35 +0200
+
+CLIENT -> SERVER: To: fatma.asserrar@laposte.net
+
+CLIENT -> SERVER: From: BabyFarm Admin <coursmaths2015@laposte.net>
+
+CLIENT -> SERVER: Subject: Votre code temporaire d'inscription
+
+CLIENT -> SERVER: Message-ID: <QGiHFW6zYmswfyOAN3wnQJU5FgMFlLH1Zhhd9V08U@localhost>
+
+CLIENT -> SERVER: X-Mailer: PHPMailer 6.10.0 (https://github.com/PHPMailer/PHPMailer)
+
+CLIENT -> SERVER: MIME-Version: 1.0
+
+CLIENT -> SERVER: Content-Type: multipart/alternative;
+
+CLIENT -> SERVER:  boundary="b1=_QGiHFW6zYmswfyOAN3wnQJU5FgMFlLH1Zhhd9V08U"
+
+CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: --b1=_QGiHFW6zYmswfyOAN3wnQJU5FgMFlLH1Zhhd9V08U
+
+CLIENT -> SERVER: Content-Type: text/plain; charset=us-ascii
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: Bonjour,
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: Voici votre code temporaire : 47F89D00507A
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: Ce code expire dans 30 minutes.
+
+CLIENT -> SERVER: Validez votre inscription sur: http://localhost/1GenererMdpAdminFonction/GenerationMDPform.php
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: --b1=_QGiHFW6zYmswfyOAN3wnQJU5FgMFlLH1Zhhd9V08U
+
+CLIENT -> SERVER: Content-Type: text/html; charset=UTF-8
+
+CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: <p>Bonjour,<br><br>Voici votre code : <strong>47F89D00507A</strong><br>Ce code expire dans 30 minutes.<br> Merci de <a href='http://localhost/1GenererMdpAdminFonction/GenerationMDPform.php'>cliquer ici</a> pour valider votre inscription.<br>Cordialement,<br>L'équipe BabyFarm</p>
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: --b1=_QGiHFW6zYmswfyOAN3wnQJU5FgMFlLH1Zhhd9V08U--
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: .
+
+SERVER -> CLIENT: 450 4.7.0 Service refuse. Veuillez essayer plus tard. service refused, please try later. LPN105_510
+
+SMTP ERROR: DATA END command failed: 450 4.7.0 Service refuse. Veuillez essayer plus tard. service refused, please try later. LPN105_510
+
+SMTP Error: data not accepted.
+CLIENT -> SERVER: RSET
+
+SERVER -> CLIENT: 250 2.0.0 Ok
+
+Connection: opening to ssl://smtp.laposte.net:465, timeout=60, options=array (
+  'ssl' => 
+  array (
+    'verify_peer' => false,
+    'verify_peer_name' => false,
+    'allow_self_signed' => true,
+  ),
+)
+Connection: opened
+SERVER -> CLIENT: 220 mlpnf0105.laposte.net ESMTP **************************
+
+CLIENT -> SERVER: EHLO localhost
+
+SERVER -> CLIENT: 250-mlpnf0105.laposte.net
+250-PIPELINING
+250-SIZE 30000000
+250-AUTH LOGIN PLAIN
+250-ENHANCEDSTATUSCODES
+250 8BITMIME
+
+CLIENT -> SERVER: AUTH LOGIN
+
+SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+CLIENT -> SERVER: [credentials hidden]
+SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+CLIENT -> SERVER: [credentials hidden]
+SERVER -> CLIENT: 235 2.7.0 Authentication successful
+
+CLIENT -> SERVER: MAIL FROM:<coursmaths2015@laposte.net>
+
+SERVER -> CLIENT: 250 2.1.0 Ok
+
+CLIENT -> SERVER: RCPT TO:<fatma.asserrar@laposte.net>
+
+SERVER -> CLIENT: 250 2.1.5 Ok
+
+CLIENT -> SERVER: DATA
+
+SERVER -> CLIENT: 354 End data with <CR><LF>.<CR><LF>
+
+CLIENT -> SERVER: Date: Tue, 29 Apr 2025 15:46:15 +0200
+
+CLIENT -> SERVER: To: fatma.asserrar@laposte.net
+
+CLIENT -> SERVER: From: BabyFarm Admin <coursmaths2015@laposte.net>
+
+CLIENT -> SERVER: Subject: Votre code temporaire d'inscription
+
+CLIENT -> SERVER: Message-ID: <gBxeoe9ePKyRHDkw4UsPM8gJNCDooAM4jx4pARFNy9c@localhost>
+
+CLIENT -> SERVER: X-Mailer: PHPMailer 6.10.0 (https://github.com/PHPMailer/PHPMailer)
+
+CLIENT -> SERVER: MIME-Version: 1.0
+
+CLIENT -> SERVER: Content-Type: multipart/alternative;
+
+CLIENT -> SERVER:  boundary="b1=_gBxeoe9ePKyRHDkw4UsPM8gJNCDooAM4jx4pARFNy9c"
+
+CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: --b1=_gBxeoe9ePKyRHDkw4UsPM8gJNCDooAM4jx4pARFNy9c
+
+CLIENT -> SERVER: Content-Type: text/plain; charset=us-ascii
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: Bonjour,
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: Voici votre code temporaire : 018091925678
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: Ce code expire dans 30 minutes.
+
+CLIENT -> SERVER: Veuillez vous connecter via ce lien : http://localhost/1GenererMdpAdminFonction/GenerationMDPform.php?code=018091925678
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: --b1=_gBxeoe9ePKyRHDkw4UsPM8gJNCDooAM4jx4pARFNy9c
+
+CLIENT -> SERVER: Content-Type: text/html; charset=UTF-8
+
+CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: <p>Bonjour,<br><br>Voici votre code : <strong>018091925678</strong><br>Ce code expire dans 30 minutes.<br>Veuillez cliquer sur le lien suivant pour valider : <a href='http://localhost/1GenererMdpAdminFonction/GenerationMDPform.php?code=018091925678'>http://localhost/1GenererMdpAdminFonction/GenerationMDPform.php?code=018091925678</a> <br><br>Cordialement,<br>L'équipe BabyFarm</p>
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: --b1=_gBxeoe9ePKyRHDkw4UsPM8gJNCDooAM4jx4pARFNy9c--
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: .
+
+SERVER -> CLIENT: 450 4.7.0 Service refuse. Veuillez essayer plus tard. service refused, please try later. LPN105_510
+
+SMTP ERROR: DATA END command failed: 450 4.7.0 Service refuse. Veuillez essayer plus tard. service refused, please try later. LPN105_510
+
+SMTP Error: data not accepted.
+CLIENT -> SERVER: RSET
+
+SERVER -> CLIENT: 250 2.0.0 Ok
+
+Connection: opening to ssl://smtp.laposte.net:465, timeout=60, options=array (
+  'ssl' => 
+  array (
+    'verify_peer' => false,
+    'verify_peer_name' => false,
+    'allow_self_signed' => true,
+  ),
+)
+Connection: opened
+SERVER -> CLIENT: 220 mlpnf0105.laposte.net ESMTP **************************
+
+CLIENT -> SERVER: EHLO localhost
+
+SERVER -> CLIENT: 250-mlpnf0105.laposte.net
+250-PIPELINING
+250-SIZE 30000000
+250-AUTH LOGIN PLAIN
+250-ENHANCEDSTATUSCODES
+250 8BITMIME
+
+CLIENT -> SERVER: AUTH LOGIN
+
+SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+CLIENT -> SERVER: [credentials hidden]
+SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+CLIENT -> SERVER: [credentials hidden]
+SERVER -> CLIENT: 235 2.7.0 Authentication successful
+
+CLIENT -> SERVER: MAIL FROM:<coursmaths2015@laposte.net>
+
+SERVER -> CLIENT: 250 2.1.0 Ok
+
+CLIENT -> SERVER: RCPT TO:<fatma.asserrar@laposte.net>
+
+SERVER -> CLIENT: 250 2.1.5 Ok
+
+CLIENT -> SERVER: DATA
+
+SERVER -> CLIENT: 354 End data with <CR><LF>.<CR><LF>
+
+CLIENT -> SERVER: Date: Tue, 29 Apr 2025 15:49:38 +0200
+
+CLIENT -> SERVER: To: fatma.asserrar@laposte.net
+
+CLIENT -> SERVER: From: BabyFarm Admin <coursmaths2015@laposte.net>
+
+CLIENT -> SERVER: Subject: Votre code temporaire d'inscription
+
+CLIENT -> SERVER: Message-ID: <GvyBmpTvZnxvj5ejoygZC3jJpF5uVJYCSkVuCoSH1OY@localhost>
+
+CLIENT -> SERVER: X-Mailer: PHPMailer 6.10.0 (https://github.com/PHPMailer/PHPMailer)
+
+CLIENT -> SERVER: MIME-Version: 1.0
+
+CLIENT -> SERVER: Content-Type: multipart/alternative;
+
+CLIENT -> SERVER:  boundary="b1=_GvyBmpTvZnxvj5ejoygZC3jJpF5uVJYCSkVuCoSH1OY"
+
+CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: --b1=_GvyBmpTvZnxvj5ejoygZC3jJpF5uVJYCSkVuCoSH1OY
+
+CLIENT -> SERVER: Content-Type: text/plain; charset=us-ascii
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: Bonjour,
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: Voici votre code temporaire : CB695441143A
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: Ce code expire dans 30 minutes.
+
+CLIENT -> SERVER: Veuillez vous connecter via ce lien : http://localhost/1GenererMdpAdminFonction/GenerationMDPform.php?code=CB695441143A
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: --b1=_GvyBmpTvZnxvj5ejoygZC3jJpF5uVJYCSkVuCoSH1OY
+
+CLIENT -> SERVER: Content-Type: text/html; charset=UTF-8
+
+CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: <p>Bonjour,<br><br>Voici votre code : <strong>CB695441143A</strong><br>Ce code expire dans 30 minutes.<br>Veuillez cliquer sur le lien suivant pour valider : <a href='http://localhost/1GenererMdpAdminFonction/GenerationMDPform.php?code=CB695441143A'>http://localhost/1GenererMdpAdminFonction/GenerationMDPform.php?code=CB695441143A</a> <br><br>Cordialement,<br>L'équipe BabyFarm</p>
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: --b1=_GvyBmpTvZnxvj5ejoygZC3jJpF5uVJYCSkVuCoSH1OY--
+
+CLIENT -> SERVER: 
+
+CLIENT -> SERVER: .
+
+SERVER -> CLIENT: 450 4.7.0 Service refuse. Veuillez essayer plus tard. service refused, please try later. LPN105_510
+
+SMTP ERROR: DATA END command failed: 450 4.7.0 Service refuse. Veuillez essayer plus tard. service refused, please try later. LPN105_510
+
+SMTP Error: data not accepted.
+CLIENT -> SERVER: RSET
+
+SERVER -> CLIENT: 250 2.0.0 Ok
+

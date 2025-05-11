@@ -213,7 +213,7 @@
     <div class="icon-label">Photos</div>
   </a>
 
-  <a href="PficheEnfant.php" class="text-decoration-none app-icon-wrapper">
+  <a href="FicheEnfantAUX.php" class="text-decoration-none app-icon-wrapper">
     <div class="app-icon"><img src="bebe.png" alt="Fiche Enfant"></div>
     <div class="icon-label">Fiche Enfant</div>
   </a>
@@ -228,7 +228,7 @@
     <div class="icon-label">Bobo</div>
   </a>
 
-  <a href="Pchange.php" class="text-decoration-none app-icon-wrapper">
+  <a href="CoucheAUXEnf.php" class="text-decoration-none app-icon-wrapper">
     <div class="app-icon"><img src="couche.png" alt="Change"></div>
     <div class="icon-label">Change</div>
   </a>
