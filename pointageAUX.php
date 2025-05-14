@@ -1,3 +1,27 @@
+<?php
+session_start();
+require_once 'authSimu.php';      // Simule la session éducateur
+require_once 'connexion.php';    // Connexion PDO
+
+// Récupération du nom de crèche depuis la session
+$nom_creche = $_SESSION['nom_creche']; // exemple : "Mantes à l'Ô"
+
+// Requête pour récupérer les enfants avec info de pointage du jour
+$stmt = $pdo->prepare("
+    SELECT e.*, pj.heure_arrivee, pj.heure_depart
+    FROM inscription_enfant e
+    LEFT JOIN pointage_journalier pj
+      ON pj.id_enfant = e.id
+     AND pj.date_pointage = CURDATE()
+    WHERE FIND_IN_SET(:creche, e.structure) > 0
+      AND e.Statut = 'Inscrit'
+    ORDER BY e.nom_enfant
+");
+
+$stmt->execute(['creche' => $nom_creche]);
+$enfants = $stmt->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -94,24 +118,35 @@
       font-family: 'Playwrite GB S', sans-serif;
     }
 
-    .status-dot {
-      width: 12px;
-      height: 12px;
-      background-color: #c0c0c0;
-      border-radius: 50%;
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      box-shadow: 0 0 0 2px white;
-    }
+    /* NOUVELLES pastilles séparées pour arrivée/départ */
+    .pastille-arrivee,
+.pastille-depart {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 0 0 2px white;
+  background-color: #e58e8e; /* ROUGE PAR DÉFAUT */
+}
 
-    .child-card.arrived .status-dot {
-      background-color: #65c18c;
-    }
+.pastille-arrivee {
+  top: 10px;
+  right: 28px;
+}
 
-    .child-card.left .status-dot {
-      background-color: #e58e8e;
-    }
+.pastille-depart {
+  top: 10px;
+  right: 10px;
+}
+
+.child-card.arrived .pastille-arrivee {
+  background-color: #65c18c; /* devient VERT si arrivée enregistrée */
+}
+
+.child-card.left .pastille-depart {
+  background-color: #65c18c; /* devient VERT si départ enregistré */
+}
+
 
     @media (max-width: 600px) {
       h1 {
@@ -134,66 +169,31 @@
   <h1>Pointage des Enfants</h1>
 
   <div class="grid">
-    <a href="HeuresArrivéSortie.php" class="child-card arrived text-decoration-none">
-      <span class="status-dot"></span>
-      <img src="moussa13.png" alt="Yanis" class="child-photo">
-      <div class="child-name">Alice</div>
-    </a>
+<?php foreach ($enfants as $enfant): ?>
+  <?php
+    $arrivee = !empty($enfant['heure_arrivee']);
+    $depart = !empty($enfant['heure_depart']);
 
-    <div class="child-card">
-      <span class="status-dot"></span>
-      <img src="moussa14.png" alt="Manel">
-      <div class="child-name">Manel</div>
-    </div>
+    $classePoint = '';
+    if ($arrivee) $classePoint .= ' arrived';
+    if ($depart) $classePoint .= ' left';
 
-    <div class="child-card left">
-      <span class="status-dot"></span>
-      <img src="moussa15.png" alt="Yacine">
-      <div class="child-name">Yacine</div>
-    </div>
+    $prenom = htmlspecialchars($enfant['prenom_enfant']);
+    $id = $enfant['id'];
+    $photo_path = "img/photos/" . strtolower($prenom) . ".jpg";
+    if (!file_exists($photo_path)) {
+      $photo_path = "moussa13.png"; // Fallback image
+    }
+  ?>
 
-    <div class="child-card">
-      <span class="status-dot"></span>
-      <img src="Sohan5.png" alt="Yoan">
-      <div class="child-name">Yoan</div>
-    </div>
-
-    <div class="child-card arrived">
-      <span class="status-dot"></span>
-      <img src="Sohan6.png" alt="Yamanda">
-      <div class="child-name">Yamanda</div>
-    </div>
-
-    <div class="child-card">
-      <span class="status-dot"></span>
-      <img src="Sohan3.png" alt="Ezekiel">
-      <div class="child-name">Ezekiel</div>
-    </div>
-
-    <div class="child-card left">
-      <span class="status-dot"></span>
-      <img src="Sohan2.png" alt="Gabriel">
-      <div class="child-name">Gabriel</div>
-    </div>
-
-    <div class="child-card">
-      <span class="status-dot"></span>
-      <img src="Sohan3.png" alt="Mohamed">
-      <div class="child-name">Mohamed</div>
-    </div>
-
-    <div class="child-card">
-      <span class="status-dot"></span>
-      <img src="Sohan2.png" alt="Ibrahim">
-      <div class="child-name">Ibrahim</div>
-    </div>
-
-    <div class="child-card">
-      <span class="status-dot"></span>
-      <img src="Sohan6.png" alt="Nela">
-      <div class="child-name">Nela</div>
-    </div>
-  </div>
+  <a href="HeuresArriveSortie.php?id=<?php echo $id; ?>" class="child-card<?php echo $classePoint; ?> text-decoration-none">
+    <span class="pastille-arrivee"></span>
+    <span class="pastille-depart"></span>
+    <img src="<?php echo $photo_path; ?>" alt="<?php echo $prenom; ?>" class="child-photo">
+    <div class="child-name"><?php echo $prenom; ?></div>
+  </a>
+<?php endforeach; ?>
+</div>
 
 </body>
 </html>
