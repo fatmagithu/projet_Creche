@@ -186,7 +186,7 @@ $enfants = $stmt->fetchAll();
     }
   ?>
 
-  <a href="HeuresArriveSortie.php?id=<?php echo $id; ?>" class="child-card<?php echo $classePoint; ?> text-decoration-none">
+  <a href="HeuresArrivéSortie.php?id=<?php echo $id; ?>" class="child-card<?php echo $classePoint; ?> text-decoration-none">
     <span class="pastille-arrivee"></span>
     <span class="pastille-depart"></span>
     <img src="<?php echo $photo_path; ?>" alt="<?php echo $prenom; ?>" class="child-photo">
