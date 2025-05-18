@@ -27,21 +27,21 @@
     }
     /* SIDEBAR MODERNE */
   
+  
     .sidebar {
-  width: 85px;
-  background: url('moussa12.png') center center/cover no-repeat;
-  position: fixed;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 0;
-  border-right: 1px solid #f0eae0;
-  transition: width 0.3s ease;
-  z-index: 1000;
-  overflow: hidden;
-}
-
+      width: 85px;
+      background: url('moussa12.png') center center/cover no-repeat;
+      position: fixed;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 0 20px 0;
+      border-right: 1px solid #f0eae0;
+      transition: width 0.3s ease;
+      z-index: 1000;
+      overflow: hidden;
+    }
 
 .sidebar::before {
   content: "";
@@ -61,7 +61,21 @@
   width: 220px;
 }
 
-
+.btn-retour-sidebar {
+      background: white;
+      border: 2px solid #b38760;
+      color: #b38760;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 14px;
+      margin-bottom: 30px;
+      width: 120px;
+      text-align: center;
+      display: none;
+    }
 .user-bubble {
   opacity: 0;
   visibility: hidden;
@@ -262,10 +276,95 @@ flex-shrink: 0;
     .upload-box input {
       display: none;
     }
+
+    .notif-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 30px;
+    }
+
+    .notif-btn {
+      background-color: var(--brown);
+      border: none;
+      color: white;
+      font-size: 24px;
+      border-radius: 50%;
+      padding: 14px 17px;
+      cursor: pointer;
+      position: relative;
+      transition: 0.3s ease;
+    }
+
+    .notif-btn:hover {
+      background-color: var(--brown-dark);
+    }
+
+    .notif-badge {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 4px 10px;
+      font-size: 13px;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .notif-panel {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 420px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      padding: 25px;
+      z-index: 1000;
+    }
+
+    .notif-panel h4 {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--brown);
+      margin-bottom: 20px;
+    }
+
+    .notif-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .notif-list li {
+      font-size: 15px;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .notif-list li span {
+      display: block;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    .notif-list li a {
+      font-size: 14px;
+      color: var(--brown-dark);
+      text-decoration: underline;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
 <div class="sidebar">
+    <button class="btn-retour-sidebar" onclick="window.location.href='PcrecheDASHBOARD.php'">
+      ← Retour
+    </button>
     <div class="user-bubble">
       <img src="Sofiya.oulhaci.png" alt="Admin">
       <div class="name">Sofiya M.</div>
@@ -298,14 +397,29 @@ flex-shrink: 0;
       <h1>📁 Gestion des documents administratifs</h1>
     </div>
 
-    <div class="alert-section">
-      <h5>🚨 Alertes prioritaires</h5>
-      <ul>
-        <li>🔴 2 agréments expirés</li>
-        <li>🟠 3 assurances à renouveler sous 30 jours</li>
-        <li>⚠️ 5 pièces d’identité manquantes</li>
-      </ul>
-    </div>
+    <div class="notif-wrapper">
+  <button id="notifBtn" class="notif-btn">
+    <i class="bi bi-bell"></i>
+    <span id="notifCount" class="notif-badge">3</span>
+  </button>
+  <div id="notifBox" class="notif-panel">
+    <h4>📌 Notifications dossiers crèches</h4>
+    <ul class="notif-list" id="notifItems">
+      <li>
+        <span>⚠️ Assurance expirée pour Crèche Marseille</span>
+        <a href="FicheCreche1.php">Ouvrir la fiche</a>
+      </li>
+      <li>
+        <span>❌ Pièces manquantes dans le dossier Crèche Paris</span>
+        <a href="FicheCreche2.php">Voir les documents</a>
+      </li>
+      <li>
+        <span>🔍 Diplôme à vérifier pour Jacques Martin</span>
+        <a href="FicheCreche3.php">Accéder</a>
+      </li>
+    </ul>
+  </div>
+</div>
 
     <div class="carousel-container">
       <div class="creche-card">
@@ -399,5 +513,30 @@ flex-shrink: 0;
       <input type="file" id="upload">
     </div>
   </div>
+  <script>
+  const notifBtn = document.getElementById('notifBtn');
+  const notifBox = document.getElementById('notifBox');
+  const notifCount = document.getElementById('notifCount');
+  const notifItems = document.getElementById('notifItems');
+
+  function updateNotifCount() {
+    const total = notifItems.querySelectorAll('li').length;
+    notifCount.innerText = total;
+    notifCount.style.display = total > 0 ? 'inline-block' : 'none';
+  }
+
+  notifBtn.addEventListener('click', () => {
+    notifBox.style.display = notifBox.style.display === 'block' ? 'none' : 'block';
+    notifCount.style.display = 'none'; // Hide badge when opened
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!notifBtn.contains(e.target) && !notifBox.contains(e.target)) {
+      notifBox.style.display = 'none';
+    }
+  });
+
+  updateNotifCount();
+</script>
 </body>
 </html>

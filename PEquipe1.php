@@ -25,18 +25,20 @@
     }
 
     .sidebar {
-      width: 80px;
-      background: url('moussa12.png') center center/cover no-repeat;
-      position: fixed;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px 0;
-      transition: width 0.3s ease;
-      z-index: 1000;
-      overflow: hidden;
-    }
+  width: 85px;
+  background: url('moussa12.png') center center/cover no-repeat;
+  position: fixed;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 0 20px 0; /* top: 60px, bottom: 20px */
+
+  border-right: 1px solid #f0eae0;
+  transition: width 0.3s ease;
+  z-index: 1000;
+  overflow: hidden;
+}
 
     .sidebar::before {
       content: "";
@@ -306,6 +308,38 @@
       .sidebar:hover ~ .main-content {
         margin-left: 0;
       }
+      .btn-retour-sidebar {
+  background: white;
+  border: 2px solid #b38760;
+  color: #b38760;
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+  margin-bottom: 30px;
+  width: 110px;
+  text-align: center;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar:hover .btn-retour-sidebar {
+  display: block;
+  align-self: center;
+}
+
+.sidebar:not(:hover) .btn-retour-sidebar {
+  width: auto;
+  padding: 6px;
+  font-size: 18px;
+  background: none;
+  border: none;
+  color: #b38760;
+  box-shadow: none;
+}
+
     }
   </style>
  
@@ -364,7 +398,9 @@
 </head>
 
 <body>  <!-----SIDEBAR DEBUT -->
+
 <div class="sidebar">
+
     <div class="user-bubble">
       <img src="Sofiya.oulhaci.png" alt="Admin">
       <div class="name">Sofiya M.</div>

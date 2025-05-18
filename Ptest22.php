@@ -57,7 +57,8 @@ $conn->close();
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0;
+  padding: 60px 0 20px 0; /* top: 60px, bottom: 20px */
+
   border-right: 1px solid #f0eae0;
   transition: width 0.3s ease;
   z-index: 1000;
@@ -218,24 +219,58 @@ $conn->close();
     }
 
     .creche-btn {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      background-size: cover;
-      background-position: center;
-      font-weight: 600;
-      color: white;
-      border: none;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-      transition: 0.3s ease;
-      background-color: var(--brown);
-    }
+  width: 170px;
+  height: 120px;
+  border-radius: 48px;
+  background: linear-gradient(135deg, rgba(179, 135, 96, 0.95), rgba(158, 109, 75, 0.95));
+  background-blend-mode: overlay;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  position: relative;
+  overflow: hidden;
+}
 
-    .creche-btn:hover {
-      transform: scale(1.06);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-    }
+.creche-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.05);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.creche-btn:hover::before {
+  opacity: 1;
+}
+
+.creche-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    inset 0 1px 3px rgba(255, 255, 255, 0.1);
+}
+
+.creche-btn:active {
+  transform: scale(0.97);
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
 
     .big-action-btn-fancy {
     display: block;
@@ -274,10 +309,59 @@ $conn->close();
   .big-action-btn-fancy:hover {
     transform: scale(1.05);
   }
+  .btn-retour-sidebar {
+  background: white;
+  border: 2px solid #b38760;
+  color: #b38760;
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+  margin-bottom: 30px;
+  width: 120px;
+  text-align: center;
+  display: none; /* masqué par défaut */
+}
+
+.sidebar:hover .btn-retour-sidebar {
+  display: block; /* s'affiche uniquement quand la sidebar est ouverte */
+}
+
+.sidebar:not(:hover) .btn-retour-sidebar::after {
+  content: "←";
+  display: block;
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+  color: #b38760;
+  font-weight: bold;
+}
+
+.sidebar:not(:hover) .btn-retour-sidebar {
+  display: block;
+  width: auto;
+  padding: 8px;
+  font-size: 18px;
+  background: none;
+  border: none;
+  color: #b38760;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
   </style>
 </head>
 <body>
   <div class="sidebar">
+  <button class="btn-retour-sidebar" onclick="window.location.href='PcrecheDASHBOARD.php'">
+    ← Retour
+  </button>
+  <!-- le reste -->
+
+
     <div class="user">
       <img src="Sofiya.oulhaci.png" alt="Admin">
       <div class="name">Sofiya M.</div>
@@ -306,6 +390,11 @@ $conn->close();
       <p>Accédez à toutes les infos de votre crèche : enfants, planning, messages... Cliquez sur les icônes pour naviguer.</p>
     </div>
 
+
+
+
+
+    
     <div class="stats">
       <div class="stat-card-btn" onclick="window.location.href='ListeGlobaleDesInscrits.php'">
         <h2><?= $nbInscrits; ?></h2>
