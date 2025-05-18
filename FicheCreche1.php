@@ -109,36 +109,153 @@
       font-size: 20px;
       cursor: pointer;
     }
+    /* MODALE */
     .modal {
       display: none;
       position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.6);
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.7);
     }
+
     .modal-content {
-      margin: 10% auto;
+      margin: 5% auto;
       display: block;
       width: 80%;
       max-width: 700px;
+      border-radius: 12px;
+      background: white;
+      padding: 20px;
+      color: #333;
+      white-space: pre-wrap;
+      overflow-y: auto;
+      max-height: 80vh;
+      font-family: monospace;
+      font-size: 14px;
     }
+
     .close {
       position: absolute;
-      top: 20px;
-      right: 35px;
-      color: #fff;
+      top: 30px;
+      right: 50px;
+      color: white;
       font-size: 40px;
       font-weight: bold;
       cursor: pointer;
+      z-index: 1001;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    .document-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.doc-icon {
+  background: var(--beige);
+  border: 2px solid #b38760;
+  color: #b38760;
+  border-radius: 18px;
+  width: 110px;
+  height: 110px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 20px 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.doc-icon:hover {
+  background: #b38760;
+  color: white;
+}
+
+/* Modale */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+  margin: 5% auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  border-radius: 12px;
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.info-section.alertes {
+  background: white;
+  border-left: 5px solid var(--brown);
+  padding: 30px;
+  border-radius: 22px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.alert-item {
+  background: var(--beige-light);
+  border-left: 6px solid #dc3545; /* Rouge doux */
+  padding: 15px 20px;
+  border-radius: 14px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s ease;
+}
+
+.alert-item:hover {
+  background: #ffe9e9;
+}
+
+.alert-item::before {
+  content: "⚠️";
+  font-size: 20px;
+}
+#notifPanel .alert-item {
+  background: var(--beige-light);
+  border-left: 6px solid #dc3545;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+#notifPanel .alert-item:hover {
+  background: #ffe9e9;
+}
+
   </style>
 </head>
 <body>
@@ -221,9 +338,74 @@
 </div>
 
 
-  <div class="info-section">
-    <h4>⚠️ Alertes Importantes</h4>
-    <ul>
+
+
+<div class="info-section">
+  <h4> Documents de la Crèche</h4>
+  <div class="document-grid">
+  <div class="doc-icon" onclick="openModal('form.css')">✅<br>Agrément PMI</div>
+  <div class="doc-icon" onclick="openModal('form.css')">🧾<br>Statuts</div>
+  <div class="doc-icon" onclick="openModal('form.css')">🧾<br>Kbis</div>
+  <div class="doc-icon" onclick="openModal('form.css')">🧾<br>URSSAF</div>
+  <div class="doc-icon" onclick="openModal('form.css')">✅<br>Règlement</div>
+  <div class="doc-icon" onclick="openModal('form.css')">✅<br>Convention</div>
+  <div class="doc-icon" onclick="openModal('form.css')">🧺<br>Sanitaire</div>
+  <div class="doc-icon" onclick="openModal('form.css')">🧴<br>Covid</div>
+  <div class="doc-icon" onclick="openModal('form.css')">📁<br>Nettoyage</div>
+  <div class="doc-icon" onclick="openModal('form.css')">📄<br>Alimentaire</div>
+  <div class="doc-icon" onclick="openModal('form.css')">🫳<br>Incendie</div>
+</div>
+
+<!-- PARTIE HTML À METTRE EN BAS DE TA PAGE -->
+
+<div id="docModal" class="modal" onclick="closeModal(event)">
+  <span class="close" id="closeDocModal">&times;</span>
+  <pre class="modal-content" id="docContent">Chargement...</pre>
+  <div style="text-align: center; margin-top: 20px;">
+    <button onclick="sendDocumentByEmail()" class="btn btn-success">
+      ✉️ Envoyer ce document
+    </button>
+  </div>
+</div>
+<br><br>
+<div style="text-align: center; margin-top: 10px;">
+  <button onclick="sendDocumentByEmail()" class="btn btn-success">✉️ Par mail</button>
+  <button onclick="sendToWhatsApp()" class="btn btn-info text-white">📱 WhatsApp</button>
+  <button onclick="copyToClipboard()" class="btn btn-secondary">📋 Copier</button>
+</div>
+<br><br>
+<div style="position: fixed; top: 20px; right: 30px; z-index: 999;">
+<div id="notifIcon" onclick="toggleNotifPanel()" style="position: relative; cursor: pointer; font-size: 48px;">
+    🔔
+    <span id="notifCount" style="
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #dc3545;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 50%;
+      font-weight: bold;
+    ">6</span>
+  </div>
+
+  <div id="notifPanel" style="
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 320px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    animation: fadeIn 0.3s ease;
+  ">
+    <h5 style="margin-bottom: 15px; color: var(--brown); font-weight: 700;"> Alertes Crèche</h5>
+    <ul style="padding: 0; list-style: none;">
       <li class="alert-item">Inspection annuelle prévue en juin 2025</li>
       <li class="alert-item">Renouvellement agrément CAF avant septembre</li>
       <li class="alert-item">Formation sécurité incendie non validée</li>
@@ -232,14 +414,13 @@
       <li class="alert-item">Demande de renouvellement d'agrément en attente</li>
     </ul>
   </div>
-
-  <div class="footer-quote">“Fiche crèche personnalisée BabyFarm”</div>
 </div>
 
-<div id="modal" class="modal">
-  <span class="close" id="closeModal">&times;</span>
-  <img class="modal-content" id="modalImage">
+
+
+  <div class="footer-quote">“Fiche crèche personnalisée NOUNOU”</div>
 </div>
+
 
 <script>
 const fileInput = document.getElementById('fileInput');
@@ -355,6 +536,70 @@ function updateCibleList() {
   }
 }
 </script>
+<script>
+function openModal(filePath = 'form.css') {
+  const contentContainer = document.getElementById("docContent");
+  contentContainer.textContent = "Chargement...";
+
+  fetch(filePath)
+    .then(response => {
+      if (!response.ok) throw new Error("Fichier introuvable ou refusé");
+      return response.text();
+    })
+    .then(data => {
+      contentContainer.textContent = data;
+      document.getElementById("docModal").style.display = "block";
+    })
+    .catch(error => {
+      contentContainer.textContent = "❌ Erreur : " + error.message;
+      document.getElementById("docModal").style.display = "block";
+    });
+}
+
+function closeModal(event) {
+  if (event.target.id === "docModal" || event.target.id === "closeDocModal") {
+    document.getElementById("docModal").style.display = "none";
+  }
+}
+
+function sendDocumentByEmail() {
+  const content = document.getElementById("docContent").textContent;
+  alert("📩 Simulation d’envoi du document par mail...\n\nContenu :\n" + content.slice(0, 200) + "...");
+}
+</script>
+<script>
+function sendDocumentByEmail() {
+  const content = document.getElementById("docContent").textContent;
+  const subject = encodeURIComponent("Document Crèche BabyFarm");
+  const body = encodeURIComponent(content);
+  
+  // Ouvrir un client mail (Gmail, Outlook...)
+  window.open(`mailto:?subject=${subject}&body=${body}`);
+}
+
+// Copier dans le presse-papier
+function copyToClipboard() {
+  const content = document.getElementById("docContent").textContent;
+  navigator.clipboard.writeText(content).then(() => {
+    alert("✅ Document copié dans le presse-papier !");
+  });
+}
+
+// Ouvrir WhatsApp Web
+function sendToWhatsApp() {
+  const content = document.getElementById("docContent").textContent;
+  const message = encodeURIComponent(content.slice(0, 2000)); // WhatsApp limite les gros textes
+  window.open(`https://wa.me/?text=${message}`, '_blank');
+}
+function toggleNotifPanel() {
+  const panel = document.getElementById("notifPanel");
+  panel.style.display = panel.style.display === "none" ? "block" : "none";
+}
+
+</script>
+</script>
+
+
 
 </body>
 </html>

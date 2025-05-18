@@ -154,57 +154,85 @@
       margin-left: 85px;
       padding: 40px;
       flex: 1;
-    }
-    .planning-week {
-      background: #ffffff;
-      padding: 25px 35px;
-      border-radius: 20px;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-      margin-bottom: 35px;
-    }
-    .planning-week h4 {
-      font-size: 26px;
-      margin-bottom: 20px;
-      font-weight: 800;
-      color: var(--brown);
-    }
-    .planning-week .day {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px dashed #ddd;
-      font-size: 17px;
-    }
-    .planning-week .day button {
-      background-color: transparent;
-      border: none;
-      color: var(--brown);
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .activity-detail {
-      display: none;
-      background: var(--beige);
-      border-left: 4px solid var(--brown);
-      margin: 10px 0;
-      padding: 10px 15px;
-      border-radius: 10px;
-      font-size: 14px;
-      color: #333;
-    }
-    .activity-detail.active {
-      display: block;
-    }
-    .creche-info {
-      background: var(--beige);
-      border-left: 5px solid var(--brown);
-      padding: 30px;
-      border-radius: 20px;
-      margin-bottom: 35px;
-      position: relative;
-    }
+    }.planning-week {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  margin-bottom: 35px;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.day-card {
+  border-bottom: 1px solid #eee;
+  padding: 18px 0;
+}
+
+.day-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.day-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brown);
+}
+
+.day-hours {
+  font-size: 15px;
+  color: #666;
+  font-weight: 500;
+}
+
+.day-hours.closed {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.day-info {
+  margin-top: 8px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+.day-info span {
+  background: var(--highlight);
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.day-info button {
+  background: none;
+  border: none;
+  color: var(--brown-dark);
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.activity-detail {
+  display: none;
+  background: var(--beige-light);
+  border-left: 3px solid var(--brown);
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #444;
+  animation: fadeIn 0.3s ease;
+}
+
+.activity-detail.active {
+  display: block;
+}
+
     .creche-info::before {
       content: "\1F476";
       position: absolute;
@@ -217,15 +245,54 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     .pointage-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
-      margin-bottom: 25px;
-    }
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+  background: linear-gradient(135deg, var(--beige), #fff);
+  padding: 30px 20px;
+  border-radius: 24px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+  animation: fadeIn 0.5s ease;
+}
+
+.pointage-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 20px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+  min-width: 240px;
+  flex: 1;
+}
+
+.pointage-box:hover {
+  transform: translateY(-3px);
+}
+
+.pointage-box i {
+  font-size: 32px;
+  color: var(--brown);
+  flex-shrink: 0;
+}
+
+.pointage-label {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+}
+
+.pointage-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--brown-dark);
+  margin: 2px 0 0;
+}
+
     .badge {
       background: var(--brown);
       padding: 6px 16px;
@@ -302,6 +369,219 @@
       0% { opacity: 0; transform: translateX(-20px); }
       100% { opacity: 1; transform: translateX(0); }
     }
+
+    .main-content {
+      margin-left: 85px;
+      padding: 40px;
+      flex: 1;
+    }
+    .dashboard-mini {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .dashboard-card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      width: 220px;
+      margin: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+    .dashboard-card h3 {
+      font-size: 36px;
+      margin: 0;
+      color: var(--brown);
+    }
+    .dashboard-card p {
+      margin-top: 10px;
+      color: #555;
+      font-size: 14px;
+    }
+    .creche-card {
+  background: white;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+  animation: fadeIn 0.6s ease;
+}
+
+.creche-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f4e2d8;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.creche-header h2 {
+  font-size: 28px;
+  color: var(--brown);
+  font-weight: 800;
+  margin: 0;
+}
+
+.status-badge {
+  background-color: var(--highlight);
+  color: var(--brown-dark);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.creche-details {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.creche-details > div {
+  flex: 1;
+  min-width: 180px;
+}
+
+.creche-details p {
+  margin: 0;
+  font-size: 15px;
+  color: #444;
+}
+
+.creche-details p:first-child {
+  font-weight: bold;
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 4px;
+}
+.welcome-banner {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 24px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
+  animation: fadeIn 0.6s ease;
+}
+
+.welcome-banner h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--brown);
+  margin-bottom: 16px;
+}
+
+.welcome-banner p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+.top-banner-blur {
+  height: 140px;
+  width: 100%;
+  background: url('creche2.png') center center/cover no-repeat;
+  position: relative;
+  border-radius: 0 0 24px 24px;
+  margin-bottom: 30px;
+  z-index: 0;
+  overflow: hidden;
+  cursor: pointer; /* pour montrer que c'est cliquable */
+}
+
+.top-banner-blur::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(253, 249, 243, 0.6); /* plus transparent */
+  backdrop-filter: blur(1px); 
+  z-index: 1;
+}.notif-toggle-wrapper {
+  position: relative;
+  margin-bottom: 30px;
+  text-align: right;
+}
+
+.notif-toggle {
+  background-color: var(--brown);
+  border: none;
+  color: white;
+  font-size: 20px;
+  border-radius: 50%;
+  padding: 10px 13px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.notif-toggle:hover {
+  background-color: var(--brown-dark);
+}
+
+.notif-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.notif-panel {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  width: 300px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  padding: 20px;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+
+.notif-panel h4 {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--brown);
+  margin-bottom: 15px;
+}
+
+.notif-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notif-list li {
+  font-size: 14px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.notif-list li span {
+  display: block;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.notif-list li a {
+  font-size: 13px;
+  color: var(--brown-dark);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+
+
   </style>
 </head>
 <body>
@@ -328,49 +608,99 @@
     </a>
   </div>
 
-  
   <div class="main-content">
-    <div class="planning-week">
-      <h4>🗓️ Planning de la semaine</h4>
-      <div class="day">
-        <span>Lundi</span>
-        <span>08:30 - 18:00 · Poulet-riz · Parc <button onclick="toggleActivityDetails('monday-details')">Détails</button></span>
-      </div>
-      <div id="monday-details" class="activity-detail">Activité prévue : Sortie au parc avec jeux collectifs, temps calme après le déjeuner, ateliers sensoriels.</div>
 
-      <div class="day">
-        <span>Mardi</span>
-        <span>08:30 - 18:00 · Poisson-purée · Lecture <button onclick="toggleActivityDetails('tuesday-details')">Détails</button></span>
-      </div>
-      <div id="tuesday-details" class="activity-detail">Lecture d’histoires, mime avec les enfants, initiation à la lecture sonore, séance calme en musique douce.</div>
+  <div class="top-banner-blur" onclick="document.getElementById('bgInput').click();"></div>
+<input type="file" id="bgInput" accept="image/*" style="display: none" onchange="changeBannerBackground(this)">
 
-      <div class="day">
-        <span>Mercredi</span>
-        <span>Fermé</span>
-      </div>
 
-      <div class="day">
-        <span>Jeudi</span>
-        <span>08:30 - 18:00 · Pâtes bolo · Bibliothèque <button onclick="toggleActivityDetails('thursday-details')">Détails</button></span>
-      </div>
-      <div id="thursday-details" class="activity-detail">Sortie à la bibliothèque municipale, lecture en groupe, activité coloriage sur le thème du livre.</div>
 
-      <div class="day">
-        <span>Vendredi</span>
-        <span>08:30 - 17:30 · Gratin légumes · Chant <button onclick="toggleActivityDetails('friday-details')">Détails</button></span>
-      </div>
-      <div id="friday-details" class="activity-detail">Chants collectifs, instruments de musique, atelier musical créatif, retour au calme avec relaxation sonore.</div>
+  <div class="creche-card">
+  <div class="creche-header">
+    <h2> Mantes à l'Ô - Mantes-la-Jolie</h2>
+    <span class="status-badge">Active</span>
+  </div>
+  <div class="creche-details">
+    <div>
+      <p><strong>Responsable</strong></p>
+      <p>Marie Dupont</p>
     </div>
-
-    <div class="creche-info">
-      <h2>👶 Crèche Mantes à l'Ô - Mantes-la-Jolie </h2>
-      <p><strong>Responsable :</strong> Marie Dupont · <strong>Capacité :</strong> 25 enfants · <strong>Adresse :</strong> 10 Rue Saint-Roch, 78200 Mantes-la-Jolie</p>
+    <div>
+      <p><strong>Capacité</strong></p>
+      <p>25 enfants</p>
     </div>
-
-    <div class="pointage-header">
-      <h3>Total prévu : <span class="badge">25 enfants</span></h3>
-      <h3>Total présent : <span class="badge">20 enfants</span></h3>
+    <div>
+      <p><strong>Adresse</strong></p>
+      <p>10 Rue Saint-Roch, 78200 Mantes-la-Jolie</p>
     </div>
+  </div>
+</div>
+
+
+<div class="notif-toggle-wrapper">
+  <button id="notifToggle" class="notif-toggle">
+    <i class="bi bi-bell"></i>
+    <span id="notifBadge" class="notif-badge">3</span>
+  </button>
+  <div class="notif-panel" id="notifPanel">
+    <h4>Notifications récentes</h4>
+    <ul class="notif-list" id="notifList">
+      <li>
+        <span>📄 Manque carte d'identité pour <strong>Yanis</strong></span>
+        <a href="PcrechePageENFANT.php?id=2">Voir le dossier</a>
+      </li>
+      <li>
+        <span>💊 Ordonnance expirée pour <strong>Lina</strong></span>
+        <a href="PcrechePageENFANT.php?id=3">Gérer l’enfant</a>
+      </li>
+      <li>
+        <span>🧾 Paiement non reçu pour <strong>Mohamed</strong></span>
+        <a href="PcrechePageENFANT.php?id=4">Consulter</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- Incrementation chiffre surchaque crèches -->
+
+    <div class="main-content">
+    <div class="dashboard-mini">
+      <div class="dashboard-card">
+        <h3>16</h3>
+        <p>Enfants inscrits</p>
+      </div>
+   
+      <div class="dashboard-card">
+        <h3>2</h3>
+        <p>Demandes en cours</p>
+      </div>
+      <div class="dashboard-card">
+        <h3>6</h3>
+        <p>Employés actifs</p>
+      </div>
+    </div>
+<!-- FIN Incrementation chiffre surchaque crèches -->
+
+
+
+<div class="pointage-header">
+  <div class="pointage-box">
+    <i class="bi bi-people-fill"></i>
+    <div>
+      <p class="pointage-label">Enfants prévus</p>
+      <p class="pointage-value">25</p>
+    </div>
+  </div>
+  <div class="pointage-box">
+    <i class="bi bi-person-check-fill"></i>
+    <div>
+      <p class="pointage-label">Présents aujourd’hui</p>
+      <p class="pointage-value">20</p>
+    </div>
+  </div>
+</div>
+
 
     <div id="enfantList" style="margin-top: 20px;"></div>
 
@@ -380,6 +710,86 @@
     <span class="visually-hidden">Chargement...</span>
   </div>
 </div>
+
+
+
+
+   <!-- DEBUT PLANNING----------- -->
+   <div class="planning-week">
+  <h4>🗓️ Planning de la semaine</h4>
+
+  <!-- Exemple jour -->
+  <div class="day-card">
+    <div class="day-top">
+      <span class="day-name">Lundi</span>
+      <span class="day-hours">08:30 - 18:00</span>
+    </div>
+    <div class="day-info">
+      <span class="meal">🍗 Poulet-riz</span>
+      <span class="activity">🌳 Parc</span>
+      <button onclick="toggleActivityDetails('monday-details')">Voir +</button>
+    </div>
+    <div id="monday-details" class="activity-detail">
+      Sortie au parc avec jeux collectifs, temps calme après le déjeuner, ateliers sensoriels.
+    </div>
+  </div>
+
+  <!-- Duplique en changeant les IDs -->
+  <div class="day-card">
+    <div class="day-top">
+      <span class="day-name">Mardi</span>
+      <span class="day-hours">08:30 - 18:00</span>
+    </div>
+    <div class="day-info">
+      <span class="meal">🐟 Poisson-purée</span>
+      <span class="activity">📖 Lecture</span>
+      <button onclick="toggleActivityDetails('tuesday-details')">Voir +</button>
+    </div>
+    <div id="tuesday-details" class="activity-detail">
+      Lecture d’histoires, mime, initiation à la lecture sonore, musique douce.
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-top">
+      <span class="day-name">Mercredi</span>
+      <span class="day-hours closed">Fermé</span>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-top">
+      <span class="day-name">Jeudi</span>
+      <span class="day-hours">08:30 - 18:00</span>
+    </div>
+    <div class="day-info">
+      <span class="meal">🍝 Pâtes bolo</span>
+      <span class="activity">📚 Bibliothèque</span>
+      <button onclick="toggleActivityDetails('thursday-details')">Voir +</button>
+    </div>
+    <div id="thursday-details" class="activity-detail">
+      Sortie à la bibliothèque, lecture en groupe, coloriage sur le thème du livre.
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-top">
+      <span class="day-name">Vendredi</span>
+      <span class="day-hours">08:30 - 17:30</span>
+    </div>
+    <div class="day-info">
+      <span class="meal">🥦 Gratin légumes</span>
+      <span class="activity">🎶 Chant</span>
+      <button onclick="toggleActivityDetails('friday-details')">Voir +</button>
+    </div>
+    <div id="friday-details" class="activity-detail">
+      Chants collectifs, instruments, atelier musical, relaxation sonore.
+    </div>
+  </div>
+</div>
+ <!-- FIN PLANNING----------- -->
+
+
 
 <script>
 const enfants = <?php
@@ -468,7 +878,41 @@ setTimeout(() => {
   renderEnfants(enfants);
 }, 800); // 0,8s
 </script>
-
+</div>
   </div>
+  <script>
+  const notifToggle = document.getElementById('notifToggle');
+  const notifPanel = document.getElementById('notifPanel');
+  const notifBadge = document.getElementById('notifBadge');
+  const notifList = document.getElementById('notifList');
+
+  // Mise à jour du badge selon le nombre de notifs
+  function updateNotifCount() {
+    const count = notifList.querySelectorAll('li').length;
+    notifBadge.innerText = count;
+    notifBadge.style.display = count > 0 ? 'inline-block' : 'none';
+  }
+
+  // Toggle du panneau et suppression badge (comme "lu")
+  notifToggle.addEventListener('click', () => {
+    const isVisible = notifPanel.style.display === 'block';
+    notifPanel.style.display = isVisible ? 'none' : 'block';
+
+    if (!isVisible) {
+      notifBadge.style.display = 'none';
+    }
+  });
+
+  // Fermer si clic extérieur
+  document.addEventListener('click', function(event) {
+    if (!notifToggle.contains(event.target) && !notifPanel.contains(event.target)) {
+      notifPanel.style.display = 'none';
+    }
+  });
+
+  // Initialisation
+  updateNotifCount();
+</script>
+
 </body>
 </html>
