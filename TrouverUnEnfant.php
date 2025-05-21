@@ -256,10 +256,11 @@
 <script>
   const enfants = <?php
     try {
-      $pdo = new PDO('mysql:host=localhost;dbname=groupe_bulles_deveil;charset=utf8', 'root', '');
+      $pdo = new PDO('mysql:host=localhost;dbname=groupe_bulles_deveil;charset=utf8', 'root', 'root');
       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-      $stmt = $pdo->query("SELECT id, prenom_enfant, date_naissance_enfant FROM inscription_enfant WHERE statut = 'Inscrit'");
+      // 👇 Ajout de la colonne photo_enfant
+      $stmt = $pdo->query("SELECT id, prenom_enfant, date_naissance_enfant, photo_enfant FROM inscription_enfant WHERE statut = 'Inscrit'");
 
       $enfants = [];
 
@@ -288,6 +289,9 @@
       while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         list($age_texte, $age_mois) = calculer_age_precis($row['date_naissance_enfant']);
 
+        // 👉 On vérifie si une photo personnalisée existe
+        $photo = !empty($row['photo_enfant']) ? $row['photo_enfant'] : 'moussa8.png';
+
         $enfants[] = [
             'id' => $row['id'],
             'nom' => $row['prenom_enfant'],
@@ -295,9 +299,8 @@
             'age_mois' => $age_mois,
             'heures' => '-',
             'depassement' => false,
-            'photo' => 'moussa8.png'
-          ];
-          
+            'photo' => $photo
+        ];
       }
 
       echo json_encode($enfants, JSON_UNESCAPED_UNICODE);
@@ -305,6 +308,8 @@
       echo "[]";
     }
   ?>;
+
+
 
   function renderEnfants(list) {
     const container = document.getElementById('enfantList');

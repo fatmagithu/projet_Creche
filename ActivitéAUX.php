@@ -166,7 +166,8 @@
 <body>
 
 <!-- Bouton Retour -->
-<button class="btn-retour" onclick="window.location.href='PAuxDashboard.php'">
+<button class="btn-retour" onclick="history.back()">← Retour</button>
+
   <i class="bi bi-arrow-left"></i> Retour
 </button>
 

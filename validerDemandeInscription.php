@@ -155,84 +155,97 @@ $total_pages = ceil($total_items / $itemsPerPage);
     <meta charset="UTF-8">
     <title>Demandes d'inscription - Recherche multiple</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: lightgoldenrodyellow;
-            padding: 20px;
-        }
-        .header-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .btn-retour {
-            background-color: #28a745;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        form.search-form {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-        form.search-form input, form.search-form select {
-            padding: 6px;
-            font-size: 16px;
-        }
-        form.search-form button {
-            padding: 6px 10px;
-            font-size: 16px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: center;
-        }
-        th {
-            background-color: #007BFF;
-            color: white;
-        }
-        .btn {
-            padding: 5px 10px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        .btn-delete {
-            background-color: #dc3545;
-        }
-        .btn-delete:hover {
-            background-color: #c82333;
-        }
-        .pagination {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .pagination a {
-            margin: 0 5px;
-            padding: 8px 12px;
-            background-color: #007BFF;
-            color: white;
-            text-decoration: none;
-        }
-        .pagination a.active {
-    background-color: #0056b3;
-    font-weight: bold;
+       body {
+  background: linear-gradient(to bottom, #fff9f3, #fef5e7);
+  font-family: 'Inter', sans-serif;
+  color: #444;
+}
+
+.container {
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  padding: 30px;
+}
+
+h1 {
+  font-size: 28px;
+  color: #444;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.search-form input,
+.search-form select {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: #fffdfb;
+  transition: 0.3s ease;
+}
+
+.search-form input:focus,
+.search-form select:focus {
+  border-color: #ffb347;
+  box-shadow: 0 0 0 2px rgba(255, 179, 71, 0.2);
+  outline: none;
+}
+
+.search-form button {
+  background-color: #ffb347;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.search-form button:hover {
+  background-color: #ffa726;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+thead th {
+  background-color: #ffe7c4;
+  color: #444;
+  border-radius: 10px 10px 0 0;
+}
+
+tbody tr {
+  background-color: #fffefc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.btn {
+  background-color: #7da8ff;
+  border-radius: 8px;
+}
+
+.btn:hover {
+  background-color: #4d8eff;
+}
+
+.btn-delete {
+  background-color: #ff6b6b;
+}
+
+.btn-delete:hover {
+  background-color: #e04444;
+}
+
+.pagination a {
+  background-color: #eee;
+  color: #444;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.pagination a.active {
+  background-color: #ffa726;
+  color: white;
+  font-weight: 600;
 }
 
     </style>

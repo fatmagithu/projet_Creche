@@ -6,7 +6,7 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paramètres Admin · BabyFarm</title>
+  <title>CRM Admin · BabyFarm</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -21,8 +21,16 @@ session_start();
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, var(--beige-light), var(--beige));
-      display: flex;
+      background: url('moussa12.png') center/cover no-repeat fixed;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-color: rgba(253, 249, 243, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: -1;
     }
     .sidebar {
       width: 80px;
@@ -122,40 +130,68 @@ session_start();
     .sidebar:hover ~ .main-content {
       margin-left: 220px;
     }
-    .section {
-      background: white;
-      border-radius: 20px;
-      padding: 30px;
-      margin-bottom: 30px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 60px 80px;
+      justify-content: center;
+      max-width: 1000px;
+      margin: 80px auto 0;
     }
-    .section h3 {
-      font-family: 'Playwrite GB S', cursive;
-      color: var(--brown-dark);
-      margin-bottom: 20px;
+    .action-block {
+      text-align: center;
     }
-    .section table {
-      width: 100%;
+    .bubble-icon {
+      width: 110px;
+      height: 110px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(18px);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin: auto;
     }
-    .section table th, .section table td {
-      padding: 12px;
-      text-align: left;
+    .bubble-icon img {
+      width: 60%;
+      height: 60%;
+      object-fit: contain;
     }
-    .btn-add {
-      background: var(--brown);
-      color: white;
-      padding: 8px 18px;
-      border-radius: 20px;
-      border: none;
+    .bubble-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18);
+    }
+    .quick-actions h6 {
+      margin-top: 14px;
+      font-size: 15px;
       font-weight: 600;
-      margin-bottom: 10px;
+      color: var(--brown-dark);
+      font-family: 'Inter', sans-serif;
     }
-    .btn-add:hover {
-      background: var(--brown-dark);
-    }
+    .notification-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: red;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 2px white;
+}
+
   </style>
 </head>
 <body>
+
+
   <div class="sidebar">
     <div class="user-bubble">
       <img src="Sofiya.oulhaci.png" alt="Admin">
@@ -185,34 +221,65 @@ session_start();
   </div>
 
   <div class="main-content">
-    <div class="section">
-      <h3>👥 Gestion des utilisateurs</h3>
-      <button class="btn-add">+ Ajouter un utilisateur</button>
-      <table class="table">
-        <thead>
-          <tr><th>Nom</th><th>Email</th><th>Rôle</th><th>Actions</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Julie Bernard</td>
-            <td>julie@babyfarm.fr</td>
-            <td>Auxiliaire</td>
-            <td><button class="btn btn-sm btn-outline-primary">Modifier</button> <button class="btn btn-sm btn-outline-danger">Supprimer</button></td>
-          </tr>
-          <tr>
-            <td>Fatima Sy</td>
-            <td>fatima@babyfarm.fr</td>
-            <td>Directrice</td>
-            <td><button class="btn btn-sm btn-outline-primary">Modifier</button> <button class="btn btn-sm btn-outline-danger">Supprimer</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="section">
-      <h3>🔐 Sécurité du compte</h3>
-      <p><strong>Changer le mot de passe</strong></p>
-      <input type="password" class="form-control mb-2" placeholder="Nouveau mot de passe">
-      <button class="btn btn-secondary">Mettre à jour</button>
+    <h2 style="font-family: 'Playwrite GB S', cursive; color: var(--brown); text-align:center; margin-bottom: 80px; font-size: 30px;">📱 Centre de Gestion Administratif</h2>
+    <div class="quick-actions">
+    <div class="action-block">
+  <a href="DashNvlEnfant.php" class="bubble-icon position-relative">
+    <img src="office-material_227104.png" alt="Ajout Enfant">
+    <div class="notification-badge">5</div>
+  </a>
+  <h6>Nouvel Enfant</h6>
+</div>
+
+      <div class="action-block">
+        <a href="AjouterNvlCreche.php" class="bubble-icon">
+          <img src="school_8949013.png" alt="Nouvelle Crèche">
+        </a>
+        <h6>Nouvelle Crèche</h6>
+      </div>
+      <div class="action-block">
+        <a href="AjouterParent.php" class="bubble-icon">
+          <img src="adoptive-father_5098119.png" alt="Ajouter Parent">
+        </a>
+        <h6>Nouveau Parent</h6>
+      </div>
+      <div class="action-block">
+        <a href="ReinitialiserMotDePasse.php" class="bubble-icon">
+          <img src="exchange.png" alt="Mot de Passe">
+        </a>
+        <h6>Mot de Passe</h6>
+      </div>
+      <div class="action-block">
+        <a href="Facturation.php" class="bubble-icon">
+          <img src="transaction.png" alt="Facturation">
+        </a>
+        <h6>Facturation</h6>
+      </div>
+      <div class="action-block">
+        <a href="
+      planningDASH.php" class="bubble-icon">
+          <img src="time-management.png" alt="Planning">
+        </a>
+        <h6>Planning</h6>
+      </div>
+      <div class="action-block">
+        <a href="SuiviPresence.php" class="bubble-icon">
+          <img src="horloge-murale.png" alt="Présences">
+        </a>
+        <h6>Présences</h6>
+      </div>
+      <div class="action-block">
+        <a href="Alertes.php" class="bubble-icon">
+          <img src="gyrophare.png" alt="Alertes">
+        </a>
+        <h6>Alertes</h6>
+      </div>
+      <div class="action-block">
+        <a href="DocumentsAdministratifs.php" class="bubble-icon">
+          <img src="dossier.png" alt="Documents">
+        </a>
+        <h6>Documents</h6>
+      </div>
     </div>
   </div>
 </body>
