@@ -7,6 +7,20 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <?php
+session_start();
+$host = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "groupe_bulles_deveil";
+
+$conn = new mysqli($host, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Échec de la connexion à la base de données : " . $conn->connect_error);
+}
+?>
+
   <style>
     :root {
       --beige: #fdf9f3;
@@ -392,128 +406,73 @@ flex-shrink: 0;
     </a>
   </div>
 
-  <div class="main-content">
-    <div class="welcome">
-      <h1>📁 Gestion des documents administratifs</h1>
-    </div>
+  
+<div class="main-content">
+  <div class="welcome">
+    <h1>📁 Gestion des documents administratifs</h1>
+  </div>
 
-    <div class="notif-wrapper">
-  <button id="notifBtn" class="notif-btn">
-    <i class="bi bi-bell"></i>
-    <span id="notifCount" class="notif-badge">3</span>
-  </button>
-  <div id="notifBox" class="notif-panel">
-    <h4>📌 Notifications dossiers crèches</h4>
-    <ul class="notif-list" id="notifItems">
-      <li>
-        <span>⚠️ Assurance expirée pour Crèche Marseille</span>
-        <a href="FicheCreche1.php">Ouvrir la fiche</a>
-      </li>
-      <li>
-        <span>❌ Pièces manquantes dans le dossier Crèche Paris</span>
-        <a href="FicheCreche2.php">Voir les documents</a>
-      </li>
-      <li>
-        <span>🔍 Diplôme à vérifier pour Jacques Martin</span>
-        <a href="FicheCreche3.php">Accéder</a>
-      </li>
-    </ul>
+  <div class="notif-wrapper">
+    <button id="notifBtn" class="notif-btn">
+      <i class="bi bi-bell"></i>
+      <span id="notifCount" class="notif-badge">3</span>
+    </button>
+    <div id="notifBox" class="notif-panel">
+      <h4>📌 Notifications dossiers crèches</h4>
+      <ul class="notif-list" id="notifItems">
+        <li><span>⚠️ Assurance expirée pour Crèche Marseille</span><a href="#">Ouvrir la fiche</a></li>
+        <li><span>❌ Pièces manquantes dans le dossier Crèche Paris</span><a href="#">Voir les documents</a></li>
+        <li><span>🔍 Diplôme à vérifier pour Jacques Martin</span><a href="#">Accéder</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="carousel-container">
+    <?php
+    $sql = "SELECT code_creche, nom_creche, nom_responsable, image_fond FROM creche WHERE statut = 'Active' ORDER BY nom_creche ASC";
+    $result = $conn->query($sql);
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $code = htmlspecialchars($row['code_creche']);
+            $nom = htmlspecialchars($row['nom_creche']);
+            $responsable = htmlspecialchars($row['nom_responsable']);
+            $image = htmlspecialchars($row['image_fond']);
+            echo "
+            <div class='creche-card'>
+              <div class='creche-header' style='background-image: url(\"$image\");'>
+                <div class='creche-ribbon ribbon-success'>✅ OK</div>
+              </div>
+              <a href='FicheCreche1.php?creche=$code' style='text-decoration: none; color: inherit;'>
+                <div class='creche-body'>
+                  <h6>$nom</h6>
+                  <p>Responsable : $responsable</p>
+                  <p>🔔 Documents à jour</p>
+                </div>
+              </a>
+            </div>";
+        }
+    } else {
+        echo "<p>Aucune crèche active trouvée.</p>";
+    }
+    $conn->close();
+    ?>
+  </div>
+
+  <div class="filters-bar">
+    <button>📄 Tous les contrats</button>
+    <button>📄 Diplômes</button>
+    <button>📄 Certificats médicaux</button>
+    <button>📄 Assurances</button>
+    <button>❌ Expirés</button>
+  </div>
+
+  <div class="upload-box">
+    <label for="upload">📄 Glisser-déposer ou <u>cliquez pour importer un document</u></label>
+    <input type="file" id="upload">
   </div>
 </div>
 
-    <div class="carousel-container">
-      <div class="creche-card">
-        <div class="creche-header" style="background-image: url('Creche1.png');">
-          <div class="creche-ribbon ribbon-success">✅ OK</div>
-        </div>
-        <a href="FicheCreche1.php" style="text-decoration: none; color: inherit;">
-  
-        <div class="creche-body">
-          <h6>Crèche Paris</h6>
-          <p>Responsable : Marie Dupont</p>
-          <p>🔔 3 documents à vérifier</p>
-        </div>
-        </a>
-      </div>
-      <div class="creche-card">
-        <div class="creche-header" style="background-image: url('Creche2.png');">
-          <div class="creche-ribbon ribbon-warning">🟠 À surveiller</div>
-        </div>
-        <div class="creche-body">
-          <h6>Crèche Marseille</h6>
-          <p>Responsable : Jacques Martin</p>
-          <p>🔔 5 documents manquants</p>
-        </div>
-        
-      </div>
-      <div class="creche-card">
-        <div class="creche-header" style="background-image: url('Creche1.png');">
-          <div class="creche-ribbon ribbon-warning">🟠 À surveiller</div>
-        </div>
-        <div class="creche-body">
-          <h6>Crèche Marseille</h6>
-          <p>Responsable : Jacques Martin</p>
-          <p>🔔 5 documents manquants</p>
-        </div>
-        
-      </div>
-      <div class="creche-card">
-        <div class="creche-header" style="background-image: url('Creche2.png');">
-          <div class="creche-ribbon ribbon-warning">🟠 À surveiller</div>
-        </div>
-        <div class="creche-body">
-          <h6>Crèche Marseille</h6>
-          <p>Responsable : Jacques Martin</p>
-          <p>🔔 5 documents manquants</p>
-        </div>
-        
-      </div>  <div class="creche-card">
-        <div class="creche-header" style="background-image: url('Creche1.png');">
-          <div class="creche-ribbon ribbon-warning">🟠 À surveiller</div>
-        </div>
-        <div class="creche-body">
-          <h6>Crèche Marseille</h6>
-          <p>Responsable : Jacques Martin</p>
-          <p>🔔 5 documents manquants</p>
-        </div>
-        
-      </div>  <div class="creche-card">
-        <div class="creche-header" style="background-image: url('Creche2.png');">
-          <div class="creche-ribbon ribbon-warning">🟠 À surveiller</div>
-        </div>
-        <div class="creche-body">
-          <h6>Crèche Marseille</h6>
-          <p>Responsable : Jacques Martin</p>
-          <p>🔔 5 documents manquants</p>
-        </div>
-        
-      </div>  <div class="creche-card">
-        <div class="creche-header" style="background-image: url('Creche1.png');">
-          <div class="creche-ribbon ribbon-warning">🟠 À surveiller</div>
-        </div>
-        <div class="creche-body">
-          <h6>Crèche Marseille</h6>
-          <p>Responsable : Jacques Martin</p>
-          <p>🔔 5 documents manquants</p>
-        </div>
-        
-      </div>
-    </div>
-
-    <div class="filters-bar">
-      <button>📄 Tous les contrats</button>
-      <button>📄 Diplômes</button>
-      <button>📄 Certificats médicaux</button>
-      <button>📄 Assurances</button>
-      <button>❌ Expirés</button>
-    </div>
-
-    <div class="upload-box">
-      <label for="upload">📤 Glisser-déposer ou <u>cliquez pour importer un document</u></label>
-      <input type="file" id="upload">
-    </div>
-  </div>
-  <script>
+<script>
   const notifBtn = document.getElementById('notifBtn');
   const notifBox = document.getElementById('notifBox');
   const notifCount = document.getElementById('notifCount');
@@ -527,7 +486,7 @@ flex-shrink: 0;
 
   notifBtn.addEventListener('click', () => {
     notifBox.style.display = notifBox.style.display === 'block' ? 'none' : 'block';
-    notifCount.style.display = 'none'; // Hide badge when opened
+    notifCount.style.display = 'none';
   });
 
   document.addEventListener('click', (e) => {
@@ -540,3 +499,4 @@ flex-shrink: 0;
 </script>
 </body>
 </html>
+
