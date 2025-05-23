@@ -127,148 +127,112 @@
 </head>
 <body>
 <a href="ParametreAdmin.php" class="btn-retour">← Retour</a>
-
 <div class="overlay"></div>
-
-  <div class="container">
-    <h1>Facturation Mensuelle</h1>
-
-    <div class="summary">
-      <div>Total facturé : <span class="text-success">2 450€</span></div>
-      <div>Payé : <span class="text-success">1 700€</span></div>
-      <div>Restant : <span class="text-danger">750€</span></div>
-    </div>
-
-    <div class="filter-bar">
-      <div>
-        <input type="month" class="form-control">
-      </div>
-      <div>
-        <select class="form-select">
-          <option>Toutes les crèches</option>
-          <option>Crèche 1</option>
-          <option>Crèche 2</option>
-        </select>
-      </div>
-      <div>
-        <select class="form-select">
-          <option>Tout statut</option>
-          <option>Payé</option>
-          <option>Partiel</option>
-          <option>En attente</option>
-        </select>
-      </div>
-      <button class="btn btn-bf" data-bs-toggle="modal" data-bs-target="#nouvelleFacture">➕ Nouvelle facture</button>
-      <button class="btn btn-outline-dark">📊 Export Excel</button>
-    </div>
-
-    <table class="table table-hover table-bordered">
-      <thead class="table-light">
-        <tr>
-          <th>Enfant</th>
-          <th>Parent</th>
-          <th>Crèche</th>
-          <th>Mois</th>
-          <th>Montant</th>
-          <th>Statut</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Ali M.</td>
-          <td>madame.mendy@gmail.com</td>
-          <td>Crèche Arc-en-ciel</td>
-          <td>Mai 2025</td>
-          <td>320€</td>
-          <td><span class="badge badge-paye">Payé</span></td>
-          <td>
-            <button class="btn btn-sm btn-secondary">🖨️ PDF</button>
-            <button class="btn btn-sm btn-warning">💳 Régler</button>
-            <button class="btn btn-sm btn-danger">🗑️</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Sara K.</td>
-          <td>sarak@gmail.com</td>
-          <td>Crèche Les Petits Soleils</td>
-          <td>Mai 2025</td>
-          <td>310€</td>
-          <td><span class="badge badge-attente">En attente</span></td>
-          <td>
-            <button class="btn btn-sm btn-secondary">🖨️ PDF</button>
-            <button class="btn btn-sm btn-success">💰 Paiement</button>
-            <button class="btn btn-sm btn-danger">🗑️</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="stats-bar">
-      <div class="stats-card">
-        <h4>📈 Progression</h4>
-        <p>6/10 familles ont réglé ce mois</p>
-      </div>
-      <div class="stats-card">
-        <h4>🔁 Factures générées</h4>
-        <p>Factures auto pour 3 crèches</p>
-      </div>
-      <div class="stats-card">
-        <h4>📬 Envois par mail</h4>
-        <p>8 factures envoyées aux parents</p>
-      </div>
-    </div>
+<div class="container">
+  <h1>Facturation Mensuelle</h1>
+  <div class="summary">
+    <div>Total facturé : <span class="text-success">7 250€</span></div>
+    <div>Payé : <span class="text-success">5 900€</span></div>
+    <div>Restant : <span class="text-danger">1 350€</span></div>
   </div>
-
-  <!-- Modal Création Facture -->
-  <div class="modal fade" id="nouvelleFacture" tabindex="-1" aria-labelledby="nouvelleFactureLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Créer une facture</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="row g-3">
-              <div class="col-md-6">
-                <label class="form-label">Enfant</label>
-                <select class="form-select">
-                  <option>Ali M.</option>
-                  <option>Sara K.</option>
-                </select>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label">Mois</label>
-                <input type="month" class="form-control">
-              </div>
-              <div class="col-md-6">
-                <label class="form-label">Montant (€)</label>
-                <input type="number" class="form-control">
-              </div>
-              <div class="col-md-6">
-                <label class="form-label">Statut</label>
-                <select class="form-select">
-                  <option>Payé</option>
-                  <option>Partiel</option>
-                  <option>En attente</option>
-                </select>
-              </div>
-              <div class="col-12">
-                <label class="form-label">Remarques</label>
-                <textarea class="form-control" rows="3"></textarea>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-          <button type="submit" class="btn btn-bf">💾 Enregistrer</button>
-        </div>
-      </div>
+  <div class="filter-bar">
+    <div><input type="month" class="form-control"></div>
+    <div>
+      <select class="form-select" id="filtreCreche">
+        <option value="">Toutes les crèches</option>
+        <option>Crèche 1</option>
+        <option>Crèche 2</option>
+        <option>Crèche 3</option>
+      </select>
     </div>
+    <div>
+      <select class="form-select" id="filtreStatut">
+        <option value="">Tout statut</option>
+        <option>Payé</option>
+        <option>Partiel</option>
+        <option>En attente</option>
+      </select>
+    </div>
+    <div>
+      <input type="text" class="form-control" id="searchInput" placeholder="Rechercher un prénom">
+    </div>
+    <button class="btn btn-bf" data-bs-toggle="modal" data-bs-target="#nouvelleFacture">➕ Nouvelle facture</button>
+    <button class="btn btn-outline-dark">📊 Export Excel</button>
   </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <table class="table table-hover table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th>Enfant</th>
+        <th>Parent</th>
+        <th>Crèche</th>
+        <th>Mois</th>
+        <th>Montant</th>
+        <th>Statut</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="factureTableBody"></tbody>
+  </table>
+  <div class="stats-bar">
+    <div class="stats-card"><h4>📈 Progression</h4><p>16/25 familles ont réglé ce mois</p></div>
+    <div class="stats-card"><h4>🔁 Factures générées</h4><p>Factures auto pour 5 crèches</p></div>
+    <div class="stats-card"><h4>📬 Envois par mail</h4><p>22 factures envoyées</p></div>
+  </div>
+</div>
+<!-- MODAL FACTURE IDENTIQUE -->
+<script>
+const factures = Array.from({ length: 25 }, (_, i) => {
+  const enfants = ["Ali M.", "Sara K.", "Lina B.", "Adam D.", "Jade R.", "Yanis M.", "Noé L.", "Emma V.", "Rayan T.", "Mila N."];
+  const parents = ["madame.mendy@gmail.com", "sarak@gmail.com", "emma.r@gmail.com", "papa.lino@gmail.com"];
+  const creches = ["Crèche 1", "Crèche 2", "Crèche 3"];
+  const statuts = ["Payé", "Partiel", "En attente"];
+  return {
+    enfant: enfants[i % enfants.length],
+    parent: parents[i % parents.length],
+    creche: creches[i % creches.length],
+    mois: "Mai 2025",
+    montant: (280 + i * 5) + "€",
+    statut: statuts[i % statuts.length]
+  };
+});
+function renderTable(list) {
+  const body = document.getElementById("factureTableBody");
+  body.innerHTML = "";
+  list.forEach(f => {
+    const badgeClass = f.statut === "Payé" ? "badge-paye" : f.statut === "Partiel" ? "badge-partiel" : "badge-attente";
+    body.innerHTML += `
+      <tr>
+        <td>${f.enfant}</td>
+        <td>${f.parent}</td>
+        <td>${f.creche}</td>
+        <td>${f.mois}</td>
+        <td>${f.montant}</td>
+        <td><span class="badge ${badgeClass}">${f.statut}</span></td>
+        <td>
+          <button class="btn btn-sm btn-secondary">🖨️ PDF</button>
+          <button class="btn btn-sm btn-${f.statut === 'Payé' ? 'warning' : 'success'}">${f.statut === 'Payé' ? '💳 Régler' : '💰 Paiement'}</button>
+          <button class="btn btn-sm btn-danger">🗑️</button>
+        </td>
+      </tr>
+    `;
+  });
+}
+function applyFilters() {
+  const text = document.getElementById("searchInput").value.toLowerCase();
+  const statut = document.getElementById("filtreStatut").value;
+  const creche = document.getElementById("filtreCreche").value;
+  const filtered = factures.filter(f =>
+    f.enfant.toLowerCase().includes(text) &&
+    (statut ? f.statut === statut : true) &&
+    (creche ? f.creche === creche : true)
+  );
+  renderTable(filtered);
+}
+document.getElementById("searchInput").addEventListener("input", applyFilters);
+document.getElementById("filtreStatut").addEventListener("change", applyFilters);
+document.getElementById("filtreCreche").addEventListener("change", applyFilters);
+renderTable(factures);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

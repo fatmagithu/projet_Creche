@@ -409,17 +409,29 @@ $conn->close();
         <p>Crèches actives</p>
       </div>
     </div>
+    <?php
+$conn = new mysqli($host, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Échec de la connexion à la base de données : " . $conn->connect_error);
+}
 
-    <div class="creche-select">
-      <button class="creche-btn" style="background-image: url('Creche1.png')" onclick="window.location.href='PCrechePARIS.php'">Mantes à l'Ô</button>
-      <button class="creche-btn" style="background-image: url('Creche2.png')">Les Calinous</button>
-      <button class="creche-btn" style="background-image: url('Creche3.png')">1-2-3 Soleil</button>
-      <button class="creche-btn" style="background-image: url('Creche1.png')">Les Coquelicots</button>
-      <button class="creche-btn" style="background-image: url('Creche2.png')">Les 101 Bambins</button>
-      <button class="creche-btn" style="background-image: url('Creche3.png')">Les Coccinelles</button>
-      <button class="creche-btn" style="background-image: url('Creche1.png')">Les Capucines</button>
-    </div>
-    
+$sqlCreches = "SELECT nom_creche, image_fond, code_creche FROM creche WHERE statut = 'Active'";
+$resultCreches = $conn->query($sqlCreches);
+
+if ($resultCreches->num_rows > 0) {
+    echo '<div class="creche-select">';
+    while($row = $resultCreches->fetch_assoc()) {
+        $nom = htmlspecialchars($row['nom_creche']);
+        $image = htmlspecialchars($row['image_fond']);
+        $code = urlencode($row['code_creche']);
+        echo "<button class='creche-btn' style='background-image: url(\"$image\")' onclick=\"window.location.href='PCrechePARIS.php?creche=$code'\">$nom</button>";
+    }
+    echo '</div>';
+}
+
+$conn->close();
+?>
+
 <button class="big-action-btn-fancy" onclick="window.location.href='TrouverUnEnfant.php'"><span>🔍 Trouver un enfant</span></button>
 
   </div>

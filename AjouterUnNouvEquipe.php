@@ -1,3 +1,48 @@
+<?php
+$message = "";
+
+try {
+  $pdo = new PDO('mysql:host=localhost;dbname=groupe_bulles_deveil;charset=utf8', 'root', 'root');
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $stmt = $pdo->prepare("INSERT INTO equipe (
+      nom, prenom, email, telephone, date_naissance, adresse, ville, poste_occupe,
+      role, date_recrutement, lieu_recrutement, type_contrat, nbre_heure_contrat,
+      date_fin_contrat, observation, genre, salaire
+    ) VALUES (
+      :nom, :prenom, :email, :telephone, :date_naissance, :adresse, :ville, :poste_occupe,
+      :role, :date_recrutement, :lieu_recrutement, :type_contrat, :nbre_heure_contrat,
+      :date_fin_contrat, :observation, :genre, :salaire
+    )");
+
+    $stmt->execute([
+      ':nom' => $_POST['nom'] ?? '',
+      ':prenom' => $_POST['prenom'] ?? '',
+      ':email' => $_POST['email'] ?? '',
+      ':telephone' => $_POST['telephone'] ?? '',
+      ':date_naissance' => $_POST['date_naissance'] ?? null,
+      ':adresse' => $_POST['adresse'] ?? '',
+      ':ville' => $_POST['ville'] ?? '',
+      ':poste_occupe' => substr($_POST['poste'] ?? '', 0, 100),
+      ':role' => substr($_POST['role'] ?? 'Éducateur', 0, 100),
+      ':date_recrutement' => $_POST['date_recrutement'] ?? null,
+      ':lieu_recrutement' => $_POST['creche'] ?? '',
+      ':type_contrat' => $_POST['contrat'] ?? '',
+      ':nbre_heure_contrat' => is_numeric($_POST['horaires']) ? intval($_POST['horaires']) : null,
+      ':date_fin_contrat' => $_POST['date_fin_contrat'] ?? null,
+      ':observation' => $_POST['remarques'] ?? '',
+      ':genre' => $_POST['genre'] ?? '',
+      ':salaire' => is_numeric($_POST['salaire']) ? floatval($_POST['salaire']) : 0.00
+    ]);
+
+    $message = "✅ Membre ajouté avec succès !";
+  }
+} catch (PDOException $e) {
+  $message = "❌ Erreur : " . $e->getMessage();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -119,81 +164,91 @@
 
 <div class="form-container">
   <h1>Ajouter un Membre</h1>
-  <form action="#" method="POST">
+  <?php if (!empty($message)): ?>
+  <div class="alert alert-info text-center" style="font-weight:600; color: #9e6d4b;">
+    <?= htmlspecialchars($message) ?>
+  </div>
+  <?php endif; ?>
+
+  <form method="POST">
     <div class="row g-3">
       <div class="col-md-6">
-        <label for="nom" class="form-label">Nom et Prénom</label>
-        <input type="text" class="form-control" id="nom" name="nom" required>
+        <label class="form-label">Nom</label>
+        <input type="text" class="form-control" name="nom" required>
       </div>
-
       <div class="col-md-6">
-        <label for="poste" class="form-label">Poste</label>
-        <input type="text" class="form-control" id="poste" name="poste" required>
+        <label class="form-label">Prénom</label>
+        <input type="text" class="form-control" name="prenom" required>
       </div>
-
       <div class="col-md-6">
-        <label for="ville" class="form-label">Ville</label>
-        <input type="text" class="form-control" id="ville" name="ville" required>
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" name="email">
       </div>
-
       <div class="col-md-6">
-        <label for="creche" class="form-label">Crèche</label>
-        <select class="form-select" id="creche" name="creche" required>
-          <option selected disabled>Choisir une crèche</option>
-          <option>Les Calinous</option>
-          <option>Toulouse</option>
-          <option>1-2-3 Soleil</option>
-          <option>Les Coquelicots</option>
-          <option>Les 101 Bambins</option>
-          <option>Les Coccinelles</option>
-          <option>Les Capucines</option>
+        <label class="form-label">Téléphone</label>
+        <input type="text" class="form-control" name="telephone">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Date de naissance</label>
+        <input type="date" class="form-control" name="date_naissance">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Adresse</label>
+        <input type="text" class="form-control" name="adresse">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Ville</label>
+        <input type="text" class="form-control" name="ville">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Poste occupé</label>
+        <input type="text" class="form-control" name="poste">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Rôle</label>
+        <input type="text" class="form-control" name="role" value="Éducateur">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Date de recrutement</label>
+        <input type="date" class="form-control" name="date_recrutement">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Lieu de recrutement</label>
+        <input type="text" class="form-control" name="creche">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Type de contrat</label>
+        <input type="text" class="form-control" name="contrat">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Nombre d'heures</label>
+        <input type="number" class="form-control" name="horaires">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Date fin de contrat</label>
+        <input type="date" class="form-control" name="date_fin_contrat">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Genre</label>
+        <select class="form-select" name="genre">
+          <option value="f">Femme</option>
+          <option value="m">Homme</option>
         </select>
       </div>
-
       <div class="col-md-6">
-        <label for="contrat" class="form-label">Type de contrat</label>
-        <input type="text" class="form-control" id="contrat" name="contrat" placeholder="Ex : CDI, CDD, Stage" required>
+        <label class="form-label">Salaire (€)</label>
+        <input type="number" class="form-control" name="salaire" step="0.01">
       </div>
-
-      <div class="col-md-6">
-        <label for="horaires" class="form-label">Horaires</label>
-        <input type="text" class="form-control" id="horaires" name="horaires" placeholder="Ex : 8h-16h">
-      </div>
-
       <div class="col-12">
-        <label for="remarques" class="form-label">Remarque à faire</label>
-        <textarea class="form-control" id="remarques" name="remarques" rows="3"></textarea>
+        <label class="form-label">Observations</label>
+        <textarea class="form-control" name="remarques" rows="3"></textarea>
       </div>
-
-      <div class="col-12">
-        <label class="form-label">Disponibilité</label>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="disponibilite" id="immediate" value="immediate" checked>
-          <label class="form-check-label" for="immediate">Disponible immédiatement</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="disponibilite" id="date" value="date">
-          <label class="form-check-label" for="date">Disponible à partir de :</label>
-        </div>
-        <input type="date" class="form-control mt-2" id="dateDisponibilite" name="dateDisponibilite">
-      </div>
-
       <div class="col-12">
         <button type="submit" class="btn-submit">Ajouter le Membre</button>
       </div>
     </div>
   </form>
 </div>
-
-<script>
-  document.getElementById('dateDisponibilite').disabled = true;
-  document.getElementById('immediate').addEventListener('change', () => {
-    document.getElementById('dateDisponibilite').disabled = true;
-  });
-  document.getElementById('date').addEventListener('change', () => {
-    document.getElementById('dateDisponibilite').disabled = false;
-  });
-</script>
 
 </body>
 </html>

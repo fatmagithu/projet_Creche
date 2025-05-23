@@ -42,9 +42,26 @@
     .btn-submit:hover {
       background-color: #9e6d4b;
     }
+    .back-btn {
+  background: #b38760;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+.back-btn:hover {
+  background: #9e6d4b;
+}
+
   </style>
 </head>
 <body>
+
+<a href="ParametreAdmin.php" class="back-btn">&larr; Retour</a>
 <?php
 ob_start();
 
@@ -96,6 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <?php if (!empty($error)): ?>
     <div class="alert alert-danger">❌ <?= htmlspecialchars($error) ?></div>
   <?php endif; ?>
+
 
   <form method="POST">
     <div class="row">

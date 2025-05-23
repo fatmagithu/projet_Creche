@@ -263,7 +263,7 @@ session_start();
         <h6>Planning</h6>
       </div>
       <div class="action-block">
-        <a href="SuiviPresence.php" class="bubble-icon">
+        <a href="PointageGeneralAdmin.php" class="bubble-icon">
           <img src="horloge-murale.png" alt="Présences">
         </a>
         <h6>Présences</h6>
