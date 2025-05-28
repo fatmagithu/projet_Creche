@@ -1,3 +1,22 @@
+<?php
+// Connexion à la base de données
+$conn = new mysqli("localhost", "root", "root", "groupe_bulles_deveil");
+if ($conn->connect_error) {
+  die("Erreur de connexion : " . $conn->connect_error);
+}
+
+// Requête pour récupérer les crèches actives
+$sql = "SELECT code_creche, nom_creche, image_fond FROM creche WHERE statut = 'Active'";
+$result = $conn->query($sql);
+$creches = [];
+
+if ($result->num_rows > 0) {
+  while ($row = $result->fetch_assoc()) {
+    $creches[] = $row;
+  }
+}
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -76,32 +95,34 @@
     }
 
     .btn-retour {
-      position: absolute;
-      top: 30px;
-      left: 30px;
-      background-color: var(--brown);
-      color: white;
-      padding: 10px 18px;
-      border-radius: 30px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.3s;
-      z-index: 1000;
-    }
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background-color: var(--brown);
+  color: white;
+  padding: 10px 8px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+  z-index: 1000;
+}
 
-    .btn-retour:hover {
-      background-color: var(--brown-dark);
-    }
+.btn-retour:hover {
+  background-color: var(--brown-dark);
+}
   </style>
 </head>
 <body>
-  <a href="javascript:history.back()" class="btn-retour">← Retour</a>
+<a href="ParametreAdmin.php" class="btn-retour">← Retour</a>
   <div class="bubble-grid">
-    <a href="ActivitéAUX.php" class="bubble" style="background-image: url('creche1.png');"><span>Crèche Arc-en-Ciel</span></a>
-    <a href="creche2.php" class="bubble" style="background-image: url('creche2.png');"><span>Les Petits Soleils</span></a>
-    <a href="creche3.php" class="bubble" style="background-image: url('creche3.png');"><span>La Maison des Bambins</span></a>
-    <a href="creche4.php" class="bubble" style="background-image: url('creche2.png');"><span>Douce Éveil</span></a>
-    <a href="creche5.php" class="bubble" style="background-image: url('creche1.png');"><span>Mini Explorateurs</span></a>
+    <?php foreach ($creches as $creche): ?>
+      <a href="ActivitéAUX.php?creche=<?= $creche['code_creche'] ?>" 
+         class="bubble" 
+         style="background-image: url('<?= htmlspecialchars($creche['image_fond']) ?>');">
+        <span><?= htmlspecialchars($creche['nom_creche']) ?></span>
+      </a>
+    <?php endforeach; ?>
   </div>
 </body>
 </html>

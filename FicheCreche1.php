@@ -134,6 +134,47 @@ if ($creche_id > 0) {
       background: #b38760;
       color: white;
     }
+    .doc-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.doc-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-action {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: all 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn-action.email {
+  background: #b38760;
+  color: white;
+}
+.btn-action.whatsapp {
+  background: #25D366;
+  color: white;
+}
+.btn-action.copy {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-action:hover {
+  transform: scale(1.08);
+  opacity: 0.9;
+}
+
   </style>
   
 </head>
@@ -165,7 +206,17 @@ if ($creche_id > 0) {
         while ($row = $result->fetch_assoc()) {
           $titre = htmlspecialchars($row['titre_document']);
           $chemin = htmlspecialchars($row['chemin_fichier']);
-          echo "<div class='doc-icon' onclick=\"window.open('$chemin', '_blank')\">📄<br>$titre</div>";
+          echo "
+<div class='doc-block'>
+  <div class='doc-icon' onclick=\"window.open('$chemin', '_blank')\">📄<br>$titre</div>
+  <div class='doc-actions'>
+    <button class='btn-action email' onclick=\"sendDocumentByEmail('$titre', '$chemin')\">✉️Mail</button>
+    <button class='btn-action whatsapp' onclick=\"sendToWhatsApp('$titre', '$chemin')\">WhatsApp</button>
+    <button class='btn-action copy' onclick=\"copyToClipboard('$chemin')\">Copier</button>
+  </div>
+</div>
+";
+
         }
       } else {
         echo "<p>Aucun document enregistré pour cette crèche.</p>";
@@ -301,6 +352,25 @@ function copyToClipboard() {
   const message = "Voici un document concernant la crèche BabyFarm.";
   navigator.clipboard.writeText(message).then(() => {
     alert("✅ Texte copié dans le presse-papier !");
+  });
+}
+</script>
+<script>
+function sendDocumentByEmail(titre, chemin) {
+  const subject = encodeURIComponent("Document Crèche BabyFarm : " + titre);
+  const body = encodeURIComponent(`Bonjour,\n\nVoici le lien du document "${titre}" :\nhttp://localhost:8888/${chemin}\n\n-- L'équipe BabyFarm`);
+  window.open(`mailto:?subject=${subject}&body=${body}`);
+}
+
+function sendToWhatsApp(titre, chemin) {
+  const message = encodeURIComponent(`Bonjour 👋,\nVoici le document "${titre}" : http://localhost:8888/${chemin}`);
+  window.open(`https://wa.me/?text=${message}`, '_blank');
+}
+
+function copyToClipboard(chemin) {
+  const fullURL = `http://localhost:8888/${chemin}`;
+  navigator.clipboard.writeText(fullURL).then(() => {
+    alert("✅ Lien copié dans le presse-papier !");
   });
 }
 </script>
