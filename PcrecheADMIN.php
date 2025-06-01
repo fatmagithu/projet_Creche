@@ -124,7 +124,7 @@
     <h1>Bienvenue, Administrateur</h1>
     <p>Accédez à votre espace sécurisé</p>
 
-    <form action=".php" method="POST">
+    <form action="ParametreAdmin.php" method="POST">
       <input type="text" name="nom" placeholder="Mail" class="form-control" required />
       <input type="password" name="mot_de_passe" placeholder="Mot de passe" class="form-control" required />
       <button type="submit" class="btn btn-login">Connexion</button>

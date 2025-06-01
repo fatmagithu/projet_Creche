@@ -13,7 +13,7 @@ return [
     'db' => [
         'servername' => "localhost",
         'username' => "root",
-        'password' => "root", // 🔥 Assurez-vous que le mot de passe MySQL est correct !
+        'password' => "", // 🔥 Assurez-vous que le mot de passe MySQL est correct !
         'dbname' => "admin_db",
         'charset' => "utf8mb4"
     ],
@@ -22,7 +22,7 @@ return [
     'mail' => [
         'host' => 'smtp.laposte.net',
         'username' => "coursmaths2015@laposte.net",
-        'password' => "Ilahi2025++***", // 🔥 Remplacez par votre mot de passe réel
+        'password' => "Avril2025++***", // 🔥 Remplacez par votre mot de passe réel
         'port' => 465,
         'secure' => 'ssl', // Configuration SSL pour La Poste
         'reply_to' => "coursmaths2015@laposte.net"
@@ -31,7 +31,7 @@ return [
     // Paramètres de l'application - adaptés à votre structure
     'app' => [
         'code_expiry' => 30, // minutes
-        'admin_page' => '/PcrecheADMIN.php'
+        'admin_page' => 'GestionCreche/PcrecheADMIN.php'
     ],
     
     // Paramètres du code temporaire

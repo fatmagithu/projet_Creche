@@ -98,10 +98,10 @@ if (empty($_SESSION['admin_email']) || empty($_SESSION['admin_code']) || empty($
                 
                 // URL pour le lien de connexion
                 $baseUrl = $config['app_url'] ?? 'http://localhost';
-                $loginUrl = $baseUrl . '/1GenererMdpAdminFonction/GenerationMDPform.php?code=' . urlencode($code);
+                $loginUrl = $baseUrl . '/GestionCreche/GenerationMDPform.php?code=' . urlencode($code);
                 
                 if (isset($config['app']['admin_page'])) {
-                    $loginUrl = $baseUrl . '/1GenererMdpAdminFonction/GenerationMDPform.php?code=' . urlencode($code);
+                    $loginUrl = $baseUrl . '/GestionCreche/GenerationMDPform.php?code=' . urlencode($code);
                 }
                 
                 // Email HTML

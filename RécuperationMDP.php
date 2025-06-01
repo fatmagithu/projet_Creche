@@ -1,14 +1,3 @@
-
-<?php
-session_start();
-
-// Rediriger si déjà connecté
-if (isset($_SESSION['admin_id'])) {
-    header("Location: PcrecheDASHBOARD.php");
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -83,23 +72,24 @@ if (isset($_SESSION['admin_id'])) {
     }
 
     .btn-login {
-  background: #f8f0e3;
-  color: #2c2c2c;
-  font-weight: 600;
-  padding: 12px 28px;
-  border-radius: 30px;
-  border: none;
-  transition: all 0.3s ease;
-}
+      background: #f8f0e3;
+      color: #2c2c2c;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 30px;
+      border: none;
+      transition: all 0.3s ease;
+      width: 100%;
+      cursor: pointer;
+    }
 
-.btn-login:hover {
-  background: #e8ded0;
-  transform: translateY(-2px);
-}
-
+    .btn-login:hover {
+      background: #e8ded0;
+      transform: translateY(-2px);
+    }
 
     .forgot-password {
-      margin-top: 10px;
+      margin-top: 15px;
       font-size: 14px;
       color: #888;
       text-decoration: none;
@@ -109,6 +99,23 @@ if (isset($_SESSION['admin_id'])) {
     .forgot-password:hover {
       color: #3b925f;
       text-decoration: underline;
+    }
+
+    .alert {
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    .alert-danger {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .alert-success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
     }
 
     @media (max-width: 600px) {
@@ -129,11 +136,20 @@ if (isset($_SESSION['admin_id'])) {
     <h1>🔐 Récupération de mot de passe</h1>
     <p>Entrez votre email et numéro pour recevoir un code</p>
 
-    <form action="traitement_reinitialisation.php" method="POST">
+    <?php
+    // Affichage des messages d'erreur ou de succès
+    if (isset($_GET['error'])) {
+        echo '<div class="alert alert-danger">' . htmlspecialchars($_GET['error']) . '</div>';
+    }
+    if (isset($_GET['success'])) {
+        echo '<div class="alert alert-success">Code envoyé avec succès !</div>';
+    }
+    ?>
+
+    <form action="./sendCode.php" method="POST">
       <input type="email" name="email" class="form-control" placeholder="Email" required />
       <input type="tel" name="telephone" class="form-control" placeholder="Numéro de téléphone" required />
-      <a href="CodeEmail.php" class="btn btn-login">Recevoir le code</a>
-
+      <button type="submit" class="btn btn-login">Recevoir le code</button>
     </form>
 
     <a href="pcrecheLOGIN.php" class="forgot-password">← Retour à la connexion</a>

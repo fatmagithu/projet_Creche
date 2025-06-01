@@ -125,7 +125,7 @@ if ($action === 'send' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->Port = 587;
         $mail->SMTPAuth = true;
         $mail->Username = 'fatma.asserrar@laposte.net';
-        $mail->Password = 'Ilahi2025++***';
+        $mail->Password = 'Avril2025++***';
         $mail->setFrom('fatma.asserrar@laposte.net', 'Admin');
         $mail->addAddress($email);
         $mail->Subject = 'Votre Code d\'Accès';

@@ -74,6 +74,7 @@
       border: none;
       transition: all 0.3s ease;
       width: 100%;
+      cursor: pointer;
     }
 
     .btn-login:hover {
@@ -82,7 +83,7 @@
     }
 
     .back-link {
-      margin-top: 10px;
+      margin-top: 15px;
       display: block;
       font-size: 14px;
       color: #888;
@@ -92,6 +93,23 @@
     .back-link:hover {
       color: #3b925f;
       text-decoration: underline;
+    }
+
+    .alert {
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    .alert-danger {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .alert-success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
     }
 
     @media (max-width: 600px) {
@@ -112,15 +130,29 @@
     <h1>🔐 Réinitialiser votre mot de passe</h1>
     <p>Veuillez entrer le code reçu et définir un nouveau mot de passe</p>
 
-    <form action="traitement_reinit.php" method="POST">
-      <input type="text" name="code" class="form-control" placeholder="Code reçu" required />
-      <input type="password" name="new_password" class="form-control" placeholder="Nouveau mot de passe" required />
-      <input type="password" name="confirm_password" class="form-control" placeholder="Confirmer le mot de passe" required />
+    <?php
+    session_start();
+    // Affichage des messages
+    if (isset($_GET['error'])) {
+        echo '<div class="alert alert-danger">' . htmlspecialchars($_GET['error']) . '</div>';
+    }
+    if (isset($_GET['success']) && $_GET['success'] === 'code_sent') {
+        echo '<div class="alert alert-success">Code envoyé avec succès ! Vérifiez votre boîte email.</div>';
+    }
+    if (isset($_GET['success']) && $_GET['success'] === 'password_reset') {
+        echo '<div class="alert alert-success">Mot de passe réinitialisé avec succès !</div>';
+    }
+    ?>
 
-      <a href="pcrecheLOGIN.php" class="back-link">← Retour à la connexion</a>
+    <form action="resetPassword.php" method="POST">
+      <input type="text" name="code" class="form-control" placeholder="Code reçu (6 chiffres)" maxlength="6" required />
+      <input type="password" name="new_password" class="form-control" placeholder="Nouveau mot de passe" minlength="6" required />
+      <input type="password" name="confirm_password" class="form-control" placeholder="Confirmer le mot de passe" minlength="6" required />
 
-      <button type="submit" class="btn btn-login mt-3">Réinitialiser</button>
+      <button type="submit" class="btn btn-login">Réinitialiser</button>
     </form>
+
+    <a href="pcrecheLOGIN.php" class="back-link">← Retour à la connexion</a>
   </div>
 </body>
 </html>

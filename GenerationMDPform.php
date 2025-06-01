@@ -114,7 +114,7 @@
     <img src="NOUNOU (6).png" alt="Logo BabyFarm" class="admin-logo">
     <h1>Créer un compte</h1>
 
-    <form action="traitement_inscription.php" method="POST">
+    <form action="PcrecheDASHBOARD.php" method="POST">
       <input type="text" name="nom" class="form-control" placeholder="Nom" required />
       <input type="text" name="prenom" class="form-control" placeholder="Prénom" required />
       <input type="email" name="email" class="form-control" placeholder="Email" required />
